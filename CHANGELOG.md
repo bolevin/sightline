@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.1.0 (2026-11-15)
+
+- The page fits a phone. The header is two short rows, with the tabs as a strip that scrolls sideways. The charts
+  are drawn for a narrow screen. Long tables fold into blocks or scroll inside their panel. A tap on a mark of a
+  chart shows what a resting pointer would.
+- README: the link to the live demo is a button.
+
 ## 1.0.0 (2026-11-15)
 
 The first public demo.

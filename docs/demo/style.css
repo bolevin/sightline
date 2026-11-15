@@ -144,6 +144,8 @@ div.kpi{cursor:default}
 .chip{display:inline-flex;align-items:baseline;gap:5px;padding:1px 7px;border-radius:6px;border:1px solid var(--line-strong);background:var(--surface);font-size:12px;color:var(--info)}
 .chip:hover{border-color:var(--info)}
 .chip small{color:var(--muted);font-size:11px}
+.chip{white-space:nowrap}
+.fold > summary{display:none}
 .line{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(150px,1fr);gap:10px;overflow-x:auto;padding-bottom:4px}
 .stop{border:1px solid var(--line);border-top:4px solid var(--tone);border-radius:10px;padding:10px;display:grid;gap:8px;align-content:start;background:var(--surface-2)}
 .stop-h{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
@@ -395,6 +397,70 @@ button.pill{cursor:pointer}
 @media (max-width:1100px){.q-says{grid-template-columns:1fr}}
 @media (max-width:700px){.q-row:not(.debt){grid-template-columns:64px minmax(0,1fr)}.q-row:not(.debt) .q-num{grid-column:2}}
 .q-nw{white-space:nowrap}
+
+/* ---- a phone. The header is two short rows: the brand with Ask and Notices, and the tabs as one strip that
+   scrolls sideways. Panels lose their side by side layout, long tables fold into blocks (.stack) or scroll inside
+   their panel, and what a finger must hit is larger. The charts are drawn narrower by the page itself (chartW). */
+.bell-i{display:none;width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+@media (max-width:700px){
+  .shell{padding:0 12px 32px}
+  .top{margin:0 -12px;padding:6px 12px 0;gap:6px;min-height:0}
+  .brand{font-size:19px;gap:7px}
+  .mark{width:28px;height:28px}
+  .top .grow,.top .pal,#refresh,.fresh,.top .btn .t{display:none}
+  .bell-i{display:block}
+  #ask-open{margin-left:auto;padding:6px 12px 6px 9px}
+  .top .btn{padding:6px 9px}
+  .top .seg{order:9;flex:1 0 100%;flex-wrap:nowrap;overflow-x:auto;margin:0 -12px;padding:4px 12px;border:0;border-top:1px solid var(--line);border-radius:0;background:none;scrollbar-width:none}
+  .top .seg::-webkit-scrollbar{display:none}
+  .seg button{padding:7px 10px}
+  .seg-l{padding:0 4px 0 8px}
+  .demo-note{margin-top:10px;padding:7px 12px;font-size:12.5px}
+  .page{padding-top:12px;gap:12px}
+  .tabbody,.grid2,.q3{gap:12px}
+  .w{padding:12px;border-radius:12px;gap:10px}
+  .wh h2{font-size:18px;gap:8px}
+  .qcard{padding:14px} .qcard h2{font-size:19px}
+  .kpis{gap:8px} .kpi{padding:10px 12px;border-radius:12px} .kpi .v{font-size:21px}
+  .verify{gap:2px 12px}
+  .verify span:nth-child(n+3){display:none}
+  .tw td{white-space:nowrap}
+  .tw td:first-child:not(.k){white-space:normal;min-width:96px}
+  .w > table.t:not(.stack) td,.tw td .mono{white-space:nowrap}
+  .tw table:not(.stack) .chips,.w > table.t:not(.stack) .chips{flex-wrap:nowrap}
+  .ch .ax{font-size:12px}
+  .fold > summary{display:list-item;cursor:pointer;color:var(--muted);font-size:12.5px;padding:2px 0 6px}
+  .risk-f{grid-template-columns:minmax(0,1fr)}
+  .risk-h input{min-width:0;flex-basis:100%}
+  .bar-row{grid-template-columns:auto minmax(0,1fr) auto;gap:4px 10px}
+  .bar-row .share{grid-column:1/-1;grid-row:2}
+  .cmd,.cmd.float,.cmd.bottom{z-index:45}
+  .cmd-tools [data-ask-mode],.composer-bar .small{display:none}
+  .composer-bar .send{margin-left:auto}
+  .pop{min-width:0;max-width:calc(100vw - 24px)}
+  /* a table that would be crushed scrolls inside its panel, and its edge shows that there is more */
+  .w > table.t:not(.stack){display:block;overflow-x:auto}
+  .tw,.w > table.t:not(.stack){background:linear-gradient(to right,var(--surface) 40%,transparent) 0 0/28px 100% no-repeat local,linear-gradient(to left,var(--surface) 40%,transparent) 100% 0/28px 100% no-repeat local,
+    linear-gradient(to right,var(--line-strong),transparent) 0 0/10px 100% no-repeat scroll,linear-gradient(to left,var(--line-strong),transparent) 100% 0/10px 100% no-repeat scroll}
+  /* a table of sentences folds: each row a block, each cell a line, a short cell with the name of its column */
+  table.t.stack thead{display:none}
+  table.t.stack,table.t.stack tbody{display:block}
+  table.t.stack tr{display:grid;grid-template-columns:minmax(0,1fr);gap:3px;padding:8px 0;border-bottom:1px solid var(--line)}
+  table.t.stack tr:last-child{border-bottom:0}
+  table.t.stack td,table.t.stack td.k{display:block;width:auto;padding:0;border:0;white-space:normal}
+  table.t.stack td[data-l]::before{content:attr(data-l);margin-right:7px;font:600 10.5px var(--f-body);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  table.t.stack tr.sec{padding:6px 8px;margin-top:6px}
+  table.t.stack.lead tr{grid-template-columns:18px minmax(0,1fr);column-gap:8px}
+  table.t.stack.lead td:first-child{grid-row:1/span 3}
+  table.t.stack.lead td:not(:first-child){grid-column:2}
+  .tw:has(> table.stack){background:none;overflow-x:visible}
+}
+/* a finger needs more room than a pointer */
+@media (pointer:coarse){
+  .chip{padding:4px 9px;font-size:12.5px}
+  .chips{gap:6px}
+  .help{width:26px;height:26px}
+}
 
 /* ---- the card of an issue: shown while the pointer rests on an issue key */
 .ik{border-bottom:1px dotted currentColor;cursor:help}

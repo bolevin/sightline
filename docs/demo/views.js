@@ -18,21 +18,21 @@ function axes(top, x0, x1, y, unit){
   return [0, .5, 1].map(f => `<line class="g" x1="${x0}" x2="${x1}" y1="${y(top * f)}" y2="${y(top * f)}"/><text class="ax" x="${x0 - 6}" y="${y(top * f) + 4}" text-anchor="end">${Math.round(top * f * 10) / 10}${f === 1 ? unit : ""}</text>`).join("");
 }
 function burnup(v){
-  const s = v.sprint, p = v.promises, n = s.days.length, w = 760, h = 250, x0 = 44, x1 = w - 150, y0 = 16, y1 = h - 28;
+  const s = v.sprint, p = v.promises, n = s.days.length, w = chartW(), h = 250, x0 = 44, x1 = w - 150, y0 = 16, y1 = h - 28;
   const top = Math.max(1, p.committed || 0, p.p50 || 0, ...s.burnup.map(d => d.scope)) * 1.08;
   const x = i => x0 + (x1 - x0) * (n > 1 ? i / (n - 1) : 0), y = val => y0 + (y1 - y0) * (1 - val / top);
   const path = key => s.burnup.map((d, i) => `${i ? "L" : "M"}${x(i).toFixed(1)} ${y(d[key]).toFixed(1)}`).join("");
   const mark = (val, cls, text) => val == null ? "" : `<line class="${cls}" x1="${x(n - 1) - 8}" x2="${x(n - 1) + 8}" y1="${y(val)}" y2="${y(val)}"/><text class="ax" x="${x(n - 1) + 14}" y="${y(val) + 4}">${text} ${val}</text>`;
-  const last = s.burnup.length - 1;
+  const last = s.burnup.length - 1, every = w < 500 ? 3 : 2;         // a narrow chart names fewer days
   return frame(w, h, axes(top / 1.08, x0, x1, y, " SP") +
-    s.days.map((d, i) => i % 2 === 0 || i === n - 1 ? `<text class="ax" x="${x(i)}" y="${h - 8}" text-anchor="middle">${d.slice(8)}.${d.slice(5, 7)}</text>` : "").join("") +
+    s.days.map((d, i) => (i % every === 0 && n - 1 - i >= every - 1) || i === n - 1 ? `<text class="ax" x="${x(i)}" y="${h - 8}" text-anchor="middle">${d.slice(8)}.${d.slice(5, 7)}</text>` : "").join("") +
     (p.committed != null ? `<line class="dashed" x1="${x0}" x2="${x1}" y1="${y(p.committed)}" y2="${y(p.committed)}"/><text class="ax" x="${x0 + 4}" y="${y(p.committed) - 5}">committed ${esc(p.committed)}</text>` : "") +
     `<path class="scope" d="${path("scope")}"/><path class="done" d="${path("done")}"/>` +
     (last >= 0 ? `<circle class="dot" cx="${x(last)}" cy="${y(s.burnup[last].done)}" r="4"/><line class="today" x1="${x(last)}" x2="${x(last)}" y1="${y0}" y2="${y1}"/>` : "") +
     (p.p50 === p.p85 ? mark(p.p85, "m85", "forecast ≥") : mark(p.p50, "m50", "as likely as not ≥") + mark(p.p85, "m85", "85 % sure ≥")), "Burnup of the sprint with the forecast");
 }
 function pastBars(p){
-  const rows = p.past, w = 760, h = 220, x0 = 44, x1 = w - 16, y0 = 14, y1 = h - 30;
+  const rows = p.past, w = chartW(), h = 220, x0 = 44, x1 = w - 16, y0 = 14, y1 = h - 30;
   if (!rows.length) return `<div class="dim">No closed sprint of this board in the velocity chart yet.</div>`;
   const top = Math.max(1, p.committed || 0, ...rows.map(r => Math.max(r.committed, r.completed))) * 1.1, step = (x1 - x0) / rows.length, bar = Math.min(26, step / 3);
   const y = val => y0 + (y1 - y0) * (1 - val / top);
@@ -44,7 +44,7 @@ function pastBars(p){
     "Past sprints: committed and completed story points");
 }
 function scatter(f){
-  const pts = f.cycle, w = 760, h = 240, x0 = 44, x1 = w - 150, y0 = 14, y1 = h - 28;
+  const pts = f.cycle, w = chartW(), h = 240, x0 = 44, x1 = w - 150, y0 = 14, y1 = h - 28;
   if (!pts.length) return `<div class="dim">No completed item with a start in the sampled sprints.</div>`;
   const t = pts.map(c => Date.parse(c.done)), t0 = Math.min(...t), t1 = Math.max(...t), top = Math.max(1, ...pts.map(c => c.days)) * 1.08;
   const x = ms => x0 + (x1 - x0) * (t1 > t0 ? (ms - t0) / (t1 - t0) : .5), y = val => y0 + (y1 - y0) * (1 - val / top);
@@ -55,7 +55,7 @@ function scatter(f){
 }
 const tone = (i, n, name) => /block/i.test(name) ? "var(--crit)" : i === n - 1 ? "var(--ok)" : i === 0 ? "var(--line-strong)" : ["var(--info)", "var(--warn)", "var(--accent)"][(i - 1) % 3];
 function stacked(f){
-  const w = 760, h = 230, x0 = 44, x1 = w - 16, y0 = 14, y1 = h - 28, n = f.days.length;
+  const w = chartW(), h = 230, x0 = 44, x1 = w - 16, y0 = 14, y1 = h - 28, n = f.days.length;
   if (!n) return `<div class="dim">The sprint has no working day behind it yet.</div>`;
   const top = Math.max(1, ...f.counts.map(c => c.reduce((a, b) => a + b, 0))), step = (x1 - x0) / n, bar = Math.min(44, step * .7), y = val => y0 + (y1 - y0) * (1 - val / top);
   return frame(w, h, axes(top, x0, x1, y, "") + f.days.map((d, i) => { let below = 0; const c = x0 + step * (i + .5);
@@ -71,9 +71,9 @@ function optionsPanel(){
   return panel(p.chance < 50 ? "Decision waiting: the sprint does not fit" : "The sprint is tight", `<span class="pill ${p.chance < 15 ? "critical" : "warning"}">${esc(num(p.chance))} % to finish everything</span>`, `
     <div class="pulse">For an even chance to finish the rest, <b>${esc(num(p.over_50))} SP</b> have to move out; to be 85 % sure, <b>${esc(num(p.over_85))} SP</b>.
       What moves is for the team and the product owner to decide: the app only recomputes the forecast for each move.</div>
-    <div class="tw"><table class="t"><thead><tr><th>Option</th><th>Moves out</th><th>SP</th><th>Chance to finish the rest</th></tr></thead><tbody>${p.options.map(o => `<tr>
-      <td><b>${esc(o.title)}</b></td><td>${o.keys.length ? chips(o.keys) : `<span class="dim">nothing</span>`}</td><td>${esc(num(o.sp))}</td>
-      <td><span class="share"><i class="${o.chance < 50 ? "hot" : ""}" style="width:${Math.max(2, o.chance)}%"></i></span> <b>${esc(num(o.chance))} %</b></td></tr>`).join("")}</tbody></table></div>
+    <div class="tw"><table class="t stack"><thead><tr><th>Option</th><th>Moves out</th><th>SP</th><th>Chance to finish the rest</th></tr></thead><tbody>${p.options.map(o => `<tr>
+      <td><b>${esc(o.title)}</b></td><td data-l="Moves out">${o.keys.length ? chips(o.keys) : `<span class="dim">nothing</span>`}</td><td data-l="SP">${esc(num(o.sp))}</td>
+      <td data-l="Chance"><span class="share"><i class="${o.chance < 50 ? "hot" : ""}" style="width:${Math.max(2, o.chance)}%"></i></span> <b>${esc(num(o.chance))} %</b></td></tr>`).join("")}</tbody></table></div>
     <div class="small dim">Each chance is the same forecast run again without the points of the items that move. Items without story points do not change it. What each option costs the business is not in the data: that part is the Product Owner's call.</div>`, "options");
 }
 // The app's own record of its forecasts (live reading only), settled when a sprint has closed.
@@ -98,9 +98,9 @@ function renderPromises(){
       <div class="legend"><span><i style="background:var(--accent)"></i>done</span><span><i style="background:var(--line-strong)"></i>scope (done + open)</span><span><i class="dash"></i>committed at the start</span><span><i style="background:var(--warn)"></i>forecast lines at the end</span></div>`, "promise") + optionsPanel() +
     `<div class="grid2">` + panel("Can they bet on our forecasts?", p.look_back.length ? `<span class="pill ${held === p.look_back.length ? "ok" : "warning"}">the 85 % line held ${held} of ${p.look_back.length} times</span>` : `<span class="pill">no look-back yet</span>`,
       (p.look_back.length ? `<div class="small dim">The forecast is replayed inside past sprints, at three moments each, and compared with how the sprint ended.</div>
-      <div class="tw"><table class="t"><thead><tr><th>Sprint</th><th>Asked at</th><th>Said, 85 % sure</th><th>Said, as likely as not</th><th>Ended with</th><th></th></tr></thead><tbody>
+      <details class="fold" ${PHONE.matches ? "" : "open"}><summary>Show the ${p.look_back.length} look-backs</summary><div class="tw"><table class="t"><thead><tr><th>Sprint</th><th>Asked at</th><th>Said, 85 % sure</th><th>Said, as likely as not</th><th>Ended with</th><th></th></tr></thead><tbody>
       ${p.look_back.map(r => `<tr><td>${esc(short(r.sprint))}</td><td>${Math.round(r.share * 100)} % of the sprint</td><td>≥ ${esc(r.said_85)}</td><td>≥ ${esc(r.said_50)}</td><td><b>${esc(r.ended)}</b></td>
-        <td><span class="pill ${r.held ? "ok" : "critical"}">${r.held ? "held" : "missed"}</span></td></tr>`).join("")}</tbody></table></div>`
+        <td><span class="pill ${r.held ? "ok" : "critical"}">${r.held ? "held" : "missed"}</span></td></tr>`).join("")}</tbody></table></div></details>`
       : `<div class="dim">Not enough history yet: the forecast needs 20 working days of sampled sprints before it is replayed.</div>`) + recordBlock(), "lookback") +
     panel("The outside view", `<span class="small dim">what past sprints completed, next to what is committed now</span>`, pastBars(p) +
       `<div class="legend"><span><i class="outline"></i>committed</span><span><i style="background:var(--accent)"></i>completed</span><span><i style="background:var(--ok)"></i>completed at least what is committed now</span></div>`, "outside") + `</div>`;
@@ -130,7 +130,7 @@ function registerPanel(){
       <div class="risk-new"><input id="risk-title" maxlength="160" value="${esc(riskEdits.own || "")}" placeholder="A risk of your own, in one line" aria-label="A risk of your own"><button class="btn" type="button" data-risk-do="own">Add</button></div>
       ${closed.length ? `<details class="dropped"><summary>${closed.length} resolved</summary><ul>${closed.map(r => `<li data-risk="${esc(r.id)}"><b>${esc(r.title)}</b> · resolved ${esc(r.closed)}
         <button type="button" class="chip" data-risk-do="reopen">reopen</button></li>`).join("")}</ul></details>` : ""}`, "register") +
-    panel("Signals not in the register", `<span class="pill ${reg.candidates.length ? "warning" : "ok"}">${reg.candidates.length}</span>`, (reg.candidates.length ? `<table class="t"><tbody>${reg.candidates.map(c => `<tr data-signal="${esc(c.signal)}">
+    panel("Signals not in the register", `<span class="pill ${reg.candidates.length ? "warning" : "ok"}">${reg.candidates.length}</span>`, (reg.candidates.length ? `<table class="t stack lead"><tbody>${reg.candidates.map(c => `<tr data-signal="${esc(c.signal)}">
         <td><span class="dotl ${esc(c.level)}"></span></td><td>${keyed(c.title)}</td><td class="k"><button type="button" class="btn" data-risk-do="add">Add to register</button> <button type="button" class="chip" data-risk-do="dismiss">not a risk</button></td></tr>`).join("")}
       </tbody></table>` : `<div class="dim">Every signal in the Jira data is in the register or was set aside.</div>`) +
       (reg.dismissed.length ? `<details class="dropped"><summary>${reg.dismissed.length} set aside as “not a risk”</summary><ul>${reg.dismissed.map(d => `<li data-signal="${esc(d.signal)}">${esc(d.title || d.signal)} · ${esc(d.at)}
@@ -175,7 +175,7 @@ function premortemPanel(){
     (!p.running ? `<div class="dim">The sprint shown is closed. A pre-mortem is for a running sprint; the table shows how the sprints compare at their end.</div>`
       : p.why_not ? `<div class="dim">${esc(p.why_not)}. Until then the table shows the signs sprint by sprint, and nothing is concluded from them.</div>`
       : `<div class="pulse">It is ${esc(end.slice(8, 10))}.${esc(end.slice(5, 7))} and the sprint missed its promise. The most likely reasons, each with <b>how often it came before a miss in this team's own history</b>, not in a textbook.</div>` +
-        (found.length ? `<table class="t"><tbody>${found.map((s, i) => `<tr data-signal="premortem:${esc(p.sprint)}:${esc(s.id)}"><td class="mono dim">${i + 1}</td>
+        (found.length ? `<table class="t stack lead"><tbody>${found.map((s, i) => `<tr data-signal="premortem:${esc(p.sprint)}:${esc(s.id)}"><td class="mono dim">${i + 1}</td>
             <td><b>${esc(s.risk[0].toUpperCase() + s.risk.slice(1))}</b><div class="small dim">${esc(s.label)}: ${val(s.now, s.unit)} · as much or ${esc(s.worse)} in ${esc(s.missed_as_bad)} of ${esc(s.missed_n)} sprints that missed
               and in ${esc(s.kept_as_bad)} of ${esc(s.kept_n)} that kept their promise</div>${keys(s.id).length ? chips(keys(s.id)) : ""}</td>
             <td class="k">${where("premortem:" + p.sprint + ":" + s.id)}</td></tr>`).join("")}</tbody></table>`
@@ -234,7 +234,7 @@ function servicesPanel(){
 function renderOps(){
   const v = state.views, n = state.notices, mix = v.sprint.mix, all = mix.reduce((a, m) => a + m.n, 0);
   $("#v-ops").innerHTML = `<div class="grid2">` + panel("What reached the team", `<span class="pill ${n.length ? "warning" : "ok"}">${n.length}</span>`, n.length ?
-      `<table class="t"><tbody>${n.map(x => `<tr><td class="k">${esc(when(x.at))}</td><td>${chip(x.key)}</td><td>${esc(x.text)}</td></tr>`).join("")}</tbody></table>` : `<div class="dim">Nothing in the last days.</div>`, "notices") +
+      `<table class="t stack"><tbody>${n.map(x => `<tr><td class="k">${esc(when(x.at))}</td><td>${chip(x.key)}</td><td>${esc(x.text)}</td></tr>`).join("")}</tbody></table>` : `<div class="dim">Nothing in the last days.</div>`, "notices") +
     panel("Open bugs and incidents of the sprint", `<span class="pill ${v.operations.open_bugs.length ? "warning" : "ok"}">${v.operations.open_bugs.length}</span>`, v.operations.open_bugs.length ?
       `<table class="t"><thead><tr><th>Issue</th><th>Type</th><th>Status</th><th>Created</th></tr></thead><tbody>${v.operations.open_bugs.map(k => `<tr><td>${chip(k)}</td><td>${esc(I(k).type)}</td><td>${esc(I(k).status)}</td><td>${esc(when(I(k).created))}</td></tr>`).join("")}</tbody></table>`
       : `<div class="dim">None.</div>`, "bugs") + `</div>` +
@@ -246,16 +246,16 @@ function renderOps(){
 
 function renderSprint(){
   const v = state.views, s = v.sprint, sc = s.scope, st = state.sprint;
-  const row = (name, part, note) => `<tr><td><b>${name}</b><div class="small dim">${note}</div></td><td>${part.n}</td><td>${esc(part.sp)}</td><td>${chips(part.keys)}</td></tr>`;
+  const row = (name, part, note) => `<tr><td><b>${name}</b><div class="small dim">${note}</div></td><td data-l="Items">${part.n}</td><td data-l="SP">${esc(part.sp)}</td><td>${chips(part.keys)}</td></tr>`;
   $("#v-sprint").innerHTML = panel(`Sprint on the line · ${esc(st.name)}`, `<span class="pill">${esc(when(st.start))} to ${esc(when(st.end))}</span><span class="pill">${esc(st.state)}</span>`,
       `<div class="line">${s.columns.map((c, i) => `<div class="stop" style="--tone:${tone(i, s.columns.length, c.name)}"><div class="stop-h"><b>${esc(c.name)}</b><span>${c.keys.length} · ${esc(c.sp)} SP</span></div>${chips(c.keys)}</div>`).join("")}</div>
        <div class="small dim">The columns of the Jira board, left to right. “Done” for the sprint report is the last one: ${esc(s.done_column)}. The small number on an item is its story points.</div>`, "line") +
-    `<div class="grid2">` + panel("Story points view", `<span class="small dim">as Jira's sprint report counts</span>`, `<div class="tw"><table class="t"><thead><tr><th></th><th>Items</th><th>SP</th><th>Issues</th></tr></thead><tbody>
+    `<div class="grid2">` + panel("Story points view", `<span class="small dim">as Jira's sprint report counts</span>`, `<div class="tw"><table class="t stack"><thead><tr><th></th><th>Items</th><th>SP</th><th>Issues</th></tr></thead><tbody>
         ${row("Committed", sc.committed, "in the sprint when it started, with the points of that moment")}${row("Added", sc.added, "came in after the start, with the points at that moment")}
         ${row("Taken out", sc.removed, "were in it, are not any more")}${row("Done", sc.done, "in the last column now")}${row("Not done", sc.not_done, "still open")}
         ${sc.done_before.n ? row("Done before they came in", sc.done_before, "Jira lists them apart") : ""}</tbody></table></div>`, "scope") +
     panel("Scope changes", `<span class="pill ${s.changes.length ? "warning" : "ok"}">${s.changes.length}</span>`, s.changes.length ?
-      `<table class="t"><tbody>${s.changes.map(c => `<tr><td class="k">${esc(when(c.at))}</td><td>${chip(c.key)}</td><td>${esc(c.what)}</td><td class="k">${c.sp == null ? "no points" : esc(c.sp) + " SP"}</td></tr>`).join("")}</tbody></table>`
+      `<table class="t stack"><tbody>${s.changes.map(c => `<tr><td class="k">${esc(when(c.at))}</td><td>${chip(c.key)}</td><td>${esc(c.what)}</td><td class="k">${c.sp == null ? "no points" : esc(c.sp) + " SP"}</td></tr>`).join("")}</tbody></table>`
       : `<div class="dim">Nothing came in or went out after the start.</div>`, "changes") + `</div>` +
     panel("Sprint backlog", `<span class="small dim">open items, the longest in their status first</span>`, issueTable([...sc.not_done.keys].sort((a, b) => (I(b).days || 0) - (I(a).days || 0))), "backlog");
 }
@@ -314,14 +314,14 @@ $("#v-inbox").addEventListener("input", e => { const card = e.target.closest("[d
 
 /* Code: pull requests of the team, as far as they concern the sprint: where review time goes and what waits. */
 function weekBars(weeks){
-  const w = 760, h = 220, x0 = 44, x1 = w - 16, y0 = 14, y1 = h - 30;
+  const w = chartW(), h = 220, x0 = 44, x1 = w - 16, y0 = 14, y1 = h - 30;
   if (!weeks.length) return `<div class="dim">No merged pull request with a review in these weeks.</div>`;
   const top = Math.max(1, ...weeks.map(k => k.first_review_h)) * 1.1, step = (x1 - x0) / weeks.length, bar = Math.min(46, step * .6), y = val => y0 + (y1 - y0) * (1 - val / top);
   return frame(w, h, axes(top / 1.1, x0, x1, y, " h") + weeks.map((k, i) => { const c = x0 + step * (i + .5); return `<rect class="b-done" x="${c - bar / 2}" y="${y(k.first_review_h)}" width="${bar}" height="${y1 - y(k.first_review_h)}"><title>${esc(k.n)} pull requests</title></rect>
     <text class="ax" x="${c}" y="${y(k.first_review_h) - 5}" text-anchor="middle">${esc(k.first_review_h)}</text><text class="ax" x="${c}" y="${h - 10}" text-anchor="middle">${esc(k.week.slice(5))}</text>`; }).join(""), "Hours to the first review, per week");
 }
 function sizeDots(sizes){
-  const w = 760, h = 220, x0 = 44, x1 = w - 16, y0 = 14, y1 = h - 30;
+  const w = chartW(), h = 220, x0 = 44, x1 = w - 16, y0 = 14, y1 = h - 30;
   if (!sizes.length) return `<div class="dim">No merged pull request in these weeks.</div>`;
   const fx = Math.max(1, ...sizes.map(s => s.files)), fy = Math.max(1, ...sizes.map(s => s.days)) * 1.08, x = v => x0 + (x1 - x0) * v / fx, y = v => y0 + (y1 - y0) * (1 - v / fy);
   return frame(w, h, axes(fy / 1.08, x0, x1, y, " d") + sizes.map(s => `<circle class="pt ${s.rounds > 1 ? "bug" : ""}" cx="${x(s.files).toFixed(1)}" cy="${y(s.days).toFixed(1)}" r="4"><title>${esc(s.files)} files · ${esc(s.days)} days · ${esc(s.rounds)} rounds of rework</title></circle>`).join("") +

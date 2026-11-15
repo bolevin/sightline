@@ -11,7 +11,7 @@
 
 <a href="https://bolevin.github.io/sightline/"><img src="docs/img/open-demo.svg" alt="Open the live demo" width="400"></a>
 
-It runs in your browser, on invented data. Nothing to install.
+It runs in your browser, on a phone too, on invented data. Nothing to install.
 
 <a href="https://bolevin.github.io/sightline/"><img src="docs/img/today.png" alt="Sightline, the Today page: three cards answer what the team promised, what can hurt it and what production says; below them six numbers of the sprint and the options when the sprint does not fit. A click opens the live demo" width="100%"></a>
 
@@ -163,7 +163,7 @@ Python 3.10 or newer, no packages to install. The page opens at `http://127.0.0.
 python -m unittest discover -s tests
 ```
 
-runs the 85 tests. To let an agent of your own read the sprint, point an MCP client at
+runs the 89 tests. To let an agent of your own read the sprint, point an MCP client at
 `http://127.0.0.1:8780/mcp` while the page runs.
 
 ## How it is built

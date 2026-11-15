@@ -53,7 +53,7 @@ function qSays(q){
 }
 
 function qFlow(q){
-  const rows = q.sprints, n = rows.length, w = 760, h = 270, x0 = 40, x1 = w - 104, y0 = 26, y1 = h - 28, last = rows[n - 1];
+  const rows = q.sprints, n = rows.length, w = chartW(), h = 270, x0 = 40, x1 = w - 104, y0 = 26, y1 = h - 28, last = rows[n - 1];
   const top = Math.max(1, last.created_sum) * 1.05, x = i => x0 + (x1 - x0) * i / n, y = v => y0 + (y1 - y0) * (1 - v / top);
   const pts = key => [[x(0), y(0)], ...rows.map((r, i) => [x(i + 1), y(r[key])])], d = p => p.map(([a, b], i) => `${i ? "L" : "M"}${a.toFixed(1)} ${b.toFixed(1)}`).join("");
   const made = pts("created_sum"), gone = pts("resolved_sum"), mid = (y(last.created_sum) + y(last.resolved_sum)) / 2;
@@ -66,7 +66,7 @@ function qFlow(q){
 }
 
 function qSprints(q){
-  const rows = q.sprints, n = rows.length, w = 760, h = 270, x0 = 40, x1 = w - 12, y0 = 26, y1 = h - 28, u = q.usual;
+  const rows = q.sprints, n = rows.length, w = chartW(), h = 270, x0 = 40, x1 = w - 12, y0 = 26, y1 = h - 28, u = q.usual;
   const top = Math.max(1, ...rows.map(r => Math.max(r.created, r.resolved))) * 1.12, step = (x1 - x0) / n, bar = Math.min(13, step / 2 - 3), x = i => x0 + step * i, y = v => y0 + (y1 - y0) * (1 - v / top);
   return frame(w, h, (u ? `<rect class="q-usual" x="${x0}" y="${y(u.high)}" width="${x1 - x0}" height="${y(u.low) - y(u.high)}"/>` : "") + qAxis(top / 1.12, x0, x1, y, "") + qIncrements(q, x, y0, y1) +
     rows.map((r, i) => { const c = x(i + .5), run = r.running ? " run" : "";
@@ -99,15 +99,16 @@ function qSevere(q){
 
 /* Days to a fix per increment: the middle half as a box, the median as a line, the fastest and slowest tenth as whiskers. */
 function qBoxes(q){
-  const rows = q.pis.filter(p => p.fix_box), w = 760, lane = 38, x0 = 66, x1 = w - 268, y0 = 6, h = y0 + rows.length * lane + 24;
+  // On a narrow screen the words of a row stand above its box instead of beside it.
+  const rows = q.pis.filter(p => p.fix_box), w = chartW(), slim = w < 500, lane = slim ? 48 : 38, x0 = slim ? 14 : 66, x1 = slim ? w - 14 : w - 268, y0 = 6, h = y0 + rows.length * lane + 24;
   if (!rows.length) return `<div class="dim">No bug was fixed yet.</div>`;
   const top = Math.max(1, ...rows.map(p => p.fix_box[4])) * 1.04, step = nice(top), x = v => x0 + (x1 - x0) * v / top, ticks = [];
-  for (let v = 0; v <= top; v += step) ticks.push(`<line class="g" x1="${x(v)}" x2="${x(v)}" y1="${y0}" y2="${h - 22}"/><text class="ax" x="${x(v)}" y="${h - 7}" text-anchor="middle">${v}${v ? "" : " days"}</text>`);
-  return frame(w, h, ticks.join("") + rows.map((p, i) => { const [a, b, m, c, e] = p.fix_box, cy = y0 + lane * (i + .5);
+  for (let v = 0; v <= top; v += step) ticks.push(`<line class="g" x1="${x(v)}" x2="${x(v)}" y1="${y0}" y2="${h - 22}"/><text class="ax" x="${x(v)}" y="${h - 7}" text-anchor="middle">${v}${slim ? " d" : v ? "" : " days"}</text>`);
+  return frame(w, h, ticks.join("") + rows.map((p, i) => { const [a, b, m, c, e] = p.fix_box, mid = y0 + lane * (i + .5), cy = slim ? mid + 10 : mid, words = slim ? mid - 12 : mid + 4;
     return `<g><title>${esc(p.name)}: a tenth within ${a} days, a quarter within ${b}, half within ${m}, three quarters within ${c}, nine tenths within ${e}</title>
-      <text class="ax b" x="2" y="${cy + 4}">${esc(p.name)}</text><line class="q-whisk" x1="${x(a)}" x2="${x(e)}" y1="${cy}" y2="${cy}"/>
-      <rect class="q-box" x="${x(b)}" y="${cy - 9}" width="${Math.max(3, x(c) - x(b))}" height="18" rx="4"/><line class="q-mid" x1="${x(m)}" x2="${x(m)}" y1="${cy - 12}" y2="${cy + 12}"/>
-      <text class="ax" x="${x1 + 12}" y="${cy + 4}">half within ${m} d · 85 % within ${esc(num(p.fix_p85))} d · ${p.fixed} fixed</text></g>`; }).join(""), "Days from the report of a bug to its fix, per increment");
+      <text class="ax b" x="${slim ? x0 : 2}" y="${words}">${esc(p.name)}</text><line class="q-whisk" x1="${x(a)}" x2="${x(e)}" y1="${cy}" y2="${cy}"/>
+      <rect class="q-box" x="${x(b)}" y="${cy - 8}" width="${Math.max(3, x(c) - x(b))}" height="16" rx="4"/><line class="q-mid" x1="${x(m)}" x2="${x(m)}" y1="${cy - 11}" y2="${cy + 11}"/>
+      <text class="ax" x="${slim ? x0 + 54 : x1 + 12}" y="${words}">half within ${m} d · 85 % within ${esc(num(p.fix_p85))} d${slim ? "" : ` · ${p.fixed} fixed`}</text></g>`; }).join(""), "Days from the report of a bug to its fix, per increment");
 }
 function qTargets(q){
   const few = s => `<span class="dim small">${s.fixed} fixed: too few for a median</span>`, late = q.severity.flatMap(s => s.late_open);
@@ -121,13 +122,13 @@ function qTargets(q){
 
 /* Still open after N days: the curve a plain time to fix cannot show, because it counts the open bugs too. */
 function qSurvival(q){
-  const s = q.survival, w = 760, h = 250, x0 = 44, x1 = w - 158, y0 = 12, y1 = h - 28, x = day => x0 + (x1 - x0) * day / s.days, y = share => y0 + (y1 - y0) * (1 - share);
+  const s = q.survival, w = chartW(), slim = w < 500, h = 250, x0 = 44, x1 = w - (slim ? 52 : 158), y0 = 12, y1 = h - 28, x = day => x0 + (x1 - x0) * day / s.days, y = share => y0 + (y1 - y0) * (1 - share);
   const ends = s.curves.map((c, i) => ({name: c.name, at: y(c.open[s.days]), pct: Math.round(c.open[s.days] * 100), i})).sort((a, b) => a.at - b.at);
   ends.forEach((e, k) => { if (k && e.at - ends[k - 1].at < 14) e.at = ends[k - 1].at + 14; });
   return frame(w, h, [0, .25, .5, .75, 1].map(f => `<line class="g" x1="${x0}" x2="${x1}" y1="${y(f)}" y2="${y(f)}"/><text class="ax" x="${x0 - 6}" y="${y(f) + 4}" text-anchor="end">${f * 100}${f ? " %" : ""}</text>`).join("") +
     [0, 7, 14, 30, s.days].map(day => `${day && day < s.days ? `<line class="g" x1="${x(day)}" x2="${x(day)}" y1="${y0}" y2="${y1}"/>` : ""}<text class="ax" x="${x(day)}" y="${h - 8}" text-anchor="middle">${day}${day ? "" : " days"}</text>`).join("") +
     s.curves.map((c, i) => `<path class="q-surv s${i + 1}" d="M${x(0)} ${y(1)}${c.open.map((v, day) => `H${x(day).toFixed(1)}V${y(v).toFixed(1)}`).join("")}"><title>${esc(c.name)}: ${c.n} bugs</title></path>`).join("") +
-    ends.map(e => `<text class="ax b" x="${x1 + 8}" y="${e.at + 4}">${esc(e.name)} · ${e.pct} %</text>`).join(""), "Share of bugs still open, by days since they were reported") +
+    ends.map(e => `<text class="ax b" x="${x1 + 8}" y="${e.at + 4}">${slim ? "" : `${esc(e.name)} · `}${e.pct} %</text>`).join(""), "Share of bugs still open, by days since they were reported") +
     `<div class="tw"><table class="t"><thead><tr><th>Still open after</th><th>Bugs</th><th>7 days</th><th>14 days</th><th>30 days</th></tr></thead><tbody>${s.curves.map((c, i) => `<tr>
       <td class="k"><span class="q-sw line s${i + 1}"></span><b>${esc(c.name)}</b></td><td>${c.n}</td>${[7, 14, 30].map(day => `<td>${Math.round(c.open[day] * 100)} %</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
 }
@@ -165,7 +166,7 @@ function qCauses(q){
 
 /* What each release brought: production bugs reported in the days after it. */
 function qReleases(q){
-  const rows = q.releases, w = 760, h = 240, x0 = 40, x1 = w - 12, y0 = 20, y1 = h - 42;
+  const rows = q.releases, w = chartW(), h = 240, x0 = 40, x1 = w - 12, y0 = 20, y1 = h - 42;
   if (!rows.length) return `<div class="dim">No release in this data.</div>`;
   const top = Math.max(1, ...rows.map(r => r.bugs)) * 1.2, step = (x1 - x0) / rows.length, bar = Math.min(38, step * .5), y = v => y0 + (y1 - y0) * (1 - v / top);
   return frame(w, h, qAxis(top / 1.2, x0, x1, y, "") + rows.map((r, i) => { const c = x0 + step * (i + .5), soft = r.complete ? "" : " run";
@@ -180,7 +181,7 @@ function qReleases(q){
 const LINK = {added_pct: "Scope added late, and production bugs a sprint later", unreviewed_pct: "Merged without a review, and production bugs a sprint later",
   load_pct: "An overloaded sprint, and production bugs a sprint later", completed_sp: "A fast sprint, and new bugs a sprint later"};
 function qLink(l){
-  const w = 360, h = 214, x0 = 30, x1 = w - 12, y0 = 24, y1 = h - 36, xs = l.points.map(p => p.x), lo = Math.min(...xs), hi = Math.max(...xs), pad = (hi - lo) * .07 || 1;
+  const w = PHONE.matches ? 384 : 360, h = 214, x0 = 30, x1 = w - 12, y0 = 24, y1 = h - 36, xs = l.points.map(p => p.x), lo = Math.min(...xs), hi = Math.max(...xs), pad = (hi - lo) * .07 || 1;
   const top = Math.max(1, ...l.points.map(p => p.y)) * 1.12, x = v => x0 + (x1 - x0) * (v - lo + pad) / (hi - lo + 2 * pad), y = v => y0 + (y1 - y0) * (1 - Math.max(0, Math.min(top, v)) / top), fit = v => l.at_zero + l.slope * v;
   const sure = l.low * l.high > 0, r = v => 14 + (w - 28) * (v + 1) / 2;
   return `<div class="q-link"><div class="q-link-h"><b>${esc(LINK[l.id] || l.x)}</b><button type="button" class="pill ${sure ? "agent" : ""}" data-facts="quality.link.${esc(l.id)}">${esc(l.strength)}</button></div>` +
@@ -209,8 +210,9 @@ const MEASURES = [["Bugs created", "created", 0, ""], ["Bugs resolved", "resolve
   ["Half fixed within", "fix_p50", LOWER, " d"], ["85 % fixed within", "fix_p85", LOWER, " d"], ["Fixed within the target", "kept_pct", HIGHER, " %"],
   ["Closed as duplicate or not reproducible", "not_a_bug_pct", LOWER, " %"], ["Bugs per 100 SP delivered", "per_100_sp", LOWER, ""]];
 function qIncrementTable(q){
-  return `<div class="tw"><table class="t q-pi"><thead><tr><th>Measure</th>${q.pis.map(p => `<th>${esc(p.name)}${p.running ? " · so far" : ""}</th>`).join("")}</tr></thead><tbody>${MEASURES.map(([label, key, better, unit]) => `<tr>
-    <td>${label}</td>${q.pis.map((p, i) => `<td><b>${esc(num(p[key]))}</b>${p[key] == null ? "" : unit} ${i ? moved(p[key], q.pis[i - 1][key], better, "") : ""}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+  const from = PHONE.matches ? Math.max(0, q.pis.length - 2) : 0, shown = q.pis.slice(from);        // a phone has room for the last two
+  return `<div class="tw"><table class="t q-pi"><thead><tr><th>Measure</th>${shown.map(p => `<th>${esc(p.name)}${p.running ? " · so far" : ""}</th>`).join("")}</tr></thead><tbody>${MEASURES.map(([label, key, better, unit]) => `<tr>
+    <td>${label}</td>${shown.map((p, n) => `<td><b>${esc(num(p[key]))}</b>${p[key] == null ? "" : unit} ${from + n ? moved(p[key], q.pis[from + n - 1][key], better, "") : ""}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
 }
 
 function qFacts(){

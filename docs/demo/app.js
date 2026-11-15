@@ -24,6 +24,11 @@ const COMPOSED = {
   agent: "✦ The briefing agent composed this page",
 };
 let state = null;
+// A phone: the charts are drawn for a narrow screen and long tables fold. Decided by the width of the window, and
+// drawn anew when the window crosses it (a phone turned on its side).
+const PHONE = window.matchMedia ? matchMedia("(max-width: 700px)") : {matches: false};
+const TOUCH = window.matchMedia ? matchMedia("(hover: none)") : {matches: false};
+const chartW = () => PHONE.matches ? 350 : 760;
 
 /* Choices of this browser: the palette, and where the Ask window stands. Storage can be missing or refuse (a private
    window): then the defaults apply. */
@@ -73,7 +78,7 @@ function renderToday(){
     `<div class="pulse"><b>${esc(s.sprint.name)}</b> · ${keyed(s.page.headline)}</div>
      <div class="verify"><span>${s.facts.length} facts computed from the data</span><span>every line on this page cites its facts: click a line</span>
        <span>briefing agent: ${esc(agentLine(a))}</span></div>
-     ${dropped.length ? `<details class="dropped" open><summary>The check dropped ${dropped.length} part${dropped.length > 1 ? "s" : ""} of the agent's reply</summary>
+     ${dropped.length ? `<details class="dropped" ${PHONE.matches ? "" : "open"}><summary>The check dropped ${dropped.length} part${dropped.length > 1 ? "s" : ""} of the agent's reply</summary>
        <ul>${dropped.map(p => `<li>${keyed(p)}</li>`).join("")}</ul></details>` : ""}`, "composed");
   $("#cards").innerHTML = s.page.cards.map(c => `<div class="qcard"><div class="qk"><span>${CARDS[c.id][0]}</span><span>${esc(c.by)}</span></div><h2>${CARDS[c.id][1]}${c.id === "promises" ? helpTip("cards") : ""}</h2>
       ${c.rows.map(r => `<button class="qrow" type="button" data-facts="${esc(r.facts.join("|"))}"><span class="dotl ${esc(r.level)}"></span><span>${keyed(r.text)}</span></button>`).join("")}
@@ -85,8 +90,9 @@ function renderToday(){
   const rows = [...Object.keys(CARDS), "quality"].map(id => `<tr class="sec"><td colspan="4">${CARDS[id] ? CARDS[id][0] : "Quality: the facts of the Quality tab"}</td></tr>` + s.facts.filter(f => f.card === id).map(f =>
     `<tr><td class="mono small">${esc(f.id)}</td><td>${keyed(f.text)}</td><td><span class="pill ${esc(f.level)}">${esc(f.level)}</span></td>
      <td class="keys">${f.keys.slice(0, 8).map(keyed).join(" ")}${f.keys.length > 8 ? ` <span class="dim">+${f.keys.length - 8}</span>` : ""}</td></tr>`).join("")).join("");
+  const table = `<div class="tw"><table class="t stack"><thead><tr><th>Fact</th><th>Says</th><th>Level by rules</th><th>Issues behind it</th></tr></thead><tbody>${rows}</tbody></table></div>`;
   card("facts", "All facts", `<span class="small dim">what an agent may choose from, and nothing else</span>`,
-    `<div class="tw"><table class="t"><thead><tr><th>Fact</th><th>Says</th><th>Level by rules</th><th>Issues behind it</th></tr></thead><tbody>${rows}</tbody></table></div>`, "facts");
+    `${PHONE.matches ? `<details class="dropped"><summary>Show all ${s.facts.length} facts</summary>${table}</details>` : table}`, "facts");
 }
 
 function renderSystem(){
@@ -171,6 +177,13 @@ function showFacts(anchor){
   pop.innerHTML = `<div class="ph">Facts behind this line</div>` + facts.map(f => `<div class="f"><span class="mono small dim">${esc(f.id)}</span><b>${keyed(f.text)}</b>
     ${f.keys.length ? `<span class="keys">${f.keys.slice(0, 30).map(keyed).join(" ")}${f.keys.length > 30 ? ` +${f.keys.length - 30}` : ""}</span>` : ""}</div>`).join("") +
     `<div class="small dim">Computed from the data of ${esc(when(state.data.fetched))}.</div>`;
+  place(anchor);
+}
+// What a mark of a chart says. Where no pointer can rest on a mark, a tap shows it.
+function showNote(anchor, text){
+  pop.setAttribute("aria-label", "This mark");
+  pop.innerHTML = `<div class="ph">This mark</div>`;
+  pop.append(Object.assign(document.createElement("div"), {textContent: text}));
   place(anchor);
 }
 function place(anchor){
@@ -373,6 +386,8 @@ document.addEventListener("click", e => {
   if (!e.target.closest("#icard")) dropCard();
   const a = e.target.closest("[data-facts]");
   if (a) return showFacts(a);
+  const mark = (TOUCH.matches || PHONE.matches) && e.target.closest("svg.ch *"), said = mark && [mark, mark.parentNode].find(el => el.querySelector && el.querySelector(":scope > title"));
+  if (said) return showNote(said, said.querySelector(":scope > title").textContent);
   const bell = e.target.closest("#bell");
   if (bell) return showNotices(bell);
   if (!e.target.closest("#pop")) pop.hidden = true;
@@ -384,9 +399,12 @@ function showTab(name){
   if (!$("#p-" + name)) return;
   $$(".page").forEach(p => p.classList.toggle("on", p.id === "p-" + name));
   $$("[data-tab]").forEach(b => b.setAttribute("aria-pressed", b.dataset.tab === name));
+  const strip = $(".seg"), at = $(`.seg [data-tab="${name}"]`);          // on a phone the tabs are one strip: keep the open one in sight
+  if (at && strip.scrollWidth > strip.clientWidth) strip.scrollLeft = at.offsetLeft - strip.offsetLeft - (strip.clientWidth - at.offsetWidth) / 2;
   scrollTo(0, 0);
 }
 addEventListener("hashchange", () => showTab(location.hash.slice(1)));
+if (PHONE.addEventListener) PHONE.addEventListener("change", () => { if (state){ renderToday(); renderViews(); } });
 document.addEventListener("keydown", e => {
   if (e.key === "Escape"){ pop.hidden = true; dropCard(); openAsk(false); }
   if ((e.key || "").toLowerCase() === "k" && (e.ctrlKey || e.metaKey)){ e.preventDefault(); openAsk(true); }

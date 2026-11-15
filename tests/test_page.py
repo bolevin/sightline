@@ -94,5 +94,42 @@ class Hosted(unittest.TestCase):
             self.assertNotRegex(text, r"[A-Z]:\\\\|/Users/|/home/", p.name)
 
 
+class Phone(unittest.TestCase):
+    """The page on a phone: what the script and the style sheet have to agree on. How it looks is checked by eye."""
+
+    def test_the_script_and_the_style_sheet_mean_the_same_phone(self):
+        js, css = read("app.js"), read("style.css")
+        in_js = re.findall(r'const PHONE = window\.matchMedia \? matchMedia\("\(max-width: (\d+)px\)"\)', js)
+        block = css.split("/* ---- a phone.")[1].split("/* ---- the card of an issue")[0]
+        self.assertEqual(in_js, re.findall(r"@media \(max-width:(\d+)px\)", block))       # one width, in both files
+        self.assertEqual(len(in_js), 1)
+        self.assertIn('<meta name="viewport" content="width=device-width, initial-scale=1">', read("index.html"))
+        self.assertIn('PHONE.addEventListener("change", () => { if (state){ renderToday(); renderViews(); } });', js)       # a phone turned on its side is drawn anew
+
+    def test_every_chart_takes_its_width_from_the_screen(self):
+        charts = read("views.js") + read("quality.js")
+        self.assertEqual(re.findall(r"\bw = (?:7|8|9)\d\d,", charts), [])    # no chart with the width of a desk of its own
+        self.assertGreaterEqual(charts.count("w = chartW(),"), 11)
+        self.assertIn("const chartW = () => PHONE.matches ? 350 : 760;", read("app.js"))
+
+    def test_the_header_of_a_phone(self):
+        html, css = read("index.html"), read("style.css").split("/* ---- a phone.")[1].split("/* ---- the card of an issue")[0]
+        self.assertIn('aria-label="Notices"><svg class="bell-i"', html)      # an icon stands for the word, and the button keeps its name
+        self.assertIn('aria-label="System">⚙<span class="t"> System</span>', html)
+        for rule in (".top .seg{order:9;flex:1 0 100%;flex-wrap:nowrap;overflow-x:auto", ".top .grow,.top .pal,#refresh,.fresh,.top .btn .t{display:none}",
+                     "table.t.stack tr{display:grid", "@media (pointer:coarse){"):
+            self.assertIn(rule, css, rule)
+        self.assertNotRegex(css, r"#[0-9a-fA-F]{6}\b|rgb\(")                 # its colours are the palette's
+        self.assertIn("strip.scrollLeft = at.offsetLeft - strip.offsetLeft - (strip.clientWidth - at.offsetWidth) / 2;", read("app.js"))
+
+    def test_a_tap_on_a_mark_shows_its_words_as_text(self):
+        js = read("app.js")
+        note = js.split("function showNote(anchor, text){")[1].split("\nfunction place")[0]
+        self.assertIn("{textContent: text}", note)                           # what a chart says goes in as text, never as markup
+        self.assertNotIn("${text}", note)
+        self.assertIn('e.target.closest("svg.ch *")', js)
+        self.assertLess(js.index("if (key) return pinCard(key);"), js.index("if (said) return showNote("))       # an issue key in a chart still opens its card
+
+
 if __name__ == "__main__":
     unittest.main()
