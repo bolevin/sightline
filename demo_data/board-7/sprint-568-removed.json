@@ -1,0 +1,56 @@
+[
+ {
+  "key": "KES-1382",
+  "fields": {
+   "summary": "Split a payment between a wallet and a card",
+   "issuetype": {
+    "name": "Story",
+    "subtask": false
+   },
+   "priority": {
+    "name": "Medium"
+   },
+   "created": "2026-10-26T15:40:29.689+0100",
+   "updated": "2026-11-12T14:17:28.199+0100",
+   "status": {
+    "id": "10311",
+    "name": "To Do"
+   },
+   "customfield_10020": null,
+   "customfield_10016": 5.0,
+   "customfield_10001": {
+    "id": "10200",
+    "value": "Kestrel"
+   },
+   "customfield_10014": "KES-952"
+  },
+  "changelog": {
+   "histories": [
+    {
+     "created": "2026-11-06T11:56:57.403+0100",
+     "items": [
+      {
+       "field": "Sprint",
+       "from": null,
+       "to": "568",
+       "fromString": null,
+       "toString": "Sprint 42"
+      }
+     ]
+    },
+    {
+     "created": "2026-11-12T14:17:28.199+0100",
+     "items": [
+      {
+       "field": "Sprint",
+       "from": "568",
+       "to": null,
+       "fromString": "Sprint 42",
+       "toString": null
+      }
+     ]
+    }
+   ]
+  }
+ }
+]

@@ -1,0 +1,68 @@
+{
+ "velocityStatEntries": {
+  "512": {
+   "estimated": {
+    "value": 30.0
+   },
+   "completed": {
+    "value": 27.0
+   }
+  },
+  "519": {
+   "estimated": {
+    "value": 29.0
+   },
+   "completed": {
+    "value": 28.0
+   }
+  },
+  "527": {
+   "estimated": {
+    "value": 35.0
+   },
+   "completed": {
+    "value": 22.0
+   }
+  },
+  "533": {
+   "estimated": {
+    "value": 29.0
+   },
+   "completed": {
+    "value": 29.0
+   }
+  },
+  "540": {
+   "estimated": {
+    "value": 26.0
+   },
+   "completed": {
+    "value": 27.0
+   }
+  },
+  "548": {
+   "estimated": {
+    "value": 35.0
+   },
+   "completed": {
+    "value": 24.0
+   }
+  },
+  "553": {
+   "estimated": {
+    "value": 31.0
+   },
+   "completed": {
+    "value": 31.0
+   }
+  },
+  "561": {
+   "estimated": {
+    "value": 36.0
+   },
+   "completed": {
+    "value": 23.0
+   }
+  }
+ }
+}

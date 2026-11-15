@@ -1,0 +1,53 @@
+{
+ "id": 7,
+ "name": "Kestrel board",
+ "type": "scrum",
+ "filter": {
+  "id": "4711"
+ },
+ "columnConfig": {
+  "columns": [
+   {
+    "name": "To Do",
+    "statuses": [
+     {
+      "id": "10311"
+     }
+    ]
+   },
+   {
+    "name": "In Progress",
+    "statuses": [
+     {
+      "id": "10312"
+     }
+    ]
+   },
+   {
+    "name": "Blocked",
+    "statuses": [
+     {
+      "id": "10314"
+     }
+    ]
+   },
+   {
+    "name": "Review",
+    "statuses": [
+     {
+      "id": "10317"
+     }
+    ]
+   },
+   {
+    "name": "Done",
+    "statuses": [
+     {
+      "id": "10319"
+     }
+    ]
+   }
+  ],
+  "constraintType": "none"
+ }
+}

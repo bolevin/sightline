@@ -1,0 +1,101 @@
+{
+ "jql": "comment ~ \"\\\"Kestrel\\\"\" AND updated >= -3d AND filter != 4711",
+ "issues": [
+  {
+   "key": "PAY-2291",
+   "fields": {
+    "summary": "Settlement report misses orders paid by wallet",
+    "issuetype": {
+     "name": "Story",
+     "subtask": false
+    },
+    "priority": {
+     "name": "High"
+    },
+    "created": "2026-11-06T10:17:03.870+0100",
+    "updated": "2026-11-16T16:21:59.234+0100",
+    "status": {
+     "id": "10317",
+     "name": "Review"
+    },
+    "customfield_10020": null,
+    "customfield_10016": 5.0,
+    "customfield_10001": {
+     "id": "10201",
+     "value": "Atlas"
+    },
+    "customfield_10014": null
+   },
+   "changelog": {
+    "histories": [
+     {
+      "created": "2026-11-12T10:08:11.754+0100",
+      "items": [
+       {
+        "field": "status",
+        "from": "10311",
+        "to": "10312",
+        "fromString": "To Do",
+        "toString": "In Progress"
+       }
+      ]
+     },
+     {
+      "created": "2026-11-16T16:21:59.234+0100",
+      "items": [
+       {
+        "field": "status",
+        "from": "10312",
+        "to": "10317",
+        "fromString": "In Progress",
+        "toString": "Review"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "key": "OPS-874",
+   "fields": {
+    "summary": "Raise the rate limit of the checkout API before the sale",
+    "issuetype": {
+     "name": "Task",
+     "subtask": false
+    },
+    "priority": {
+     "name": "Medium"
+    },
+    "created": "2026-11-13T10:17:56.448+0100",
+    "updated": "2026-11-17T09:04:26.644+0100",
+    "status": {
+     "id": "10312",
+     "name": "In Progress"
+    },
+    "customfield_10020": null,
+    "customfield_10016": null,
+    "customfield_10001": {
+     "id": "10202",
+     "value": "Osprey"
+    },
+    "customfield_10014": null
+   },
+   "changelog": {
+    "histories": [
+     {
+      "created": "2026-11-17T09:04:26.644+0100",
+      "items": [
+       {
+        "field": "status",
+        "from": "10311",
+        "to": "10312",
+        "fromString": "To Do",
+        "toString": "In Progress"
+       }
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,836 @@
+{
+ "code": {
+  "synthetic": false,
+  "fetched": "2026-11-17T10:40+01:00",
+  "repos": [
+   "SHOP/checkout-api",
+   "SHOP/checkout-web"
+  ],
+  "window_days": 42,
+  "merged": 35,
+  "unreviewed": 3,
+  "cycle_days_p50": 1.2,
+  "cycle_days_p85": 3.0,
+  "first_review_h_p50": 11.0,
+  "review_h_p50": 4.0,
+  "merge_wait_h_p50": 9.0,
+  "share": {
+   "first_review": 35,
+   "review": 28,
+   "merge": 37
+  },
+  "weeks": [
+   {
+    "week": "2026-W41",
+    "first_review_h": 44.0,
+    "n": 2
+   },
+   {
+    "week": "2026-W42",
+    "first_review_h": 13.0,
+    "n": 6
+   },
+   {
+    "week": "2026-W43",
+    "first_review_h": 21.0,
+    "n": 8
+   },
+   {
+    "week": "2026-W44",
+    "first_review_h": 6.0,
+    "n": 7
+   },
+   {
+    "week": "2026-W45",
+    "first_review_h": 6.0,
+    "n": 5
+   },
+   {
+    "week": "2026-W46",
+    "first_review_h": 2.0,
+    "n": 4
+   }
+  ],
+  "open": [
+   {
+    "repo": "SHOP/checkout-api",
+    "id": 433,
+    "keys": [
+     "KES-1290"
+    ],
+    "phase": "waiting for a first review",
+    "waiting_h": 187,
+    "age_days": 7.8,
+    "reviewers": 1,
+    "approvals": 0,
+    "rounds": 0,
+    "comments": 0,
+    "files": 7
+   },
+   {
+    "repo": "SHOP/checkout-api",
+    "id": 428,
+    "keys": [
+     "KES-1360"
+    ],
+    "phase": "approved, not merged",
+    "waiting_h": 70,
+    "age_days": 12.9,
+    "reviewers": 1,
+    "approvals": 1,
+    "rounds": 2,
+    "comments": 6,
+    "files": 9
+   },
+   {
+    "repo": "SHOP/checkout-api",
+    "id": 438,
+    "keys": [
+     "KES-1391"
+    ],
+    "phase": "waiting for a first review",
+    "waiting_h": 66,
+    "age_days": 2.7,
+    "reviewers": 1,
+    "approvals": 0,
+    "rounds": 0,
+    "comments": 0,
+    "files": 4
+   },
+   {
+    "repo": "SHOP/checkout-web",
+    "id": 282,
+    "keys": [
+     "KES-1396"
+    ],
+    "phase": "in review",
+    "waiting_h": 1,
+    "age_days": 0.9,
+    "reviewers": 1,
+    "approvals": 0,
+    "rounds": 0,
+    "comments": 2,
+    "files": 5
+   }
+  ],
+  "sizes": [
+   {
+    "files": 2,
+    "days": 0.1,
+    "rounds": 0
+   },
+   {
+    "files": 5,
+    "days": 1.2,
+    "rounds": 3
+   },
+   {
+    "files": 3,
+    "days": 3.0,
+    "rounds": 1
+   },
+   {
+    "files": 3,
+    "days": 0.9,
+    "rounds": 0
+   },
+   {
+    "files": 4,
+    "days": 3.0,
+    "rounds": 2
+   },
+   {
+    "files": 8,
+    "days": 1.0,
+    "rounds": 1
+   },
+   {
+    "files": 4,
+    "days": 1.0,
+    "rounds": 1
+   },
+   {
+    "files": 11,
+    "days": 1.0,
+    "rounds": 1
+   },
+   {
+    "files": 2,
+    "days": 0.2,
+    "rounds": 0
+   },
+   {
+    "files": 3,
+    "days": 1.2,
+    "rounds": 2
+   },
+   {
+    "files": 5,
+    "days": 2.9,
+    "rounds": 1
+   },
+   {
+    "files": 4,
+    "days": 1.0,
+    "rounds": 0
+   },
+   {
+    "files": 2,
+    "days": 1.1,
+    "rounds": 0
+   },
+   {
+    "files": 3,
+    "days": 1.0,
+    "rounds": 1
+   },
+   {
+    "files": 2,
+    "days": 3.8,
+    "rounds": 1
+   },
+   {
+    "files": 2,
+    "days": 0.2,
+    "rounds": 0
+   },
+   {
+    "files": 2,
+    "days": 2.9,
+    "rounds": 3
+   },
+   {
+    "files": 11,
+    "days": 1.8,
+    "rounds": 2
+   },
+   {
+    "files": 6,
+    "days": 3.0,
+    "rounds": 2
+   },
+   {
+    "files": 11,
+    "days": 1.9,
+    "rounds": 1
+   },
+   {
+    "files": 2,
+    "days": 0.8,
+    "rounds": 1
+   },
+   {
+    "files": 3,
+    "days": 3.0,
+    "rounds": 2
+   },
+   {
+    "files": 3,
+    "days": 1.1,
+    "rounds": 0
+   },
+   {
+    "files": 3,
+    "days": 1.1,
+    "rounds": 1
+   },
+   {
+    "files": 4,
+    "days": 0.9,
+    "rounds": 0
+   },
+   {
+    "files": 6,
+    "days": 1.9,
+    "rounds": 1
+   },
+   {
+    "files": 2,
+    "days": 1.1,
+    "rounds": 0
+   },
+   {
+    "files": 2,
+    "days": 0.9,
+    "rounds": 1
+   },
+   {
+    "files": 3,
+    "days": 2.3,
+    "rounds": 1
+   },
+   {
+    "files": 2,
+    "days": 3.2,
+    "rounds": 3
+   },
+   {
+    "files": 1,
+    "days": 3.8,
+    "rounds": 1
+   },
+   {
+    "files": 1,
+    "days": 2.8,
+    "rounds": 0
+   },
+   {
+    "files": 2,
+    "days": 2.9,
+    "rounds": 1
+   },
+   {
+    "files": 2,
+    "days": 3.2,
+    "rounds": 0
+   },
+   {
+    "files": 1,
+    "days": 2.9,
+    "rounds": 0
+   }
+  ],
+  "discussed": [
+   {
+    "repo": "SHOP/checkout-api",
+    "id": 415,
+    "keys": [
+     "KES-1292"
+    ],
+    "phase": "approved, not merged",
+    "waiting_h": 573,
+    "age_days": 24.8,
+    "reviewers": 1,
+    "approvals": 1,
+    "rounds": 1,
+    "comments": 13,
+    "files": 11
+   },
+   {
+    "repo": "SHOP/checkout-api",
+    "id": 417,
+    "keys": [
+     "KES-1324"
+    ],
+    "phase": "approved, not merged",
+    "waiting_h": 504,
+    "age_days": 22.8,
+    "reviewers": 1,
+    "approvals": 1,
+    "rounds": 2,
+    "comments": 13,
+    "files": 11
+   },
+   {
+    "repo": "SHOP/checkout-api",
+    "id": 426,
+    "keys": [
+     "KES-1356"
+    ],
+    "phase": "approved, not merged",
+    "waiting_h": 312,
+    "age_days": 14.1,
+    "reviewers": 1,
+    "approvals": 1,
+    "rounds": 2,
+    "comments": 13,
+    "files": 3
+   },
+   {
+    "repo": "SHOP/checkout-api",
+    "id": 413,
+    "keys": [
+     "KES-1310"
+    ],
+    "phase": "approved, not merged",
+    "waiting_h": 599,
+    "age_days": 27.9,
+    "reviewers": 1,
+    "approvals": 1,
+    "rounds": 2,
+    "comments": 9,
+    "files": 3
+   },
+   {
+    "repo": "SHOP/checkout-api",
+    "id": 425,
+    "keys": [
+     "KES-1369"
+    ],
+    "phase": "approved, not merged",
+    "waiting_h": 283,
+    "age_days": 14.7,
+    "reviewers": 1,
+    "approvals": 1,
+    "rounds": 1,
+    "comments": 9,
+    "files": 5
+   }
+  ],
+  "hotspots": [
+   {
+    "path": "src/main/shop/payment/RetryPolicy.java",
+    "prs": 7,
+    "bug_prs": 4
+   },
+   {
+    "path": "src/main/shop/payment/PaymentClient.java",
+    "prs": 8,
+    "bug_prs": 3
+   },
+   {
+    "path": "src/main/shop/checkout/CheckoutService.java",
+    "prs": 6,
+    "bug_prs": 3
+   },
+   {
+    "path": "src/main/shop/payment/PaymentWebhook.java",
+    "prs": 4,
+    "bug_prs": 2
+   },
+   {
+    "path": "src/main/shop/checkout/GuestCheckout.java",
+    "prs": 3,
+    "bug_prs": 2
+   },
+   {
+    "path": "src/main/shop/cart/CartSnapshot.java",
+    "prs": 7,
+    "bug_prs": 1
+   },
+   {
+    "path": "src/main/shop/payment/WalletAdapter.java",
+    "prs": 7,
+    "bug_prs": 1
+   },
+   {
+    "path": "src/main/resources/messages.properties",
+    "prs": 6,
+    "bug_prs": 1
+   },
+   {
+    "path": "deploy/values-staging.yaml",
+    "prs": 5,
+    "bug_prs": 1
+   },
+   {
+    "path": "docs/api/payments.md",
+    "prs": 5,
+    "bug_prs": 1
+   }
+  ],
+  "no_pr": [
+   "KES-1373",
+   "KES-1385",
+   "KES-1403"
+  ]
+ },
+ "code_facts": [
+  {
+   "id": "code.open_n",
+   "card": "risks",
+   "label": "open pull requests",
+   "value": 4,
+   "unit": "",
+   "keys": [
+    "KES-1290",
+    "KES-1360",
+    "KES-1391",
+    "KES-1396"
+   ],
+   "level": "info"
+  },
+  {
+   "id": "code.waiting_review_n",
+   "card": "risks",
+   "label": "pull requests waiting 24 hours or more for a first review",
+   "value": 2,
+   "unit": "",
+   "keys": [
+    "KES-1290",
+    "KES-1391"
+   ],
+   "level": "warning"
+  },
+  {
+   "id": "code.approved_waiting_n",
+   "card": "risks",
+   "label": "pull requests approved and not merged for 24 hours or more",
+   "value": 1,
+   "unit": "",
+   "keys": [
+    "KES-1360"
+   ],
+   "level": "warning"
+  },
+  {
+   "id": "code.cycle_days",
+   "card": "risks",
+   "label": "half of the merged pull requests took at most",
+   "value": 1.2,
+   "unit": "days",
+   "keys": [],
+   "level": "info"
+  },
+  {
+   "id": "code.no_pr_n",
+   "card": "risks",
+   "label": "items in progress for 3 days or more without a pull request",
+   "value": 3,
+   "unit": "",
+   "keys": [
+    "KES-1373",
+    "KES-1385",
+    "KES-1403"
+   ],
+   "level": "warning"
+  }
+ ],
+ "incidents": {
+  "synthetic": false,
+  "folder": "incident-reports",
+  "total": 6,
+  "week": 1,
+  "low_confidence": 1,
+  "recurring": [
+   {
+    "what": "cart-service",
+    "n": 2,
+    "last": "2026-11-03T20:20+01:00"
+   },
+   {
+    "what": "payment-gateway",
+    "n": 2,
+    "last": "2026-11-13T08:42+01:00"
+   }
+  ],
+  "reports": [
+   {
+    "file": "2026-11-13T07-42-00Z - Incident - Card payments.md",
+    "at": "2026-11-13T08:42+01:00",
+    "title": "Card payments",
+    "confidence": "medium",
+    "service": "payment-gateway",
+    "domain": "shop-checkout",
+    "severity": "HIGH",
+    "root_cause": "Card payments ran into timeouts for about twelve minutes. The connection pool to the payment provider was used up after one slow answer, and waiting requests failed.",
+    "steps": [
+     "Set a shorter timeout for calls to the payment provider and raise the size of the connection pool.",
+     "Add an alert on the share of used connections of the pool.",
+     "Compare with the report of 22 October for the same service."
+    ],
+    "alert": "CRITICAL",
+    "reporting": "yes",
+    "error_rate": "6.2%",
+    "error_events": 386
+   },
+   {
+    "file": "2026-11-03T19-20-00Z - Incident - Cart.md",
+    "at": "2026-11-03T20:20+01:00",
+    "title": "Cart",
+    "confidence": "high",
+    "service": "cart-service",
+    "domain": "shop-checkout",
+    "severity": "MEDIUM",
+    "root_cause": "Carts with more than 200 lines were larger than a cache entry may be and were not saved. Users saw an empty cart after they reloaded the page.",
+    "steps": [
+     "Split large carts over several cache entries or raise the limit.",
+     "Log a warning when a cart comes close to the limit.",
+     "Add a test with a cart of 500 lines."
+    ],
+    "alert": "WARNING",
+    "reporting": "yes",
+    "error_rate": "2.1%",
+    "error_events": 143
+   },
+   {
+    "file": "2026-10-22T14-05-00Z - Incident - Card payments.md",
+    "at": "2026-10-22T15:05+01:00",
+    "title": "Card payments",
+    "confidence": "high",
+    "service": "payment-gateway",
+    "domain": "shop-checkout",
+    "severity": "HIGH",
+    "root_cause": "A renewed client certificate was rolled out to one of two instances only. Every second payment request was refused until the other instance was restarted.",
+    "steps": [
+     "Restart both instances after a certificate change and check each of them.",
+     "Add the expiry date of the certificate to the monitoring.",
+     "Write the roll-out of a certificate down as a checklist."
+    ],
+    "alert": "CRITICAL",
+    "reporting": "yes",
+    "error_rate": "9.4%",
+    "error_events": 512
+   },
+   {
+    "file": "2026-10-08T11-12-00Z - Incident - Checkout.md",
+    "at": "2026-10-08T12:12+01:00",
+    "title": "Checkout",
+    "confidence": "medium",
+    "service": "checkout-api",
+    "domain": "shop-checkout",
+    "severity": "HIGH",
+    "root_cause": "After a release the address check refused postal codes that hold a space. Orders to such addresses failed at the last step of the checkout.",
+    "steps": [
+     "Roll back the change of the address check or accept postal codes with a space.",
+     "Add addresses of every country the shop delivers to as test cases.",
+     "Find the orders that failed and tell customer service."
+    ],
+    "alert": "CRITICAL",
+    "reporting": "yes",
+    "error_rate": "3.7%",
+    "error_events": 221
+   },
+   {
+    "file": "2026-09-29T09-31-00Z - Incident - Cart.md",
+    "at": "2026-09-29T10:31+01:00",
+    "title": "Cart",
+    "confidence": "low",
+    "service": "cart-service",
+    "domain": "shop-checkout",
+    "severity": "MEDIUM",
+    "root_cause": "Changes to the cart were slow for a few minutes around a deployment. No kind of error stands out in the logs, so the cause could not be pinned down.",
+    "steps": [
+     "Watch the response times during the next deployment.",
+     "Check whether the instances were replaced one by one.",
+     "Open a new investigation if it happens again."
+    ],
+    "alert": "WARNING",
+    "reporting": "yes",
+    "error_rate": "0.8%",
+    "error_events": 58
+   },
+   {
+    "file": "2026-09-10T06-48-00Z - Incident - Price calculation.md",
+    "at": "2026-09-10T07:48+01:00",
+    "title": "Price calculation",
+    "confidence": "high",
+    "service": "pricing-engine",
+    "domain": "shop-checkout",
+    "severity": "LOW",
+    "root_cause": "The price list of a campaign was loaded twice, and the second load ran into the first. For a short time some prices were answered from the old list.",
+    "steps": [
+     "Let only one load of a price list run at a time.",
+     "Publish a new price list only when its load is complete.",
+     "Check the orders of that time for wrong prices."
+    ],
+    "alert": "WARNING",
+    "reporting": "yes",
+    "error_rate": "0.4%",
+    "error_events": 34
+   }
+  ]
+ },
+ "incident_facts": [
+  {
+   "id": "ops.reports_week_n",
+   "card": "operations",
+   "label": "incident reports in the last 7 days",
+   "value": 1,
+   "unit": "",
+   "keys": [],
+   "level": "warning"
+  },
+  {
+   "id": "ops.recurring_n",
+   "card": "operations",
+   "label": "services with two or more incident reports in 90 days",
+   "value": 2,
+   "unit": "",
+   "keys": [],
+   "level": "warning"
+  }
+ ],
+ "services": {
+  "status": "ok",
+  "detail": "",
+  "asked": "2026-11-17T10:41+01:00",
+  "domain": {
+   "id": "shop-checkout",
+   "name": "Checkout and payments",
+   "description": "Cart, checkout, payments and price calculation of the shop.",
+   "enabled": true,
+   "active": true,
+   "chunks": 1864,
+   "indexed": "2026-11-16T02:14:09Z",
+   "phase": "ready"
+  },
+  "apps": [
+   {
+    "app": "cart-service",
+    "envs": [
+     {
+      "env": "production",
+      "links": [
+       {
+        "key": "console",
+        "url": "https://console.example.com/shop-checkout/cart-service"
+       },
+       {
+        "key": "logs",
+        "url": "https://logs.example.com/search?app=cart-service&env=production"
+       },
+       {
+        "key": "metrics",
+        "url": "https://metrics.example.com/d/cart-service?env=production"
+       }
+      ]
+     },
+     {
+      "env": "staging",
+      "links": [
+       {
+        "key": "console",
+        "url": "https://console.staging.example.com/shop-checkout/cart-service"
+       },
+       {
+        "key": "logs",
+        "url": "https://logs.example.com/search?app=cart-service&env=staging"
+       },
+       {
+        "key": "metrics",
+        "url": "https://metrics.example.com/d/cart-service?env=staging"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "app": "checkout-api",
+    "envs": [
+     {
+      "env": "production",
+      "links": [
+       {
+        "key": "console",
+        "url": "https://console.example.com/shop-checkout/checkout-api"
+       },
+       {
+        "key": "logs",
+        "url": "https://logs.example.com/search?app=checkout-api&env=production"
+       },
+       {
+        "key": "metrics",
+        "url": "https://metrics.example.com/d/checkout-api?env=production"
+       }
+      ]
+     },
+     {
+      "env": "staging",
+      "links": [
+       {
+        "key": "console",
+        "url": "https://console.staging.example.com/shop-checkout/checkout-api"
+       },
+       {
+        "key": "logs",
+        "url": "https://logs.example.com/search?app=checkout-api&env=staging"
+       },
+       {
+        "key": "metrics",
+        "url": "https://metrics.example.com/d/checkout-api?env=staging"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "app": "payment-gateway",
+    "envs": [
+     {
+      "env": "production",
+      "links": [
+       {
+        "key": "console",
+        "url": "https://console.example.com/shop-checkout/payment-gateway"
+       },
+       {
+        "key": "logs",
+        "url": "https://logs.example.com/search?app=payment-gateway&env=production"
+       },
+       {
+        "key": "metrics",
+        "url": "https://metrics.example.com/d/payment-gateway?env=production"
+       }
+      ]
+     },
+     {
+      "env": "staging",
+      "links": [
+       {
+        "key": "console",
+        "url": "https://console.staging.example.com/shop-checkout/payment-gateway"
+       },
+       {
+        "key": "logs",
+        "url": "https://logs.example.com/search?app=payment-gateway&env=staging"
+       },
+       {
+        "key": "metrics",
+        "url": "https://metrics.example.com/d/payment-gateway?env=staging"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "app": "pricing-engine",
+    "envs": [
+     {
+      "env": "production",
+      "links": [
+       {
+        "key": "console",
+        "url": "https://console.example.com/shop-checkout/pricing-engine"
+       },
+       {
+        "key": "logs",
+        "url": "https://logs.example.com/search?app=pricing-engine&env=production"
+       },
+       {
+        "key": "metrics",
+        "url": "https://metrics.example.com/d/pricing-engine?env=production"
+       }
+      ]
+     },
+     {
+      "env": "staging",
+      "links": [
+       {
+        "key": "console",
+        "url": "https://console.staging.example.com/shop-checkout/pricing-engine"
+       },
+       {
+        "key": "logs",
+        "url": "https://logs.example.com/search?app=pricing-engine&env=staging"
+       },
+       {
+        "key": "metrics",
+        "url": "https://metrics.example.com/d/pricing-engine?env=staging"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "key": "build pipelines",
+    "url": "https://build.example.com/shop-checkout"
+   },
+   {
+    "key": "cluster console",
+    "url": "https://console.example.com/projects/shop-checkout"
+   },
+   {
+    "key": "log dashboard",
+    "url": "https://logs.example.com/dashboards/shop-checkout"
+   }
+  ],
+  "kafka": [
+   "shop.checkout.order-placed.v1",
+   "shop.payments.payment-authorised.v1",
+   "shop.cart.cart-changed.v1"
+  ]
+ }
+}

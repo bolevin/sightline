@@ -1,0 +1,927 @@
+[
+ {
+  "key": "KES-1237",
+  "fields": {
+   "summary": "Separate billing and delivery address",
+   "issuetype": {
+    "name": "Story",
+    "subtask": false
+   },
+   "priority": {
+    "name": "Medium"
+   },
+   "created": "2026-08-05T11:51:38.395+0200",
+   "updated": "2026-09-04T16:54:10.418+0200",
+   "status": {
+    "id": "10319",
+    "name": "Done"
+   },
+   "customfield_10020": [
+    "Sprint[id=527,rapidViewId=7,state=CLOSED,name=Sprint 36,startDate=2026-08-17T09:00:00.000+02:00,endDate=2026-08-28T16:00:00.000+02:00,completeDate=2026-08-28T16:03:04.092+02:00,activatedDate=2026-08-17T09:04:06.310+02:00,sequence=527,goal=]",
+    "Sprint[id=533,rapidViewId=7,state=CLOSED,name=Sprint 37,startDate=2026-08-31T09:00:00.000+02:00,endDate=2026-09-11T16:00:00.000+02:00,completeDate=2026-09-11T16:06:20.929+02:00,activatedDate=2026-08-31T09:02:25.531+02:00,sequence=533,goal=]"
+   ],
+   "customfield_10016": 3.0,
+   "customfield_10001": {
+    "id": "10200",
+    "value": "Kestrel"
+   },
+   "customfield_10014": "KES-908"
+  },
+  "changelog": {
+   "histories": [
+    {
+     "created": "2026-08-17T08:10:29.401+0200",
+     "items": [
+      {
+       "field": "Sprint",
+       "from": null,
+       "to": "527",
+       "fromString": null,
+       "toString": "Sprint 36"
+      }
+     ]
+    },
+    {
+     "created": "2026-08-24T09:55:46.820+0200",
+     "items": [
+      {
+       "field": "status",
+       "from": "10311",
+       "to": "10312",
+       "fromString": "To Do",
+       "toString": "In Progress"
+      }
+     ]
+    },
+    {
+     "created": "2026-08-28T16:03:04.402+0200",
+     "items": [
+      {
+       "field": "Sprint",
+       "from": "527",
+       "to": "527, 533",
+       "fromString": "Sprint 36",
+       "toString": "Sprint 36, Sprint 37"
+      }
+     ]
+    },
+    {
+     "created": "2026-09-02T13:06:01.389+0200",
+     "items": [
+      {
+       "field": "status",
+       "from": "10312",
+       "to": "10317",
+       "fromString": "In Progress",
+       "toString": "Review"
+      }
+     ]
+    },
+    {
+     "created": "2026-09-04T16:54:10.418+0200",
+     "items": [
+      {
+       "field": "status",
+       "from": "10317",
+       "to": "10319",
+       "fromString": "Review",
+       "toString": "Done"
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "key": "KES-1238",
+  "fields": {
+   "summary": "Confirmation page with the order number",
+   "issuetype": {
+    "name": "Story",
+    "subtask": false
+   },
+   "priority": {
+    "name": "Low"
+   },
+   "created": "2026-08-06T13:28:46.751+0200",
+   "updated": "2026-09-01T13:26:18.516+0200",
+   "status": {
+    "id": "10319",
+    "name": "Done"
+   },
+   "customfield_10020": [
+    "Sprint[id=527,rapidViewId=7,state=CLOSED,name=Sprint 36,startDate=2026-08-17T09:00:00.000+02:00,endDate=2026-08-28T16:00:00.000+02:00,completeDate=2026-08-28T16:03:04.092+02:00,activatedDate=2026-08-17T09:04:06.310+02:00,sequence=527,goal=]",
+    "Sprint[id=533,rapidViewId=7,state=CLOSED,name=Sprint 37,startDate=2026-08-31T09:00:00.000+02:00,endDate=2026-09-11T16:00:00.000+02:00,completeDate=2026-09-11T16:06:20.929+02:00,activatedDate=2026-08-31T09:02:25.531+02:00,sequence=533,goal=]"
+   ],
+   "customfield_10016": 5.0,
+   "customfield_10001": {
+    "id": "10200",
+    "value": "Kestrel"
+   },
+   "customfield_10014": "KES-946"
+  },
+  "changelog": {
+   "histories": [
+    {
+     "created": "2026-08-14T14:44:16.738+0200",
+     "items": [
+      {
+       "field": "Sprint",
+       "from": null,
+       "to": "527",
+       "fromString": null,
+       "toString": "Sprint 36"
+      }
+     ]
+    },
+    {
+     "created": "2026-08-19T09:28:51.307+0200",
+     "items": [
+      {
+       "field": "status",
+       "from": "10311",
+       "to": "10312",
+       "fromString": "To Do",
+       "toString": "In Progress"
+      }
+     ]
+    },
+    {
+     "created": "2026-08-24T15:20:46.364+0200",
+     "items": [
+      {
+       "field": "status",
+       "from": "10312",
+       "to": "10314",
+       "fromString": "In Progress",
+       "toString": "Blocked"
+      }
+     ]
+    },
+    {
+     "created": "2026-08-26T16:35:18.049+0200",
+     "items": [
+      {
+       "field": "status",
+       "from": "10314",
+       "to": "10312",
+       "fromString": "Blocked",
+       "toString": "In Progress"
+      }
+     ]
+    },
+    {
+     "created": "2026-08-28T09:12:43.553+0200",
+     "items": [
+      {
+       "field": "status",
+       "from": "10312",
+       "to": "10317",
+       "fromString": "In Progress",
+       "toString": "Review"
+      }
+     ]
+    },
+    {
+     "created": "2026-08-28T16:03:04.638+0200",
+     "items": [
+      {
+       "field": "Sprint",
+       "from": "527",
+       "to": "527, 533",
+       "fromString": "Sprint 36",
+       "toString": "Sprint 36, Sprint 37"
+      }
+     ]
+    },
+    {
+     "created": "2026-09-01T13:26:18.516+0200",
+     "items": [
+      {
+       "field": "status",
+       "from": "10317",
+       "to": "10319",
+       "fromString": "Review",
+       "toString": "Done"
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "key": "KES-1242",
+  "fields": {
+   "summary": "Confirmation mail within a minute",
+   "issuetype": {
+    "name": "Story",
+    "subtask": false
+   },
+   "priority": {
+    "name": "Medium"
+   },
+   "created": "2026-08-07T11:59:05.637+0200",
+   "updated": "2026-09-10T10:58:05.507+0200",
+   "status": {
+    "id": "10319",
+    "name": "Done"
+   },
+   "customfield_10020": [
+    "Sprint[id=527,rapidViewId=7,state=CLOSED,name=Sprint 36,startDate=2026-08-17T09:00:00.000+02:00,endDate=2026-08-28T16:00:00.000+02:00,completeDate=2026-08-28T16:03:04.092+02:00,activatedDate=2026-08-17T09:04:06.310+02:00,sequence=527,goal=]",
+    "Sprint[id=533,rapidViewId=7,state=CLOSED,name=Sprint 37,startDate=2026-08-31T09:00:00.000+02:00,endDate=2026-09-11T16:00:00.000+02:00,completeDate=2026-09-11T16:06:20.929+02:00,activatedDate=2026-08-31T09:02:25.531+02:00,sequence=533,goal=]"
+   ],
+   "customfield_10016": 8.0,
+   "customfield_10001": {
+    "id": "10200",
+    "value": "Kestrel"
+   },
+   "customfield_10014": "KES-946"
+  },
+  "changelog": {
+   "histories": [
+    {
+     "created": "2026-08-07T12:06:05.370+0200",
+     "items": [
+      {
+       "field": "Story Points",
+       "from": null,
+       "to": null,
+       "fromString": null,
+       "toString": "8"
+      }
+     ]
+    },
+    {
+     "created": "2026-08-17T08:52:21.695+0200",
+     "items": [
+      {
+       "field": "Sprint",
+       "from": null,
+       "to": "527",
+       "fromString": null,
+       "toString": "Sprint 36"
+      }
+     ]
+    },
+    {
+     "created": "2026-08-18T16:23:53.111+0200",
+     "items": [
+      {
+       "field": "status",
+       "from": "10311",
+       "to": "10312",
+       "fromString": "To Do",
+       "toString": "In Progress"
+      }
+     ]
+    },
+    {
+     "created": "2026-08-21T13:00:46.414+0200",
+     "items": [
+      {
+       "field": "status",
+       "from": "10312",
+       "to": "10314",
+       "fromString": "In Progress",
+       "toString": "Blocked"
+      }
+     ]
+    },
+    {
+     "created": "2026-08-27T12:20:43.793+0200",
+     "items": [
+      {
+       "field": "status",
+       "from": "10314",
+       "to": "10312",
+       "fromString": "Blocked",
+       "toString": "In Progress"
+      }
+     ]
+    },
+    {
+     "created": "2026-08-28T16:03:04.814+0200",
+     "items": [
+      {
+       "field": "Sprint",
+       "from": "527",
+       "to": "527, 533",
+       "fromString": "Sprint 36",
+       "toString": "Sprint 36, Sprint 37"
+      }
+     ]
+    },
+    {
+     "created": "2026-09-04T15:22:34.232+0200",
+     "items": [
+      {
+       "field": "status",
+       "from": "10312",
+       "to": "10317",
+       "fromString": "In Progress",
+       "toString": "Review"
+      }
+     ]
+    },
+    {
+     "created": "2026-09-10T10:58:05.507+0200",
+     "items": [
+      {
+       "field": "status",
+       "from": "10317",
+       "to": "10319",
+       "fromString": "Review",
+       "toString": "Done"
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "key": "KES-1263",
+  "fields": {
+   "summary": "Merge the carts of two devices",
+   "issuetype": {
+    "name": "Story",
+    "subtask": false
+   },
+   "priority": {
+    "name": "Medium"
+   },
+   "created": "2026-08-17T12:37:03.954+0200",
+   "updated": "2026-09-04T15:32:07.999+0200",
+   "status": {
+    "id": "10319",
+    "name": "Done"
+   },
+   "customfield_10020": [
+    "Sprint[id=533,rapidViewId=7,state=CLOSED,name=Sprint 37,startDate=2026-08-31T09:00:00.000+02:00,endDate=2026-09-11T16:00:00.000+02:00,completeDate=2026-09-11T16:06:20.929+02:00,activatedDate=2026-08-31T09:02:25.531+02:00,sequence=533,goal=]"
+   ],
+   "customfield_10016": 2.0,
+   "customfield_10001": {
+    "id": "10200",
+    "value": "Kestrel"
+   },
+   "customfield_10014": "KES-900"
+  },
+  "changelog": {
+   "histories": [
+    {
+     "created": "2026-08-31T08:21:18.238+0200",
+     "items": [
+      {
+       "field": "Sprint",
+       "from": null,
+       "to": "533",
+       "fromString": null,
+       "toString": "Sprint 37"
+      }
+     ]
+    },
+    {
+     "created": "2026-09-01T09:52:36.285+0200",
+     "items": [
+      {
+       "field": "status",
+       "from": "10311",
+       "to": "10312",
+       "fromString": "To Do",
+       "toString": "In Progress"
+      }
+     ]
+    },
+    {
+     "created": "2026-09-03T09:32:43.613+0200",
+     "items": [
+      {
+       "field": "status",
+       "from": "10312",
+       "to": "10317",
+       "fromString": "In Progress",
+       "toString": "Review"
+      }
+     ]
+    },
+    {
+     "created": "2026-09-04T15:32:07.999+0200",
+     "items": [
+      {
+       "field": "status",
+       "from": "10317",
+       "to": "10319",
+       "fromString": "Review",
+       "toString": "Done"
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "key": "KES-1264",
+  "fields": {
+   "summary": "Expiry reminder for saved cards",
+   "issuetype": {
+    "name": "Story",
+    "subtask": false
+   },
+   "priority": {
+    "name": "High"
+   },
+   "created": "2026-08-18T11:19:41.813+0200",
+   "updated": "2026-09-16T12:11:42.066+0200",
+   "status": {
+    "id": "10319",
+    "name": "Done"
+   },
+   "customfield_10020": [
+    "Sprint[id=533,rapidViewId=7,state=CLOSED,name=Sprint 37,startDate=2026-08-31T09:00:00.000+02:00,endDate=2026-09-11T16:00:00.000+02:00,completeDate=2026-09-11T16:06:20.929+02:00,activatedDate=2026-08-31T09:02:25.531+02:00,sequence=533,goal=]",
+    "Sprint[id=540,rapidViewId=7,state=CLOSED,name=Sprint 38,startDate=2026-09-14T09:00:00.000+02:00,endDate=2026-09-25T16:00:00.000+02:00,completeDate=2026-09-25T16:02:42.408+02:00,activatedDate=2026-09-14T09:04:28.515+02:00,sequence=540,goal=]"
+   ],
+   "customfield_10016": 2.0,
+   "customfield_10001": {
+    "id": "10200",
+    "value": "Kestrel"
+   },
+   "customfield_10014": "KES-931"
+  },
+  "changelog": {
+   "histories": [
+    {
+     "created": "2026-08-31T08:09:02.328+0200",
+     "items": [
+      {
+       "field": "Sprint",
+       "from": null,
+       "to": "533",
+       "fromString": null,
+       "toString": "Sprint 37"
+      }
+     ]
+    },
+    {
+     "created": "2026-09-07T16:38:13.177+0200",
+     "items": [
+      {
+       "field": "status",
+       "from": "10311",
+       "to": "10312",
+       "fromString": "To Do",
+       "toString": "In Progress"
+      }
+     ]
+    },
+    {
+     "created": "2026-09-11T16:06:21.690+0200",
+     "items": [
+      {
+       "field": "Sprint",
+       "from": "533",
+       "to": "533, 540",
+       "fromString": "Sprint 37",
+       "toString": "Sprint 37, Sprint 38"
+      }
+     ]
+    },
+    {
+     "created": "2026-09-15T16:29:09.680+0200",
+     "items": [
+      {
+       "field": "status",
+       "from": "10312",
+       "to": "10317",
+       "fromString": "In Progress",
+       "toString": "Review"
+      }
+     ]
+    },
+    {
+     "created": "2026-09-16T12:11:42.066+0200",
+     "items": [
+      {
+       "field": "status",
+       "from": "10317",
+       "to": "10319",
+       "fromString": "Review",
+       "toString": "Done"
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "key": "KES-1266",
+  "fields": {
+   "summary": "Delivery cost is missing for islands",
+   "issuetype": {
+    "name": "Bug",
+    "subtask": false
+   },
+   "priority": {
+    "name": "Highest"
+   },
+   "created": "2026-08-20T14:44:14.176+0200",
+   "updated": "2026-09-02T15:57:14.941+0200",
+   "status": {
+    "id": "10319",
+    "name": "Done"
+   },
+   "customfield_10020": [
+    "Sprint[id=533,rapidViewId=7,state=CLOSED,name=Sprint 37,startDate=2026-08-31T09:00:00.000+02:00,endDate=2026-09-11T16:00:00.000+02:00,completeDate=2026-09-11T16:06:20.929+02:00,activatedDate=2026-08-31T09:02:25.531+02:00,sequence=533,goal=]"
+   ],
+   "customfield_10016": 1.0,
+   "customfield_10001": {
+    "id": "10200",
+    "value": "Kestrel"
+   },
+   "customfield_10014": null
+  },
+  "changelog": {
+   "histories": [
+    {
+     "created": "2026-08-31T08:48:42.074+0200",
+     "items": [
+      {
+       "field": "Sprint",
+       "from": null,
+       "to": "533",
+       "fromString": null,
+       "toString": "Sprint 37"
+      }
+     ]
+    },
+    {
+     "created": "2026-09-01T16:15:42.613+0200",
+     "items": [
+      {
+       "field": "status",
+       "from": "10311",
+       "to": "10312",
+       "fromString": "To Do",
+       "toString": "In Progress"
+      }
+     ]
+    },
+    {
+     "created": "2026-09-02T11:20:42.518+0200",
+     "items": [
+      {
+       "field": "status",
+       "from": "10312",
+       "to": "10317",
+       "fromString": "In Progress",
+       "toString": "Review"
+      }
+     ]
+    },
+    {
+     "created": "2026-09-02T15:57:14.941+0200",
+     "items": [
+      {
+       "field": "status",
+       "from": "10317",
+       "to": "10319",
+       "fromString": "Review",
+       "toString": "Done"
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "key": "KES-1268",
+  "fields": {
+   "summary": "Confirmation in the customer's language",
+   "issuetype": {
+    "name": "Story",
+    "subtask": false
+   },
+   "priority": {
+    "name": "Medium"
+   },
+   "created": "2026-08-21T16:14:06.707+0200",
+   "updated": "2026-09-03T16:15:40.561+0200",
+   "status": {
+    "id": "10319",
+    "name": "Done"
+   },
+   "customfield_10020": [
+    "Sprint[id=533,rapidViewId=7,state=CLOSED,name=Sprint 37,startDate=2026-08-31T09:00:00.000+02:00,endDate=2026-09-11T16:00:00.000+02:00,completeDate=2026-09-11T16:06:20.929+02:00,activatedDate=2026-08-31T09:02:25.531+02:00,sequence=533,goal=]"
+   ],
+   "customfield_10016": 3.0,
+   "customfield_10001": {
+    "id": "10200",
+    "value": "Kestrel"
+   },
+   "customfield_10014": "KES-946"
+  },
+  "changelog": {
+   "histories": [
+    {
+     "created": "2026-08-31T08:42:54.149+0200",
+     "items": [
+      {
+       "field": "Sprint",
+       "from": null,
+       "to": "533",
+       "fromString": null,
+       "toString": "Sprint 37"
+      }
+     ]
+    },
+    {
+     "created": "2026-08-31T13:19:38.173+0200",
+     "items": [
+      {
+       "field": "status",
+       "from": "10311",
+       "to": "10312",
+       "fromString": "To Do",
+       "toString": "In Progress"
+      }
+     ]
+    },
+    {
+     "created": "2026-09-02T16:23:03.743+0200",
+     "items": [
+      {
+       "field": "status",
+       "from": "10312",
+       "to": "10317",
+       "fromString": "In Progress",
+       "toString": "Review"
+      }
+     ]
+    },
+    {
+     "created": "2026-09-03T16:15:40.561+0200",
+     "items": [
+      {
+       "field": "status",
+       "from": "10317",
+       "to": "10319",
+       "fromString": "Review",
+       "toString": "Done"
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "key": "KES-1269",
+  "fields": {
+   "summary": "Add the delivery to the calendar",
+   "issuetype": {
+    "name": "Story",
+    "subtask": false
+   },
+   "priority": {
+    "name": "Low"
+   },
+   "created": "2026-08-24T09:21:07.892+0200",
+   "updated": "2026-09-07T13:59:30.504+0200",
+   "status": {
+    "id": "10319",
+    "name": "Done"
+   },
+   "customfield_10020": [
+    "Sprint[id=527,rapidViewId=7,state=CLOSED,name=Sprint 36,startDate=2026-08-17T09:00:00.000+02:00,endDate=2026-08-28T16:00:00.000+02:00,completeDate=2026-08-28T16:03:04.092+02:00,activatedDate=2026-08-17T09:04:06.310+02:00,sequence=527,goal=]",
+    "Sprint[id=533,rapidViewId=7,state=CLOSED,name=Sprint 37,startDate=2026-08-31T09:00:00.000+02:00,endDate=2026-09-11T16:00:00.000+02:00,completeDate=2026-09-11T16:06:20.929+02:00,activatedDate=2026-08-31T09:02:25.531+02:00,sequence=533,goal=]"
+   ],
+   "customfield_10016": 2.0,
+   "customfield_10001": {
+    "id": "10200",
+    "value": "Kestrel"
+   },
+   "customfield_10014": "KES-946"
+  },
+  "changelog": {
+   "histories": [
+    {
+     "created": "2026-08-24T09:59:18.092+0200",
+     "items": [
+      {
+       "field": "Sprint",
+       "from": null,
+       "to": "527",
+       "fromString": null,
+       "toString": "Sprint 36"
+      }
+     ]
+    },
+    {
+     "created": "2026-08-26T16:29:39.133+0200",
+     "items": [
+      {
+       "field": "status",
+       "from": "10311",
+       "to": "10312",
+       "fromString": "To Do",
+       "toString": "In Progress"
+      }
+     ]
+    },
+    {
+     "created": "2026-08-28T16:03:04.813+0200",
+     "items": [
+      {
+       "field": "Sprint",
+       "from": "527",
+       "to": "527, 533",
+       "fromString": "Sprint 36",
+       "toString": "Sprint 36, Sprint 37"
+      }
+     ]
+    },
+    {
+     "created": "2026-09-03T09:21:36.534+0200",
+     "items": [
+      {
+       "field": "status",
+       "from": "10312",
+       "to": "10317",
+       "fromString": "In Progress",
+       "toString": "Review"
+      }
+     ]
+    },
+    {
+     "created": "2026-09-07T13:59:30.504+0200",
+     "items": [
+      {
+       "field": "status",
+       "from": "10317",
+       "to": "10319",
+       "fromString": "Review",
+       "toString": "Done"
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "key": "KES-1271",
+  "fields": {
+   "summary": "Pay in instalments by card",
+   "issuetype": {
+    "name": "Story",
+    "subtask": false
+   },
+   "priority": {
+    "name": "Medium"
+   },
+   "created": "2026-08-25T14:08:04.059+0200",
+   "updated": "2026-09-10T16:27:26.533+0200",
+   "status": {
+    "id": "10319",
+    "name": "Done"
+   },
+   "customfield_10020": [
+    "Sprint[id=533,rapidViewId=7,state=CLOSED,name=Sprint 37,startDate=2026-08-31T09:00:00.000+02:00,endDate=2026-09-11T16:00:00.000+02:00,completeDate=2026-09-11T16:06:20.929+02:00,activatedDate=2026-08-31T09:02:25.531+02:00,sequence=533,goal=]"
+   ],
+   "customfield_10016": 3.0,
+   "customfield_10001": {
+    "id": "10200",
+    "value": "Kestrel"
+   },
+   "customfield_10014": "KES-931"
+  },
+  "changelog": {
+   "histories": [
+    {
+     "created": "2026-08-31T08:08:58.012+0200",
+     "items": [
+      {
+       "field": "Sprint",
+       "from": null,
+       "to": "533",
+       "fromString": null,
+       "toString": "Sprint 37"
+      }
+     ]
+    },
+    {
+     "created": "2026-09-04T12:32:23.152+0200",
+     "items": [
+      {
+       "field": "status",
+       "from": "10311",
+       "to": "10312",
+       "fromString": "To Do",
+       "toString": "In Progress"
+      }
+     ]
+    },
+    {
+     "created": "2026-09-09T15:22:31.228+0200",
+     "items": [
+      {
+       "field": "status",
+       "from": "10312",
+       "to": "10317",
+       "fromString": "In Progress",
+       "toString": "Review"
+      }
+     ]
+    },
+    {
+     "created": "2026-09-10T16:27:26.533+0200",
+     "items": [
+      {
+       "field": "status",
+       "from": "10317",
+       "to": "10319",
+       "fromString": "Review",
+       "toString": "Done"
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "key": "KES-1275",
+  "fields": {
+   "summary": "Phone number is optional for guests",
+   "issuetype": {
+    "name": "Story",
+    "subtask": false
+   },
+   "priority": {
+    "name": "High"
+   },
+   "created": "2026-09-02T13:40:50.054+0200",
+   "updated": "2026-09-11T11:31:58.138+0200",
+   "status": {
+    "id": "10319",
+    "name": "Done"
+   },
+   "customfield_10020": [
+    "Sprint[id=533,rapidViewId=7,state=CLOSED,name=Sprint 37,startDate=2026-08-31T09:00:00.000+02:00,endDate=2026-09-11T16:00:00.000+02:00,completeDate=2026-09-11T16:06:20.929+02:00,activatedDate=2026-08-31T09:02:25.531+02:00,sequence=533,goal=]"
+   ],
+   "customfield_10016": 2.0,
+   "customfield_10001": {
+    "id": "10200",
+    "value": "Kestrel"
+   },
+   "customfield_10014": "KES-908"
+  },
+  "changelog": {
+   "histories": [
+    {
+     "created": "2026-09-02T14:14:03.142+0200",
+     "items": [
+      {
+       "field": "Sprint",
+       "from": null,
+       "to": "533",
+       "fromString": null,
+       "toString": "Sprint 37"
+      }
+     ]
+    },
+    {
+     "created": "2026-09-07T15:02:40.778+0200",
+     "items": [
+      {
+       "field": "status",
+       "from": "10311",
+       "to": "10312",
+       "fromString": "To Do",
+       "toString": "In Progress"
+      }
+     ]
+    },
+    {
+     "created": "2026-09-09T15:58:23.110+0200",
+     "items": [
+      {
+       "field": "status",
+       "from": "10312",
+       "to": "10317",
+       "fromString": "In Progress",
+       "toString": "Review"
+      }
+     ]
+    },
+    {
+     "created": "2026-09-11T11:31:58.138+0200",
+     "items": [
+      {
+       "field": "status",
+       "from": "10317",
+       "to": "10319",
+       "fromString": "Review",
+       "toString": "Done"
+      }
+     ]
+    }
+   ]
+  }
+ }
+]

@@ -1,0 +1,7 @@
+{
+ "tool": "sightline demo data 1.0",
+ "host": "jira.example.com",
+ "fetched_at": "2026-11-17T10:40:00",
+ "synthetic": true,
+ "note": "Invented by tools/make_demo_data.py. No real team, product, issue or person."
+}

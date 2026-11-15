@@ -1,0 +1,381 @@
+{
+ "512": {
+  "name": "Sprint 34",
+  "committed_sp": 30.0,
+  "completed_sp": 27.0,
+  "committed": [
+   "KES-1187",
+   "KES-1188",
+   "KES-1189",
+   "KES-1191",
+   "KES-1195",
+   "KES-1196",
+   "KES-1197",
+   "KES-1200",
+   "KES-1202",
+   "KES-1204",
+   "KES-1206",
+   "KES-1210"
+  ],
+  "completed": [
+   "KES-1187",
+   "KES-1188",
+   "KES-1189",
+   "KES-1191",
+   "KES-1195",
+   "KES-1196",
+   "KES-1200",
+   "KES-1202",
+   "KES-1204",
+   "KES-1206",
+   "KES-1210"
+  ],
+  "not_completed": [
+   "KES-1197"
+  ],
+  "added": [],
+  "removed": []
+ },
+ "519": {
+  "name": "Sprint 35",
+  "committed_sp": 29.0,
+  "completed_sp": 28.0,
+  "committed": [
+   "KES-1197",
+   "KES-1211",
+   "KES-1213",
+   "KES-1214",
+   "KES-1216",
+   "KES-1218",
+   "KES-1220",
+   "KES-1222",
+   "KES-1225",
+   "KES-1227",
+   "KES-1228"
+  ],
+  "completed": [
+   "KES-1197",
+   "KES-1211",
+   "KES-1213",
+   "KES-1214",
+   "KES-1216",
+   "KES-1218",
+   "KES-1220",
+   "KES-1222",
+   "KES-1227",
+   "KES-1228",
+   "KES-1235"
+  ],
+  "not_completed": [
+   "KES-1225"
+  ],
+  "added": [
+   "KES-1235"
+  ],
+  "removed": []
+ },
+ "527": {
+  "name": "Sprint 36",
+  "committed_sp": 35.0,
+  "completed_sp": 22.0,
+  "committed": [
+   "KES-1225",
+   "KES-1232",
+   "KES-1233",
+   "KES-1237",
+   "KES-1238",
+   "KES-1242",
+   "KES-1244",
+   "KES-1246",
+   "KES-1249",
+   "KES-1253",
+   "KES-1255",
+   "KES-1259"
+  ],
+  "completed": [
+   "KES-1225",
+   "KES-1232",
+   "KES-1233",
+   "KES-1244",
+   "KES-1246",
+   "KES-1249",
+   "KES-1253",
+   "KES-1259",
+   "KES-1262",
+   "KES-1265"
+  ],
+  "not_completed": [
+   "KES-1237",
+   "KES-1238",
+   "KES-1242",
+   "KES-1255",
+   "KES-1269"
+  ],
+  "added": [
+   "KES-1262",
+   "KES-1265",
+   "KES-1269"
+  ],
+  "removed": []
+ },
+ "533": {
+  "name": "Sprint 37",
+  "committed_sp": 29.0,
+  "completed_sp": 29.0,
+  "committed": [
+   "KES-1237",
+   "KES-1238",
+   "KES-1242",
+   "KES-1263",
+   "KES-1264",
+   "KES-1266",
+   "KES-1268",
+   "KES-1269",
+   "KES-1271"
+  ],
+  "completed": [
+   "KES-1237",
+   "KES-1238",
+   "KES-1242",
+   "KES-1263",
+   "KES-1266",
+   "KES-1268",
+   "KES-1269",
+   "KES-1271",
+   "KES-1275"
+  ],
+  "not_completed": [
+   "KES-1264"
+  ],
+  "added": [
+   "KES-1275"
+  ],
+  "removed": []
+ },
+ "540": {
+  "name": "Sprint 38",
+  "committed_sp": 26.0,
+  "completed_sp": 27.0,
+  "committed": [
+   "KES-1255",
+   "KES-1264",
+   "KES-1272",
+   "KES-1274",
+   "KES-1276",
+   "KES-1278",
+   "KES-1279",
+   "KES-1280",
+   "KES-1281",
+   "KES-1283",
+   "KES-1287",
+   "KES-1288"
+  ],
+  "completed": [
+   "KES-1255",
+   "KES-1264",
+   "KES-1272",
+   "KES-1274",
+   "KES-1278",
+   "KES-1279",
+   "KES-1280",
+   "KES-1281",
+   "KES-1283",
+   "KES-1287",
+   "KES-1288",
+   "KES-1289"
+  ],
+  "not_completed": [
+   "KES-1276"
+  ],
+  "added": [
+   "KES-1289"
+  ],
+  "removed": []
+ },
+ "548": {
+  "name": "Sprint 39",
+  "committed_sp": 35.0,
+  "completed_sp": 24.0,
+  "committed": [
+   "KES-1276",
+   "KES-1290",
+   "KES-1292",
+   "KES-1299",
+   "KES-1303",
+   "KES-1304",
+   "KES-1306",
+   "KES-1308",
+   "KES-1310",
+   "KES-1311",
+   "KES-1315",
+   "KES-1318"
+  ],
+  "completed": [
+   "KES-1276",
+   "KES-1299",
+   "KES-1303",
+   "KES-1304",
+   "KES-1306",
+   "KES-1308",
+   "KES-1315",
+   "KES-1318",
+   "KES-1320",
+   "KES-1329"
+  ],
+  "not_completed": [
+   "KES-1290",
+   "KES-1292",
+   "KES-1310",
+   "KES-1311",
+   "KES-1331",
+   "KES-1339"
+  ],
+  "added": [
+   "KES-1320",
+   "KES-1329",
+   "KES-1331",
+   "KES-1339"
+  ],
+  "removed": []
+ },
+ "553": {
+  "name": "Sprint 40",
+  "committed_sp": 31.0,
+  "completed_sp": 31.0,
+  "committed": [
+   "KES-1290",
+   "KES-1292",
+   "KES-1310",
+   "KES-1311",
+   "KES-1324",
+   "KES-1325",
+   "KES-1328",
+   "KES-1331",
+   "KES-1332",
+   "KES-1334",
+   "KES-1336",
+   "KES-1339"
+  ],
+  "completed": [
+   "KES-1292",
+   "KES-1310",
+   "KES-1311",
+   "KES-1324",
+   "KES-1325",
+   "KES-1328",
+   "KES-1331",
+   "KES-1332",
+   "KES-1334",
+   "KES-1336",
+   "KES-1339",
+   "KES-1351",
+   "KES-1370"
+  ],
+  "not_completed": [
+   "KES-1290",
+   "KES-1360"
+  ],
+  "added": [
+   "KES-1351",
+   "KES-1360",
+   "KES-1370"
+  ],
+  "removed": []
+ },
+ "561": {
+  "name": "Sprint 41",
+  "committed_sp": 36.0,
+  "completed_sp": 23.0,
+  "committed": [
+   "KES-1290",
+   "KES-1343",
+   "KES-1349",
+   "KES-1353",
+   "KES-1356",
+   "KES-1359",
+   "KES-1360",
+   "KES-1363",
+   "KES-1365",
+   "KES-1368",
+   "KES-1369",
+   "KES-1372",
+   "KES-1373",
+   "KES-1376"
+  ],
+  "completed": [
+   "KES-1349",
+   "KES-1353",
+   "KES-1356",
+   "KES-1365",
+   "KES-1368",
+   "KES-1369",
+   "KES-1372",
+   "KES-1376",
+   "KES-1378",
+   "KES-1388"
+  ],
+  "not_completed": [
+   "KES-1290",
+   "KES-1343",
+   "KES-1359",
+   "KES-1360",
+   "KES-1373"
+  ],
+  "added": [
+   "KES-1378",
+   "KES-1388"
+  ],
+  "removed": [
+   "KES-1363"
+  ]
+ },
+ "568": {
+  "name": "Sprint 42",
+  "committed_sp": 31.0,
+  "completed_sp": 13.0,
+  "committed": [
+   "KES-1290",
+   "KES-1343",
+   "KES-1360",
+   "KES-1373",
+   "KES-1382",
+   "KES-1385",
+   "KES-1389",
+   "KES-1390",
+   "KES-1391",
+   "KES-1393",
+   "KES-1395",
+   "KES-1396",
+   "KES-1399",
+   "KES-1400"
+  ],
+  "completed": [
+   "KES-1343",
+   "KES-1389",
+   "KES-1393",
+   "KES-1395",
+   "KES-1399"
+  ],
+  "not_completed": [
+   "KES-1290",
+   "KES-1360",
+   "KES-1373",
+   "KES-1385",
+   "KES-1390",
+   "KES-1391",
+   "KES-1396",
+   "KES-1400",
+   "KES-1403",
+   "KES-1408",
+   "KES-1422"
+  ],
+  "added": [
+   "KES-1403",
+   "KES-1408",
+   "KES-1422"
+  ],
+  "removed": [
+   "KES-1382"
+  ]
+ }
+}

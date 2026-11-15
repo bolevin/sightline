@@ -1,0 +1,80 @@
+[
+ {
+  "key": "KES-1363",
+  "fields": {
+   "summary": "Wallet payment in the mobile layout",
+   "issuetype": {
+    "name": "Story",
+    "subtask": false
+   },
+   "priority": {
+    "name": "High"
+   },
+   "created": "2026-10-16T12:39:16.835+0200",
+   "updated": "2026-11-05T11:48:29.699+0100",
+   "status": {
+    "id": "10314",
+    "name": "Blocked"
+   },
+   "customfield_10020": null,
+   "customfield_10016": 3.0,
+   "customfield_10001": {
+    "id": "10200",
+    "value": "Kestrel"
+   },
+   "customfield_10014": "KES-952"
+  },
+  "changelog": {
+   "histories": [
+    {
+     "created": "2026-10-26T08:30:49.251+0100",
+     "items": [
+      {
+       "field": "Sprint",
+       "from": null,
+       "to": "561",
+       "fromString": null,
+       "toString": "Sprint 41"
+      }
+     ]
+    },
+    {
+     "created": "2026-10-28T16:48:33.599+0100",
+     "items": [
+      {
+       "field": "status",
+       "from": "10311",
+       "to": "10312",
+       "fromString": "To Do",
+       "toString": "In Progress"
+      }
+     ]
+    },
+    {
+     "created": "2026-11-02T13:56:57.860+0100",
+     "items": [
+      {
+       "field": "status",
+       "from": "10312",
+       "to": "10314",
+       "fromString": "In Progress",
+       "toString": "Blocked"
+      }
+     ]
+    },
+    {
+     "created": "2026-11-05T11:48:29.699+0100",
+     "items": [
+      {
+       "field": "Sprint",
+       "from": "561",
+       "to": null,
+       "fromString": "Sprint 41",
+       "toString": null
+      }
+     ]
+    }
+   ]
+  }
+ }
+]

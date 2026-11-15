@@ -1,0 +1,39 @@
+{
+ "headline": {"text": "Not on track: 9 % to close everything with 3 days left, and the two blocked items carry 7 SP.",
+              "facts": ["forecast.chance_all_pct", "forecast.days_left", "backlog.blocked_sp", "backlog.blocked_n"]},
+ "cards": [
+  {"id": "promises", "note": "A decision is due today: the options are below the cards.", "rows": [
+   {"facts": ["forecast.chance_all_pct", "sprint.open_sp", "sprint.open_n", "forecast.days_left"], "level": "critical",
+    "text": "9 % chance to finish everything that is open. 16 SP in 11 items are not done, with 3 working days left."},
+   {"facts": ["forecast.p85_done_sp", "forecast.p50_done_sp", "sprint.done_sp", "sprint.day"], "level": "info",
+    "text": "85 % sure of at least 15 SP by the end, as likely as not 20 SP. 13 SP are done on day 7 of 10."},
+   {"facts": ["option.blocked_sp", "option.blocked_chance_pct", "option.both_sp", "option.both_chance_pct"], "level": "warning",
+    "text": "Moving out what is blocked (7 SP) lifts the chance to 41 %. Together with the work that has not started it is 10 SP and 60 %."},
+   {"facts": ["sprint.committed_sp", "plan.sprints_reaching_commitment"], "level": "warning",
+    "text": "31 SP were committed. Only 1 of 8 past sprints completed that much."},
+   {"facts": ["plan.usual_p50_sp"], "level": "info",
+    "text": "The team usually completes 34 SP, so the commitment was within reach."},
+   {"facts": ["forecast.lookbacks_held"], "level": "info",
+    "text": "The forecast has earned some trust: its 85 % line held in 18 of 18 look-backs into past sprints."}]},
+  {"id": "risks", "note": "Blocked work and late scope both showed up before the sprints this team missed.", "rows": [
+   {"facts": ["backlog.blocked_n", "backlog.blocked_sp", "item.KES-1290.sprints"], "level": "critical",
+    "text": "KES-1290 and KES-1391 are blocked, 7 SP together. KES-1290 is in its sprint number 4."},
+   {"facts": ["item.KES-1360.days_in_status", "item.KES-1373.days_in_status"], "level": "warning",
+    "text": "KES-1360 has been in Review for 18 days and KES-1373 in progress for 13 days."},
+   {"facts": ["sprint.added_n"], "level": "warning",
+    "text": "3 items came in after the start: KES-1403, KES-1408 and KES-1422."},
+   {"facts": ["premortem.reasons_n", "premortem.load"], "level": "warning",
+    "text": "The pre-mortem finds 4 of 7 signs that came before this team's missed sprints. The strongest is the load: 119 % of what earlier sprints completed on average."},
+   {"facts": ["code.waiting_review_n", "code.no_pr_n"], "level": "warning",
+    "text": "2 pull requests have waited 24 hours or more for a first review, and 3 items in progress are without a pull request."}]},
+  {"id": "operations", "note": "", "rows": [
+   {"facts": ["notice.new_bugs_n"], "level": "warning",
+    "text": "2 bugs are new for the team since yesterday: KES-1420, handed over by another team, and KES-1422."},
+   {"facts": ["notice.mentions_n"], "level": "warning",
+    "text": "Other teams named the team in 2 issues: OPS-874 and PAY-2291."},
+   {"facts": ["ops.reports_week_n", "ops.recurring_n"], "level": "warning",
+    "text": "1 incident report came in this week, and 2 services had two or more reports in 90 days."},
+   {"facts": ["notice.open_bugs_n"], "level": "info",
+    "text": "2 bugs are open in the sprint: KES-1391 and KES-1422."}]}
+ ]
+}

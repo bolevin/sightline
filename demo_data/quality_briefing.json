@@ -1,0 +1,26 @@
+{
+ "rows": [
+  {"facts": ["quality.escape_pct", "quality.escape_before_pct", "quality.escaped_n"], "level": "critical",
+   "text": "32 % of the bugs of PI 26.4 were found in production, against 20 % in PI 26.3. That is 18 of 56."},
+  {"facts": ["quality.escape_pct", "quality.escape_before_pct"], "level": "critical",
+   "text": "The share of bugs found in production doubled since PI 26.3."},
+  {"facts": ["quality.top_component_pct"], "level": "warning",
+   "text": "payment-gateway holds 39 % of the production bugs of PI 26.4. Start there."},
+  {"facts": ["quality.reopen_pct", "quality.reopen_before_pct"], "level": "warning",
+   "text": "24 % of the fixed bugs came back after their fix. In the increment before it was 13 %."},
+  {"facts": ["quality.top_cause_pct"], "level": "warning",
+   "text": "Regression is the cause behind 38 % of the fixed bugs of PI 26.4: old behaviour broken by new work."},
+  {"facts": ["quality.open_n", "quality.open_before_n", "quality.net_per_sprint"], "level": "warning",
+   "text": "The backlog grows: 29 bugs are open now, 16 were open at the end of PI 26.3, and each sprint brings 2.3 more than it resolves."},
+  {"facts": ["quality.old_n"], "level": "warning",
+   "text": "14 open bugs are older than 30 days. Decide on each: fix it, or close it and say why."},
+  {"facts": ["quality.fix_p50_days"], "level": "info",
+   "text": "Half of the fixed bugs took 13.6 days or less. Read it with care: the slow ones are still open and are not in this number yet."},
+  {"facts": ["quality.link.unreviewed_pct"], "level": "info",
+   "text": "Unreviewed merges move with production bugs a sprint later: r 0.65 over 18 sprints, a moderate link. With so few sprints it could be as low as 0.27."},
+  {"facts": ["quality.link.added_pct", "quality.link.load_pct"], "level": "info",
+   "text": "Late scope and overload show a weaker link (r 0.4 and 0.31). With so few sprints both could be chance."},
+  {"facts": ["quality.last_sprint_n"], "level": "info",
+   "text": "Sprint 41 brought 11 new bugs, inside the usual range of 7 to 13."}
+ ]
+}

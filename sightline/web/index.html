@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sightline</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="shell">
+  <header class="top" id="top">
+    <div class="brand"><svg class="mark" viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="8.5"/><path d="M1.5 14H8M20 14h6.5"/><circle class="dot" cx="14" cy="14" r="3.2"/></svg>
+      <span class="brand-t"><span>Sightline</span><span class="brand-s" id="team">delivery cockpit</span></span></div>
+    <nav class="seg" aria-label="Views">
+      <button type="button" data-tab="today" aria-pressed="true">Today</button>
+      <button type="button" data-tab="promises" aria-pressed="false">Promises</button>
+      <button type="button" data-tab="risks" aria-pressed="false">Risks</button>
+      <button type="button" data-tab="ops" aria-pressed="false">Operations</button>
+      <span class="seg-l">Evidence</span>
+      <button type="button" data-tab="sprint" aria-pressed="false">Sprint</button>
+      <button type="button" data-tab="flow" aria-pressed="false">Flow</button>
+      <button type="button" data-tab="code" aria-pressed="false">Code</button>
+      <button type="button" data-tab="quality" aria-pressed="false">Quality</button>
+      <button type="button" data-tab="hygiene" aria-pressed="false">Hygiene</button>
+      <button type="button" data-tab="inbox" aria-pressed="false">Inbox</button>
+    </nav>
+    <button class="btn" type="button" id="refresh">Refresh</button>
+    <button class="cmd-btn" type="button" id="ask-open" aria-pressed="false" title="Ask the agent (Ctrl K)">
+      <svg class="ai-mark" viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="aiG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7b5cff"/><stop offset="1" stop-color="#00a8e8"/></linearGradient></defs>
+        <path fill="url(#aiG)" d="M12 2l2.2 6.3L20.5 10l-6.3 2.2L12 18.5l-2.2-6.3L3.5 10l6.3-1.7zM19 15l.9 2.6 2.6.9-2.6.9L19 22l-.9-2.6-2.6-.9 2.6-.9z"/></svg>Ask AI</button>
+    <button class="btn" type="button" id="bell" title="What reached the team: new bugs, items handed over, the team named by others">Notices <span class="count" id="bell-n" hidden>0</span></button>
+    <span class="grow"></span>
+    <div class="pal"><button class="pal-btn" type="button" id="pal-btn" aria-haspopup="true" aria-expanded="false" title="Colours"><span class="swatch" id="pal-now"></span><span id="pal-name">Sightline</span></button>
+      <div class="pal-menu" id="pal-menu" role="menu" aria-label="Colours" hidden></div></div>
+    <button class="btn" type="button" data-tab="system" aria-pressed="false" title="Sources, rules, architecture">⚙ System</button>
+    <span class="fresh" id="fresh"></span>
+  </header>
+
+  <div class="boot" id="boot" role="status">Loading the sprint…</div>
+  <div class="demo-note" id="demo-note"><b>Demo.</b> The team, its issues and every number here are invented. The page only reads; what you type stays with you.</div>
+
+  <section class="page on" id="p-today" aria-label="Today">
+    <div class="w" id="composed"></div>
+    <div class="q3" id="cards"></div>
+    <div class="kpis" id="now"></div>
+    <div id="options"></div>
+    <div class="w" id="facts"></div>
+  </section>
+
+  <section class="page" id="p-promises" aria-label="Promises"><div class="tabbody" id="v-promises"></div></section>
+  <section class="page" id="p-risks" aria-label="Risks"><div class="tabbody" id="v-risks"></div></section>
+  <section class="page" id="p-ops" aria-label="Operations"><div class="tabbody" id="v-ops"></div></section>
+  <section class="page" id="p-sprint" aria-label="Sprint"><div class="tabbody" id="v-sprint"></div></section>
+  <section class="page" id="p-flow" aria-label="Flow"><div class="tabbody" id="v-flow"></div></section>
+  <section class="page" id="p-code" aria-label="Code"><div class="tabbody" id="v-code"></div></section>
+  <section class="page" id="p-quality" aria-label="Quality"><div class="tabbody" id="v-quality"></div></section>
+  <section class="page" id="p-hygiene" aria-label="Hygiene"><div class="tabbody" id="v-hygiene"></div></section>
+  <section class="page" id="p-inbox" aria-label="Inbox"><div class="tabbody" id="v-inbox"></div></section>
+
+  <section class="page" id="p-system" aria-label="System">
+    <div class="w" id="arch"></div>
+    <div class="grid2">
+      <div class="w" id="settings"></div>
+      <div class="w" id="sources"></div>
+    </div>
+    <div class="w" id="storage"></div>
+    <div class="w" id="runs"></div>
+    <div class="w" id="rules"></div>
+  </section>
+</div>
+<div class="pop" id="pop" hidden role="dialog" aria-label="Facts behind this line"></div>
+<div class="icard" id="icard" hidden role="tooltip"></div>
+<aside class="cmd" id="ask" hidden aria-label="Ask the agent">
+  <div class="cmd-grip" id="ask-grip" aria-hidden="true"></div>
+  <div class="cmd-h" id="ask-head">
+    <div class="cmd-id"><span class="cmd-eyebrow"><svg class="ai-mark" viewBox="0 0 24 24" aria-hidden="true"><path fill="url(#aiG)" d="M12 2l2.2 6.3L20.5 10l-6.3 2.2L12 18.5l-2.2-6.3L3.5 10l6.3-1.7z"/></svg>AI · read-only</span>
+      <span class="cmd-title">Ask about the sprint<span id="ask-help"></span></span></div>
+    <div class="cmd-tools">
+      <button type="button" id="ask-new" title="New conversation" aria-label="New conversation"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
+      <button type="button" data-ask-mode="side" aria-pressed="true" title="On the right" aria-label="Window on the right"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M15 4v16"/></svg></button>
+      <button type="button" data-ask-mode="bottom" aria-pressed="false" title="At the bottom" aria-label="Window at the bottom"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 14h18"/></svg></button>
+      <button type="button" data-ask-mode="float" aria-pressed="false" title="Floating: drag it by this bar" aria-label="Floating window"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="13" height="13" rx="2"/><path d="M8 7V5a1 1 0 0 1 1-1h11a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1h-4"/></svg></button>
+      <button type="button" id="ask-close" title="Close (Esc)" aria-label="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+  </div>
+  <div class="cmd-log" id="ask-log" aria-live="polite"></div>
+  <div class="cmd-f">
+    <div class="composer"><textarea id="ask-text" rows="1" maxlength="2000" placeholder="Ask about the sprint" aria-label="Your question"></textarea>
+      <div class="composer-bar"><button type="button" class="help-word" id="ask-what" title="What can I ask?" aria-label="What can I ask?">?</button>
+        <span class="small dim grow">Enter sends · Shift+Enter starts a new line · the agent reads, it cannot change or send anything</span>
+        <button type="button" class="send" id="ask-send" title="Send" aria-label="Send"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button></div></div>
+  </div>
+</aside>
+<div class="snap-ghost" id="ask-ghost" hidden></div>
+<script src="help.js"></script>
+<script src="app.js"></script>
+<script src="views.js"></script>
+<script src="quality.js"></script>
+</body>
+</html>
