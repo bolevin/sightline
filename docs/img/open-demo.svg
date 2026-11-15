@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="68" viewBox="0 0 400 68" role="img" aria-label="Open the live demo">
+  <title>Open the live demo</title>
+  <rect x="1" y="1" width="398" height="66" rx="14" fill="#0F5C63" stroke="#3FA3AB" stroke-width="2"/>
+  <g fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round">
+    <circle cx="46" cy="34" r="13"/>
+    <path d="M25 34h8M59 34h8"/>
+  </g>
+  <circle cx="46" cy="34" r="5" fill="#F5B83D"/>
+  <text x="84" y="43" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="25" font-weight="700" fill="#FFFFFF">Open the live demo</text>
+  <path d="M350 34h22m-9-9 9 9-9 9" fill="none" stroke="#F5B83D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

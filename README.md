@@ -9,11 +9,11 @@
 ![Dependencies](https://img.shields.io/badge/dependencies-none-2ea44f)
 ![License](https://img.shields.io/badge/license-GPL--3.0--or--later-blue)
 
-### [Open the live demo](https://bolevin.github.io/sightline/)
+<a href="https://bolevin.github.io/sightline/"><img src="docs/img/open-demo.svg" alt="Open the live demo" width="400"></a>
 
 It runs in your browser, on invented data. Nothing to install.
 
-<img src="docs/img/today.png" alt="Sightline, the Today page: three cards answer what the team promised, what can hurt it and what production says; below them six numbers of the sprint and the options when the sprint does not fit" width="100%">
+<a href="https://bolevin.github.io/sightline/"><img src="docs/img/today.png" alt="Sightline, the Today page: three cards answer what the team promised, what can hurt it and what production says; below them six numbers of the sprint and the options when the sprint does not fit. A click opens the live demo" width="100%"></a>
 
 </div>
 
@@ -214,6 +214,14 @@ a steering meeting with numbers I could defend. I took Sightline from the first 
 decided what it answers and what it must never do, designed the architecture, wrote the rules the code has to
 keep and chose what gets tested. The code itself was written by AI coding agents that I direct the way a tech
 lead directs a team: I review, accept or send back every change.
+
+<div align="center">
+
+<a href="https://bolevin.github.io/sightline/"><img src="docs/img/open-demo.svg" alt="Open the live demo" width="400"></a>
+
+See it for yourself. The demo runs in your browser, on invented data.
+
+</div>
 
 ## License
 
