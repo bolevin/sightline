@@ -94,6 +94,105 @@ class Hosted(unittest.TestCase):
             self.assertNotRegex(text, r"[A-Z]:\\\\|/Users/|/home/", p.name)
 
 
+class Architecture(unittest.TestCase):
+    """The architecture panel of the System tab: it names what the demo has, and its links lead to what exists."""
+
+    JS = read("app.js").split("const LAYERS = [")[1].split("const STEPS = [")[0]
+    DECISIONS = read("app.js").split("const DECISIONS = [")[1].split("function architecture(){")[0]
+
+    def test_it_names_no_source_the_demo_does_not_have(self):
+        sources = re.findall(r'\["([^"]+)", "[^"]+", (?:true|false)\]', self.JS.split('["Collect and keep"')[0])
+        state = build_site.state()
+        has = {"Jira": bool(state["facts"]), "Git hosting": bool(state["views"]["code"]), "Incident reports": bool(state["views"]["incidents"]),
+               "Service catalogue": state["services"]["status"] == "ok"}
+        self.assertEqual(sources, list(has))             # these four and no other: nothing that is only planned
+        self.assertEqual([name for name, there in has.items() if not there], [])
+        self.assertEqual(re.findall(r'^  \["([^"]+)", "', self.JS, re.M), ["Sources", "Collect and keep", "Compute", "Agents", "Check and present"])
+
+    def test_every_decision_leads_to_its_record(self):
+        shown = re.findall(r'\["(\d{4}-[a-z0-9-]+)", "([^"]+)", "[^"]+"\]', self.DECISIONS)
+        records = sorted(ROOT.joinpath("docs", "adr").glob("*.md"))
+        self.assertEqual([slug for slug, _ in shown], [p.stem for p in records])           # each record once, none invented
+        for (slug, title), path in zip(shown, records):
+            self.assertEqual(path.read_text(encoding="utf-8").splitlines()[0].split(". ", 1)[1], title, slug)
+        js = read("app.js")
+        self.assertIn('const REPO_URL = "https://github.com/bolevin/sightline/blob/main/docs/";', js)
+        self.assertTrue(ROOT.joinpath("docs", "architecture.md").exists())
+        self.assertIn('target="_blank" rel="noopener noreferrer"', js.split("function architecture(){")[1].split("\n}")[0])       # a new tab, without a way back to this page
+
+    def test_the_computing_layer_names_what_computes(self):
+        parts = re.findall(r'\["([^"]+)", "[^"]+", true\]', self.JS.split('["Compute"')[1].split('["Agents"')[0])
+        self.assertEqual(parts, ["Sprint and scope", "Forecast and calibration", "Signals and pre-mortem", "Quality analytics", "Drafts", "Read-only tools"])
+        for module in ("sprint_scope", "forecast", "journal", "premortem", "risks", "quality", "drafts", "tools"):
+            self.assertTrue(ROOT.joinpath("sightline", f"{module}.py").exists(), module)
+
+
+class Diagram(unittest.TestCase):
+    """The drawn architecture and the cards of a narrow screen are two views of the same list."""
+
+    def test_the_diagram_is_drawn_from_the_same_layers_as_the_cards(self):
+        js = read("app.js")
+        drawn = js.split("function diagram(){")[1].split("\nfunction architecture(){")[0]
+        cards = js.split("function architecture(){")[1].split("\n}")[0]
+        self.assertIn("LAYERS.map((l, i) =>", cards)
+        for taken in ("LAYERS[0][3].map(([name, note, live], n) =>",         # the systems of the team
+                      "LAYERS[2][3].slice(0, -1).map(p => p[0])",            # what the code computes
+                      "LAYERS[3][3].map(([name, note, live]) =>",            # the agents
+                      "part(1, 0)[0]", "part(1, 1)[0]", "part(1, 2)[0]", "part(2, 5)[0]", "part(4, 0)[0]", "part(4, 1)[0]", "part(4, 2)[0]"):
+            self.assertIn(taken, drawn, taken)
+        for name in re.findall(r'\["([^"]+)", "[^"]+", (?:true|false)\]', js.split("const LAYERS = [")[1].split("const STEPS = [")[0]):
+            self.assertNotIn(f'"{name}', drawn, name)                        # no part is named a second time in the map
+        self.assertIn('<div class="arc-d">${diagram()}</div><div class="arc-flow">', cards)
+
+    def test_the_numbers_of_the_map_are_those_of_the_page(self):
+        drawn = read("app.js").split("function diagram(){")[1].split("\nfunction architecture(){")[0]
+        for live in ("Object.keys(s.cards).length", "${s.facts.length} facts", "s.composed.problems.length", "${esc(s.tool_calls ?? 0)} calls since the start",
+                     "s.register.risks.length", "s.inbox.sent.length", "esc(s.settings.port)", "esc(v.code.merged)", "esc(v.incidents.total)", "s.services.apps.length",
+                     "Speech ? LIVE : OFF"):
+            self.assertIn(live, drawn, live)
+        self.assertNotRegex(drawn, r"\b(?:85|87|273|118) (?:facts|issues)")  # no number of the demo written into the drawing
+        self.assertIn('"GitHub Copilot", GONE, KEPT)', drawn)                # the model provider: named, and marked as a place where data leaves
+        self.assertIn("Models of your subscription", drawn)
+        self.assertIn('link(`M${AGENTS + 282 + 5} ${rows[0]}H${MODEL - 5}`, TWO + " " + GONE)', drawn)       # prompts go out, answers come back
+        state = build_site.state()
+        self.assertEqual((state["tool_calls"], state["settings"]["port"] > 0, len(state["cards"]) > 100), (0, True, True))
+
+    def test_a_narrow_screen_gets_the_cards_and_a_wide_one_the_diagram(self):
+        css = read("style.css").split("/* ---- the architecture (System).")[1].split("/* ---- ")[0]
+        self.assertIn("\n.arc-flow{display:none}\n", css)
+        narrow = re.search(r"@media \(max-width:1000px\)\{(.*?)\n\}", css, re.S).group(1)
+        self.assertIn(".arc-d,.arc-wide{display:none !important}", narrow)
+        self.assertIn(".arc-flow{display:grid", narrow)
+        self.assertNotRegex(css, r"#[0-9a-fA-F]{6}\b|rgb\(")                 # its colours are the palette's
+        self.assertIn("@media (prefers-reduced-motion:reduce){.amap .ln.flow{animation:none}}", css)
+        for frame in (".amap .blk.leaves{stroke:var(--accent)", ".amap .blk.off{stroke-dasharray:"):       # what leaves the computer, and what is not in the demo
+            self.assertIn(frame, css, frame)
+
+
+class Voice(unittest.TestCase):
+    """The microphone of the Ask window: the browser hears, the page gets text, and the page says where the audio goes."""
+
+    def test_no_support_no_button_and_the_page_says_where_the_audio_goes(self):
+        html, js = read("index.html"), read("app.js")
+        self.assertIn('<button type="button" class="mic" id="ask-mic" title="Dictate" aria-label="Dictate" aria-pressed="false" hidden>', html)
+        self.assertIn('<p class="voice-note" id="ask-voice" role="status" hidden></p>', html)
+        self.assertIn("const Speech = window.SpeechRecognition || window.webkitSpeechRecognition || null;", js)
+        self.assertIn('$("#ask-mic").hidden = !Speech;', js)
+        note = re.search(r'const VOICE_NOTE = "([^"]+)";', js).group(1)
+        self.assertIn("the audio leaves this computer", note)                # said while it listens, not in a footnote
+        self.assertIn("voiceNote(VOICE_NOTE);", js)
+        self.assertIn("the audio leaves this computer", dict(re.findall(r'^  (\w+): "(.+)",$', read("help.js"), re.M))["ask"])
+
+    def test_what_was_heard_goes_in_as_text(self):
+        voice = read("app.js").split("/* Voice: the microphone of the Ask window.")[1].split('$("#ask-help").innerHTML')[0]
+        self.assertIn("box.value = text;", voice)                            # into the field, like typing
+        self.assertIn("note.textContent = text;", voice)
+        self.assertNotIn("innerHTML", voice)
+        self.assertIn("if (heard && box.value.trim()) sendAsk();", voice)
+        self.assertIn("if (!open) stopMic();", read("app.js"))               # a closed window does not listen
+        self.assertNotIn("fetch(", voice)                                    # the page itself sends no audio anywhere
+
+
 class Phone(unittest.TestCase):
     """The page on a phone: what the script and the style sheet have to agree on. How it looks is checked by eye."""
 

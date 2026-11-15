@@ -59,11 +59,17 @@ def questions(folder: Path) -> list[dict]:
     return [r for r in rows if isinstance(r, dict) and isinstance(r.get("q"), str) and isinstance(r.get("a"), str)] if isinstance(rows, list) else []
 
 
+def _plain(text: str) -> str:
+    """A question as its letters and digits only: so a question that was spoken, without a question mark or with
+    "pre mortem" in two words, is still the question that was recorded."""
+    return "".join(ch for ch in text.lower() if ch.isalnum())
+
+
 def answer(folder: Path, text: str) -> dict:
     """{"answer", "tool_calls", "recorded"} for a question of the Ask window."""
-    asked = " ".join(text.split()).lower()
+    asked = _plain(text)
     for row in questions(folder):
-        if " ".join(row["q"].split()).lower() == asked:
+        if asked and _plain(row["q"]) == asked:
             return {"answer": row["a"], "tool_calls": int(row.get("tools") or 0), "recorded": True}
     return {"answer": NO_ANSWER, "tool_calls": 0, "recorded": False}
 

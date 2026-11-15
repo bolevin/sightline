@@ -137,6 +137,18 @@ class Asking(Live):
         self.assertEqual(self.send("POST", "/api/ask", {"text": ""}, **self.own)[0], 400)
         self.assertEqual(self.send("POST", "/api/ask", {"text": "x" * 2001}, **self.own)[0], 400)
 
+    def test_a_question_that_was_spoken_is_the_question_that_was_recorded(self):
+        cards = self.send("GET", "/api/today")[1]["ask"]
+        row = next(r for r in cards if r["q"] == "What does the pre-mortem say?")
+        for said in ("what does the pre mortem say", "What does the premortem say", "WHAT DOES THE PRE-MORTEM SAY?!"):      # a microphone hears no question mark
+            status, reply = self.send("POST", "/api/ask", {"text": said}, **self.own)
+            self.assertEqual((status, reply["recorded"], reply["answer"]), (200, True, row["a"]), said)
+        for other in ("what does the pre mortem say about cats", "what does the mortem say", "?!"):
+            self.assertFalse(self.send("POST", "/api/ask", {"text": other}, **self.own)[1]["recorded"], other)
+        host = (ROOT / "tools" / "site" / "host.js").read_text(encoding="utf-8")
+        self.assertIn('toLowerCase().replace(/[^\\p{L}\\p{N}]/gu, "")', host)       # the hosted copy hears the same way
+        self.assertIn("asked && base.ask.find(row => plain(row.q) === asked)", host)
+
 
 class Tools(Live):
     """The same facts for an agent: four read-only tools over the Model Context Protocol."""

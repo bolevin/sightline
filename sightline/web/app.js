@@ -97,14 +97,14 @@ function renderToday(){
 
 function renderSystem(){
   const s = state, set = s.settings, a = s.agent, d = s.data, v = s.views;
-  const kv = rows => `<table class="t">${rows.map(([k, v]) => `<tr><td class="k">${k}</td><td>${v}</td></tr>`).join("")}</table>`;
+  const kv = rows => `<table class="t stack">${rows.map(([k, v]) => `<tr><td class="k">${k}</td><td>${v}</td></tr>`).join("")}</table>`;
   card("settings", "Team and sprint", `<span class="small dim">file ${esc(set.file)}</span>`, kv([
     ["Team", esc(s.team)], ["Board", `${s.board.id} · ${esc(s.board.name)}`], ["Sprint", `${s.sprint.id} · ${esc(s.sprint.name)} · ${esc(s.sprint.state)}`],
     ["Sprint dates", `${esc(when(s.sprint.start))} to ${esc(when(s.sprint.end))}`], ["“Done” means", `the column “${esc(s.board.done_column)}” of the board, as in Jira's sprint report`],
     ["Setting: sprint", set.sprint ? esc(set.sprint) : `<span class="dim">empty: the active sprint</span>`],
     ["Setting: data", `folder <span class="mono">${esc(set.data)}</span>`], ["Port", esc(set.port)]]), "settings");
   const row = (lamp, name, text) => `<tr><td><span class="dotl ${lamp}"></span></td><td><b>${name}</b></td><td>${text}</td></tr>`;
-  card("sources", "Sources", "", `<table class="t"><thead><tr><th></th><th>Source</th><th>In this demo</th></tr></thead><tbody>` +
+  card("sources", "Sources", "", `<table class="t stack lead"><thead><tr><th></th><th>Source</th><th>In this demo</th></tr></thead><tbody>` +
     row("ok", "Jira", `the folder <span class="mono">${esc(d.folder)}</span> in Jira's own format: issues with their history, sprints, the velocity chart · as of ${esc(when(d.fetched))}
       <div class="small dim">${d.synthetic ? "Invented for the demo: no team, issue or date in it is real. " : ""}Extra searches in the folder: ${d.searches.length ? d.searches.map(esc).join(", ") : "none"}. The full version reads Jira itself, with GET requests only.</div>`) +
     row(a.status === "ok" ? "ok" : "", "Agents", `${esc(a.detail)}<div class="small dim">The check of the reply is the real one. The full version asks agents that run on a model; they reach the data through the read-only tools and nothing else.</div>`) +
@@ -115,12 +115,12 @@ function renderSystem(){
     row(s.services.status === "ok" ? "ok" : "", "Service catalogue", s.services.status === "ok" ? "a prepared list of invented services" : "none in this data") +
     `</tbody></table>`, "sources");
   const k = s.storage, size = n => n >= 1048576 ? (n / 1048576).toFixed(1) + " MB" : n >= 1024 ? Math.round(n / 1024) + " KB" : n + " B";
-  card("storage", "Kept on this computer", `<span class="small dim">in ${esc(k.folder)} · never committed</span>`, `<div class="tw"><table class="t kept">
+  card("storage", "Kept on this computer", `<span class="small dim">in ${esc(k.folder)} · never committed</span>`, `<div class="tw"><table class="t kept stack">
     <thead><tr><th>File</th><th>What it holds</th><th>Entries</th><th>Size</th></tr></thead><tbody>${k.files.map(f => `<tr><td class="k mono small">${esc(f.path)}</td>
-      <td>${esc(f.what)}${f.exists ? "" : ` <span class="dim">· not there yet</span>`}</td><td class="k">${f.exists ? esc(f.entries) : "—"}</td><td class="k">${f.exists ? esc(size(f.bytes)) : "—"}</td></tr>`).join("")}</tbody></table></div>
+      <td>${esc(f.what)}${f.exists ? "" : ` <span class="dim">· not there yet</span>`}</td><td class="k" data-l="Entries">${f.exists ? esc(f.entries) : "—"}</td><td class="k" data-l="Size">${f.exists ? esc(size(f.bytes)) : "—"}</td></tr>`).join("")}</tbody></table></div>
     <div class="small dim"><b>Never kept:</b> ${k.never.map(esc).join(" · ")}.</div>
     <div class="small dim"><b>In this browser:</b> the palette, where the Ask window stands and which notices you have seen; the conversation stays in this tab until it is closed.</div>`, "storage");
-  card("runs", "Agent runs", `<span class="small dim">what the check made of each reply</span>`, a.runs.length ? `<div class="tw"><table class="t">
+  card("runs", "Agent runs", `<span class="small dim">what the check made of each reply</span>`, a.runs.length ? `<div class="tw"><table class="t stack">
     <thead><tr><th>When</th><th>Agent</th><th>Why</th><th>Result</th><th>What the check said</th></tr></thead><tbody>${a.runs.map(r => `<tr>
       <td class="k">${esc(when(r.at))}</td><td>${esc(r.kind)}</td><td>${esc(r.why)}</td>
       <td><span class="pill ${r.result === "failed" || r.result === "rules" ? "critical" : r.result === "mixed" ? "warning" : "ok"}">${esc(r.result)}</span></td>
@@ -134,39 +134,163 @@ function renderSystem(){
     <li><b>Agents have no hands.</b> They get four read-only tools and nothing else: no files, no shell, no web.</li>
     <li><b>Team level only.</b> No person is counted, ranked or named.</li>
     <li><b>A title is for your eyes only.</b> Rest the pointer on an issue key and its card shows the title, the type and the priority. No fact, no draft and no agent ever gets a title, and the app keeps no descriptions, comments or people.</li></ul>`, "rules");
-  card("arch", "Architecture", `<span class="small dim">green: runs in this demo · grey: recorded or prepared here, live in the full version · dashed: next</span>`, `<div class="tw">${architecture()}</div>`, "arch");
+  card("arch", "Architecture", `<span class="small dim">who talks to whom · the numbers are those of this page, right now</span>`, architecture(), "arch");
 }
 
+/* Architecture: five layers, left to right. A layer names its parts and what it passes on to the next one: the
+   guarantees of the app sit on those borders. On a narrow screen the layers stand below each other. The texts are
+   written here and nowhere else. */
+const REPO_URL = "https://github.com/bolevin/sightline/blob/main/docs/";
+const LAYERS = [
+  ["Sources", "systems of record, only read", "GET requests, never a write", [
+    ["Jira", "issues with their history, sprints, velocity", true],
+    ["Git hosting", "pull requests and their reviews", false],
+    ["Incident reports", "what a triage agent wrote about production", false],
+    ["Service catalogue", "the services the team runs", false]]],
+  ["Collect and keep", "one snapshot per read, no database", "the source's own records", [
+    ["Collectors", "one read-only client per source", false],
+    ["Fact store", "a folder per read, in the source's own format", true],
+    ["Your notes", "risk register and what you sent, on this computer", true]]],
+  ["Compute", "code decides what is true", "facts only: no titles, no people", [
+    ["Sprint and scope", "the sprint as Jira's report counts it, on any day", true],
+    ["Forecast and calibration", "simulation from the team's own history, scored afterwards", true],
+    ["Signals and pre-mortem", "what looks like a risk, against the team's own past", true],
+    ["Quality analytics", "bug flow, escape rate, time to fix, what moves with bugs", true],
+    ["Drafts", "texts composed from facts", true],
+    ["Read-only tools", "facts, sprint, issue, forecast over MCP", true]]],
+  ["Agents", "choose and word, never compute", "a reply that is not trusted yet", [
+    ["Briefing agent", "words Today and the findings, has no tools", false],
+    ["Question agent", "the Ask window, four read-only tools", false],
+    ["An agent of your own", "any MCP client, pointed at /mcp", true]]],
+  ["Check and present", "nothing unchecked is shown", "drafts you send yourself", [
+    ["Check by code", "every number equals a cited fact, every key stands behind one", true],
+    ["The page", "Today, the evidence tabs, Ask", true],
+    ["Inbox", "drafts composed by code, copied and sent by you", true]]],
+];
+const STEPS = [
+  ["Read", "The collectors read the sources with GET requests and write one snapshot. Nothing is written back, ever."],
+  ["Rebuild", "From the changelog code rebuilds the sprint as it stood on each day. No history is stored: it is computed."],
+  ["Compute", "Code turns the sprint into facts: small records with an id, a value and the issue keys behind it."],
+  ["Word", "An agent gets the facts and nothing else. It picks what matters this morning and names the facts each line rests on."],
+  ["Check", "Code checks every line. A number that is not in the cited facts drops the line, and the page says which and why."],
+  ["Decide", "You read, decide and send. Where no agent answered or nothing passed, fixed rules lay out the same facts."],
+];
+const DECISIONS = [
+  ["0001-no-number-comes-from-a-model", "No number comes from a model", "a model chooses and words; arithmetic stays in code"],
+  ["0002-history-instead-of-a-database", "History instead of a database", "any past day is rebuilt from the changelog"],
+  ["0003-read-only-and-local", "Read-only and local", "the safest write access is none"],
+  ["0004-no-people-titles-for-the-eyes-only", "No people, and a title is for the eyes only", "a title has one path, and it ends at your screen"],
+  ["0005-standard-library-only", "Standard library only", "it starts on a locked-down laptop without an install"],
+  ["0006-the-demo-replaces-the-outside-with-files", "The demo replaces the outside world with files", "the same code runs here and against live systems"],
+];
+/* The map: who talks to whom. You and your browser on the left, the app in the middle, the agents and a model on the
+   right, the systems of the team below. A block with a teal frame sends data off this computer; a dashed one is not
+   part of this demo. The lamps and the numbers come from the state of the page, and the names of the parts from
+   LAYERS, so the map cannot name something the cards of a narrow screen do not. */
+function diagram(){
+  const s = state, v = s.views, LETTER = 5.75, part = (layer, n) => LAYERS[layer][3][n];
+  const wrap = (text, most) => text.split(" ").reduce((lines, word) => {
+    const last = lines.length - 1, joined = (lines[last] + " " + word).trim();
+    if (joined.length > most && lines[last]) lines.push(word); else lines[last] = joined;
+    return lines; }, [""]);
+  const lamp = (x, y, kind) => `<circle class="lamp ${kind}" cx="${x}" cy="${y}" r="4.5"/>`;
+  const block = (x, y, w, h, title, cls, light) => `<rect class="blk ${cls}" x="${x}" y="${y}" width="${w}" height="${h}" rx="11"/><text class="bt" x="${x + 14}" y="${y + 27}">${title}</text>${light ? lamp(x + w - 18, y + 22, light) : ""}`;
+  // a part of a block: its name, small lines below, and a lamp when it has a state of its own. Gives [drawing, height]
+  const box = (x, y, w, name, lines, cls, light) => { const left = x + (light ? 26 : 12), h = 28 + 14 * lines.length + (lines.length ? 5 : 0);
+    return [`<rect class="sub ${cls}" x="${x}" y="${y}" width="${w}" height="${h}" rx="7"/>${light ? lamp(x + 14, y + 16, light) : ""}<text class="pn ${cls}" x="${left}" y="${y + 20}">${name}</text>` +
+      lines.map((line, n) => `<text class="pd ${cls}" x="${left}" y="${y + 36 + 14 * n}">${line}</text>`).join(""), h]; };
+  const chips = (x, y, w, names, cls) => { let cx = x, cy = y, out = "";
+    names.forEach(name => { const cw = Math.round(name.length * LETTER + 18); if (cx + cw > x + w && cx > x){ cx = x; cy += 24; }
+      out += `<rect class="chp ${cls}" x="${cx}" y="${cy}" width="${cw}" height="19" rx="9.5"/><text class="ct ${cls}" x="${cx + cw / 2}" y="${cy + 13}" text-anchor="middle">${name}</text>`; cx += cw + 5; });
+    return [out, cy + 19 - y]; };
+  const link = (d, cls) => `<path class="ln ${cls}" d="${d}"/>`, say = (x, y, text, anchor) => `<text class="lab" x="${x}" y="${y}" text-anchor="${anchor || "middle"}">${text}</text>`;
+  const LIVE = "g", KEPT = "rec", OFF = "off", DARK = "c", NONE = "", TWO = "two", GONE = "leaves", FLOW = "flow", LEFT = "start";
+  const YOU = 12, CORE = 394, AGENTS = 776, MODEL = 1142, WIDE = 294, TOP = 16, W = 1338;
+  const issues = Object.keys(s.cards).length, kept = s.page.cards.reduce((n, c) => n + (c.by === "agent" ? c.rows.length : 0), 0) + (v.quality && v.quality.findings.by === "agent" ? v.quality.findings.rows.length : 0);
+  const dropped = s.composed.problems.length + (v.quality ? v.quality.findings.problems.length : 0);
+  let g = `<defs><marker id="mh" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z"/></marker>
+    <marker id="mhf" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z"/></marker></defs>`, at, drawn, tall, inside;
+
+  /* you and your browser */
+  const tabs = $$("[data-tab]").map(b => b.textContent.replace(/[^\w ]/g, "").trim());
+  inside = ""; at = TOP + 42;
+  [drawn, tall] = chips(YOU + 24, at + 30, WIDE - 48, tabs, NONE);
+  inside += `<rect class="sub" x="${YOU + 12}" y="${at}" width="${WIDE - 24}" height="${tall + 42}" rx="7"/><text class="pn" x="${YOU + 24}" y="${at + 20}">${part(4, 1)[0]}</text>` + drawn;
+  at += tall + 50;
+  [drawn, tall] = box(YOU + 12, at, WIDE - 24, "Ask AI, with the microphone", ["your questions, typed or spoken"], NONE, NONE); inside += drawn; at += tall + 8;
+  [drawn, tall] = box(YOU + 12, at, WIDE - 24, part(4, 2)[0], wrap(part(4, 2)[1], 44), NONE, NONE); inside += drawn; at += tall + 12;
+  const youEnd = at;
+  g += block(YOU, TOP, WIDE, youEnd - TOP, "You · browser", NONE, LIVE) + inside;
+  const speechTop = youEnd + 34, mailTop = speechTop + 92 + 22, leftEnd = mailTop + 74;
+  g += block(YOU, speechTop, WIDE, 92, "Speech service of the browser", GONE, Speech ? LIVE : OFF) + `<text class="pd" x="${YOU + 14}" y="${speechTop + 48}">turns what you say into text for Ask AI</text>
+    <text class="pd gone" x="${YOU + 14}" y="${speechTop + 70}">audio leaves this computer</text>`;
+  g += block(YOU, mailTop, WIDE, 74, "Your mail and chat", NONE, NONE) + `<text class="pd" x="${YOU + 14}" y="${mailTop + 50}">Drafts are pasted here. You send them.</text>`;
+
+  /* the app */
+  inside = ""; at = TOP + 42;
+  const inner = CORE + 12, innerW = WIDE - 24, mark = {};
+  [drawn, tall] = box(inner, at, innerW, part(1, 0)[0], [part(1, 0)[1]], DARK, NONE); inside += drawn; at += tall + 7;
+  [drawn, tall] = box(inner, at, innerW, part(1, 1)[0], [`${issues} issues, each with its history`, `as of ${esc(when(s.data.fetched))}`], DARK, NONE); inside += drawn; at += tall + 7;
+  [drawn, tall] = chips(inner + 12, at + 30, innerW - 24, LAYERS[2][3].slice(0, -1).map(p => p[0]), DARK);
+  inside += `<rect class="sub c" x="${inner}" y="${at}" width="${innerW}" height="${tall + 42}" rx="7"/><text class="pn c" x="${inner + 12}" y="${at + 20}">Code computes · ${s.facts.length} facts</text>` + drawn;
+  mark.facts = at + 16; at += tall + 49;
+  [drawn, tall] = box(inner, at, innerW, "Rules without AI", wrap("signals, options, drafts, and the whole page when no agent answers", 44), DARK, NONE); inside += drawn; at += tall + 7;
+  [drawn, tall] = box(inner, at, innerW, part(4, 0)[0], [`${kept} lines of an agent shown, ${dropped} dropped`, "a number must equal a fact the line cites"], DARK, NONE); inside += drawn; mark.check = at + tall / 2; at += tall + 7;
+  [drawn, tall] = chips(inner + 12, at + 30, innerW - 24, ["facts", "sprint", "issue", "forecast"], DARK);
+  inside += `<rect class="sub c" x="${inner}" y="${at}" width="${innerW}" height="${tall + 60}" rx="7"/><text class="pn c" x="${inner + 12}" y="${at + 20}">${part(2, 5)[0]} · 4, over MCP</text>` + drawn +
+    `<text class="pd c" x="${inner + 12}" y="${at + tall + 48}">${esc(s.tool_calls ?? 0)} calls since the start</text>`;
+  mark.tools = at + (tall + 60) / 2; at += tall + 67;
+  [drawn, tall] = box(inner, at, innerW, part(1, 2)[0], [`${s.register.risks.length} in the risk register · ${s.inbox.sent.length} sent`, "two files on this computer"], DARK, NONE); inside += drawn; at += tall + 12;
+  const coreEnd = at + 34;
+  g += block(CORE, TOP, WIDE, coreEnd - TOP, `Sightline · 127.0.0.1:${esc(s.settings.port)}`, "core", LIVE) + inside +
+    `<text class="pd c" x="${CORE + 14}" y="${coreEnd - 26}">standard library only · no database</text><text class="pd c" x="${CORE + 14}" y="${coreEnd - 11}">writes to no system</text>`;
+
+  /* the agents, and the model behind them */
+  inside = ""; at = TOP + 42;
+  const rows = LAYERS[3][3].map(([name, note, live]) => { [drawn, tall] = box(AGENTS + 12, at, 282 - 24, name, wrap(note, 40), NONE, live ? LIVE : KEPT); inside += drawn; const mid = at + tall / 2; at += tall + 7; return mid; });
+  wrap("They get the four tools and nothing else: no files, no shell, no web.", 44).forEach((line, n) => { inside += `<text class="pd" x="${AGENTS + 14}" y="${at + 14 + 14 * n}">${line}</text>`; });
+  const agentsEnd = at + 44, demoTop = agentsEnd + 22, demo = wrap("The replies are recordings made for this data. The check runs on them for real, each time the page is built.", 43);
+  g += block(AGENTS, TOP, 282, agentsEnd - TOP, "Agents · any runtime", NONE, KEPT) + inside;
+  g += block(AGENTS, demoTop, 282, 44 + 14 * demo.length, "In this demo", OFF, NONE) + demo.map((line, n) => `<text class="pd" x="${AGENTS + 14}" y="${demoTop + 46 + 14 * n}">${line}</text>`).join("");
+  // the model provider: the agents send it prompts, so it is the other place where data leaves this computer
+  g += block(MODEL, TOP, 184, 98, "GitHub Copilot", GONE, KEPT) + `<text class="pd" x="${MODEL + 14}" y="${TOP + 52}">Models of your subscription</text>
+    <text class="pd gone" x="${MODEL + 14}" y="${TOP + 76}">data leaves the computer</text>`;
+
+  /* the systems of the team */
+  const teamTop = Math.max(leftEnd, coreEnd, demoTop + 44 + 14 * demo.length) + 46, each = (W - 24 - 28) / LAYERS[0][3].length;
+  const counts = [`${issues} issues in this data`, v.code ? `${esc(v.code.merged)} merged pull requests` : "not in this data", v.incidents ? `${esc(v.incidents.total)} reports` : "not in this data",
+    s.services.status === "ok" ? `${s.services.apps.length} services` : "not in this data"];
+  inside = LAYERS[0][3].map(([name, note, live], n) => { const x = YOU + 14 + each * n;
+    return lamp(x + 5, teamTop + 51, live ? LIVE : KEPT) + `<text class="pn" x="${x + 17}" y="${teamTop + 55}">${name}</text><text class="pd" x="${x + 17}" y="${teamTop + 71}">${note}</text><text class="pd num" x="${x + 17}" y="${teamTop + 87}">${counts[n]}</text>`; }).join("");
+  g += block(YOU, teamTop, W - 24, 102, "Team systems · read only", NONE, NONE) + inside + `<text class="pd" x="${W - 26}" y="${teamTop + 27}" text-anchor="end">${LAYERS[0][3].length} sources</text>`;
+
+  /* who talks to whom */
+  const gapYou = YOU + WIDE, gapCore = CORE + WIDE, lane = [gapCore + 24, gapCore + 44, gapCore + 64];
+  g += link(`M${gapYou + 5} ${TOP + 96}H${CORE - 5}`, TWO) + say((gapYou + CORE) / 2, TOP + 89, "/api");
+  g += link(`M${YOU + 60} ${youEnd + 2}V${speechTop - 5}`, GONE) + say(YOU + 70, youEnd + 21, "voice", LEFT);
+  g += link(`M${gapYou} ${youEnd - 34}H${gapYou + 26}V${mailTop + 37}H${gapYou + 5}`, NONE) + say(gapYou + 33, (youEnd + mailTop) / 2 - 4, "you copy", LEFT) + say(gapYou + 33, (youEnd + mailTop) / 2 + 10, "a draft", LEFT);
+  g += link(`M${gapCore} ${mark.facts}H${lane[0]}V${rows[0]}H${AGENTS - 5}`, FLOW) + say((lane[0] + AGENTS) / 2, rows[0] - 7, "facts only");
+  g += link(`M${AGENTS} ${(rows[0] + rows[1]) / 2}H${lane[1]}V${mark.check}H${gapCore + 5}`, FLOW) + say((gapCore + lane[1]) / 2, mark.check - 7, "replies");
+  g += link(`M${AGENTS} ${rows[2]}H${lane[2]}V${mark.tools}H${gapCore + 5}`, FLOW) + say((gapCore + lane[2]) / 2, mark.tools - 7, "MCP");
+  g += link(`M${AGENTS + 282 + 5} ${rows[0]}H${MODEL - 5}`, TWO + " " + GONE) + say((AGENTS + 282 + MODEL) / 2, rows[0] - 7, "prompts");
+  g += link(`M${CORE + WIDE / 2} ${teamTop - 5}V${coreEnd + 5}`, NONE) + say(CORE + WIDE / 2 + 10, (teamTop + coreEnd) / 2 + 4, "GET requests only, with your own keys", LEFT);
+  return `<svg class="amap" viewBox="0 0 ${W} ${teamTop + 114}" role="img" aria-label="Architecture: you and your browser, Sightline on this computer, the agents and their model provider, and the systems of the team, with what goes between them">${g}</svg>`;
+}
 function architecture(){
-  const box = (x, y, w, h, t, lines = [], cls = "") => `<rect class="${cls}" x="${x}" y="${y}" width="${w}" height="${h}" rx="7"/><text class="b" x="${x + 10}" y="${y + 17}">${t}</text>` +
-    lines.map((l, i) => `<text class="d" x="${x + 10}" y="${y + 32 + i * 13}">${l}</text>`).join("");
-  const ar = (d, cls = "") => `<path class="ar ${cls}" d="${d}"/>`, ln = d => `<path d="${d}" fill="none" stroke="var(--muted)" stroke-width="1.4"/>`;
-  const band = (x, t) => `<text class="band" x="${x}" y="14">${t}</text>`;
-  let g = `<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--muted)"/></marker></defs>`;
-  g += band(10, "1 · Sources, read-only");
-  [["Jira · issues and their history", "live"], ["Git hosting · pull requests", ""], ["Incident reports", ""], ["Service catalogue", ""]].forEach(([s, cls], i) => g += box(10, 26 + i * 32, 176, 26, s, [], cls));
-  g += `<text class="d" x="10" y="166">next</text>`;
-  ["Docs and wiki", "Builds and tests", "Monitoring", "Team chat"].forEach((s, i) => g += box(10, 174 + i * 32, 176, 26, s, [], "later"));
-  g += ln("M186 39H198V283H186") + ar("M198 99H216");
-  g += band(220, "2 · Collect and keep") + box(220, 40, 190, 78, "Collectors", ["read only, with GET requests", "titles and people stay", "in the source"]) +
-    box(220, 150, 190, 78, "Fact store", ["one folder per read:", "issues with history,", "sprints, velocity"], "live") +
-    box(220, 260, 190, 78, "Kept on this computer", ["your risk register,", "what you sent", "no titles, no people"], "live") + ar("M315 118V148");
-  g += band(440, "3 · Code decides what is true");
-  [["Metrics and forecast", "the sprint as Jira counts it, simulation"], ["Signals and notices", "blocked, carried over, new bugs"], ["Promises and risks", "options, pre-mortem, the register"],
-   ["Calibration", "how often the forecast held"], ["Drafts", "texts for the Inbox, composed from facts"]]
-    .forEach(([title, line], i) => g += box(440, 26 + i * 46, 200, 40, title, [line], "live") + ar(`M425 ${46 + i * 46}H438`));
-  g += box(440, 268, 200, 52, "Read-only tools", ["over MCP:", "facts, sprint, issue, forecast"], "live");
-  g += ln("M410 189H425") + ln("M410 300H425") + ln("M425 46V300") + ar("M540 252V266");
-  g += band(670, "4 · Agents choose and word") + `<rect class="fr" x="664" y="26" width="212" height="200" rx="9"/><text class="d" x="674" y="42">any agent runtime · no write access</text>` +
-    box(674, 54, 192, 46, "Briefing agent", ["words the Today page · no tools"]) + box(674, 108, 192, 46, "Question agent", ["the Ask window · four tools"]) +
-    box(674, 162, 192, 46, "An agent of your own", ["point it at /mcp"], "live");
-  g += ar("M640 294H652V131H672");
-  g += band(900, "5 · Check, show, you send") + box(900, 40, 230, 78, "Check by code", ["the reply fits the schema", "every number equals a fact", "every key exists"], "live") +
-    box(900, 140, 230, 52, "The page", ["Today, the evidence tabs, Ask"], "live") + box(900, 214, 230, 40, "Inbox", ["drafts by code: you copy and send"], "live") +
-    box(900, 276, 230, 40, "You", ["nothing is sent for you"], "you");
-  g += ar("M876 120H888V79H898") + ar("M1015 118V138") + ar("M1015 192V212") + ar("M1015 254V274");
-  g += ar("M540 320V356H1142V166H1132", "dash") + `<text class="d" x="556" y="350">no agent, or its reply fails the check → the same facts, laid out by fixed rules</text>`;
-  return `<svg class="arch" viewBox="0 0 1150 366" role="img" aria-label="Architecture: sources, collectors and what is kept, code, agents, check, page">${g}</svg>`;
+  const out = url => `href="${REPO_URL}${url}" target="_blank" rel="noopener noreferrer"`;
+  const layer = ([name, role, passes, parts], i) => `<section class="arc-l"><header><span class="arc-n">${i + 1}</span><div><b>${name}</b><small>${role}</small></div></header>
+      <ul>${parts.map(([part, note, live]) => `<li class="${live ? "live" : "rec"}"><b>${part}</b><span>${note}</span></li>`).join("")}</ul>
+      <footer><span>${["read with", "passes on", "passes on", "passes on", "you get"][i]}</span>${passes}</footer></section>`;
+  return `<div class="arc-d">${diagram()}</div><div class="arc-flow">${LAYERS.map((l, i) => (i ? `<i class="arc-x" aria-hidden="true"></i>` : "") + layer(l, i)).join("")}</div>
+    <div class="legend"><span class="arc-wide"><i class="arc-frame"></i>on this computer</span><span class="arc-wide"><i class="arc-frame leaves"></i>data leaves the computer</span>
+      <span class="arc-wide"><i class="arc-frame off"></i>not in this demo</span><span><i class="arc-dot live"></i>runs in this demo, on invented data</span>
+      <span><i class="arc-dot rec"></i>recorded or prepared in this demo, live in the full version</span></div>
+    <div class="arc-more"><div><div class="lbl">One morning, step by step</div>
+        <ol class="arc-steps">${STEPS.map(([verb, text]) => `<li><b>${verb}.</b> ${text}</li>`).join("")}</ol></div>
+      <div><div class="lbl">Decisions that carry the design</div>
+        <ul class="arc-adr">${DECISIONS.map(([file, title, why]) => `<li><a ${out("adr/" + file + ".md")}>${title}</a><span>${why}</span></li>`).join("")}</ul>
+        <div class="small dim">Each record says what was decided, why, and what it costs. The full description follows the arc42 template:
+          <a ${out("architecture.md")}>architecture.md</a>.</div></div></div>`;
 }
 
 /* the facts behind a line */
@@ -285,6 +409,7 @@ function renderAsk(){
       item.a === undefined ? `<div class="a dim">The agent is reading the data…</div>` :
       `<div class="a"><div class="lbl">${item.recorded ? `Recorded answer of the agent · ${esc(item.tools)} call${item.tools === 1 ? "" : "s"} of the read-only tools; open the facts to check a number` : "Not a question of the recording"}</div>${keyed(item.a)}</div>`)).join("");
   $("#ask-send").disabled = asking;
+  $("#ask-mic").disabled = asking && !hearing;
   $("#ask-what").disabled = asking || off;
   $("#ask-log").scrollTop = chat.length ? $("#ask-log").scrollHeight : 0;
 }
@@ -308,6 +433,7 @@ function placeAsk(){
 function setAskMode(mode){ askMode = mode; store("ask.mode", mode); placeAsk(); }
 function openAsk(open){
   ask.hidden = !open;
+  if (!open) stopMic();
   $("#ask-open").setAttribute("aria-pressed", open);
   placeAsk();
   if (open){ renderAsk(); $("#ask-text").focus(); }
@@ -365,6 +491,57 @@ $("#ask-grip").addEventListener("pointermove", e => {
   document.body.style.paddingBottom = ask.style.height;
 });
 $("#ask-grip").addEventListener("pointerup", () => { if (grip){ grip = false; store("ask.h", parseInt(ask.style.height, 10)); } });
+/* Voice: the microphone of the Ask window. The browser itself turns speech into text, with the speech service of
+   its maker, so the audio leaves this computer: the line under the field says so while it listens. Sightline gets
+   the text and nothing else, and asks it like a typed question. No browser support, no button. */
+const Speech = window.SpeechRecognition || window.webkitSpeechRecognition || null;
+const VOICE_NOTE = "Listening. Your browser turns speech into text with the speech service of its maker, so the audio leaves this computer. Sightline gets only the text.";
+const VOICE_ERR = {"not-allowed": "The browser was not allowed to use the microphone.", "service-not-allowed": "This browser does not allow speech recognition here.",
+  "audio-capture": "No microphone was found.", "no-speech": "Nothing was heard.", network: "The speech service of the browser could not be reached."};
+let hearing = null;
+function voiceNote(text, bad){
+  const note = $("#ask-voice");
+  note.hidden = !text;
+  note.textContent = text;
+  note.classList.toggle("err", !!bad);
+}
+function micState(){
+  const mic = $("#ask-mic"), on = !!hearing;
+  mic.setAttribute("aria-pressed", on);
+  mic.title = on ? "Stop listening" : "Dictate";
+  mic.setAttribute("aria-label", mic.title);
+  mic.disabled = asking && !on;
+  $("#ask-text").placeholder = on ? "Listening…" : "Ask about the sprint";
+  $(".composer").classList.toggle("hearing", on);
+}
+function stopMic(){ if (hearing) hearing.stop(); }
+function toggleMic(){
+  if (hearing) return stopMic();
+  if (!Speech || asking) return;
+  const rec = new Speech(), box = $("#ask-text");
+  let heard = false, failed = false;
+  rec.lang = "en-US";                     // the page and its recorded questions are English
+  rec.interimResults = true;
+  rec.onresult = event => {
+    let text = "";
+    for (let i = 0; i < event.results.length; i += 1) text += event.results[i][0].transcript;
+    box.value = text;
+    heard = event.results[event.results.length - 1].isFinal;
+  };
+  rec.onerror = event => { failed = true; voiceNote(VOICE_ERR[event.error] || `The microphone stopped (${event.error}).`, true); };
+  rec.onend = () => {
+    hearing = null;
+    if (!failed) voiceNote("");
+    micState();
+    if (heard && box.value.trim()) sendAsk();           // the agent only reads, so a question that was misheard does no harm
+  };
+  hearing = rec;
+  voiceNote(VOICE_NOTE);
+  micState();
+  try { rec.start(); } catch (error){ hearing = null; voiceNote(""); micState(); }
+}
+$("#ask-mic").hidden = !Speech;
+$("#ask-mic").addEventListener("click", toggleMic);
 $("#ask-help").innerHTML = helpTip("ask", "left");
 $("#ask-open").addEventListener("click", () => openAsk(ask.hidden));
 $("#ask-close").addEventListener("click", () => openAsk(false));

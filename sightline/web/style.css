@@ -237,19 +237,73 @@ table.t{border-collapse:collapse;width:100%;font-size:13px}
 .pop .ph{font:600 10.5px var(--f-body);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
 .pop .f{border-top:1px solid var(--line);padding-top:6px;display:grid;gap:2px}
 
-.arch{width:100%;min-width:980px;height:auto;display:block}
-.arch rect{fill:var(--surface-2);stroke:var(--line-strong);stroke-width:1}
-.arch rect.hl{fill:var(--accent-soft);stroke:var(--accent)}
-.arch rect.you{fill:var(--warn-soft);stroke:var(--warn)}
-.arch rect.fr{fill:none;stroke-dasharray:5 4}
-.arch rect.later{stroke-dasharray:4 3;fill:none}
-.arch rect.live{fill:var(--ok-soft);stroke:var(--ok)}
-.arch text{font:11.5px var(--f-body);fill:var(--ink)}
-.arch text.b{font-weight:600}
-.arch text.d{fill:var(--muted);font-size:10.5px}
-.arch text.band{font:600 10.5px var(--f-mono);letter-spacing:.12em;fill:var(--muted);text-transform:uppercase}
-.arch .ar{stroke:var(--muted);stroke-width:1.4;fill:none;marker-end:url(#ah)}
-.arch .ar.dash{stroke-dasharray:5 4}
+/* ---- the architecture (System). A wide screen gets the map: blocks with their parts, lamps and labelled links. A
+   narrow one gets the layers as cards below each other, because a map that wide cannot be read there. */
+.amap{width:100%;height:auto;display:block}
+.amap .blk{fill:var(--surface-2);stroke:var(--line-strong);stroke-width:1.2}
+.amap .blk.leaves{stroke:var(--accent);stroke-width:1.8}
+.amap .blk.off{stroke-dasharray:6 4;fill:none}
+.amap .blk.core{fill:var(--panel);stroke:var(--panel-3)}
+.amap .bt{font:600 15.5px var(--f-disp);font-stretch:85%;fill:var(--ink)}
+.amap .blk.core + .bt{fill:var(--panel-ink)}
+.amap .sub{fill:var(--surface);stroke:var(--line);stroke-width:1}
+.amap .sub.c{fill:var(--panel-2);stroke:var(--panel-3)}
+.amap .pn{font:600 12.5px var(--f-body);fill:var(--ink)}
+.amap .pn.c{fill:var(--panel-ink)}
+.amap .pd{font:11.5px var(--f-body);fill:var(--muted)}
+.amap .pd.c{fill:var(--panel-muted)}
+.amap .pd.gone{fill:var(--accent-ink);font-weight:600}
+.amap .pd.num{fill:var(--ink);font-weight:600}
+.amap .chp{fill:var(--surface-2);stroke:var(--line-strong);stroke-width:1}
+.amap .chp.c{fill:var(--panel-3);stroke:none}
+.amap .ct{font:11px var(--f-body);fill:var(--ink)}
+.amap .ct.c{fill:var(--panel-ink)}
+.amap .lamp.g{fill:var(--ok)} .amap .lamp.rec{fill:none;stroke:var(--line-strong);stroke-width:1.6} .amap .lamp.off{fill:var(--line-strong);fill-opacity:.55}
+.amap .blk.core ~ .lamp.g{fill:var(--ok)}
+.amap .ln{fill:none;stroke:var(--muted);stroke-width:1.6;marker-end:url(#mh)}
+.amap .ln.two{marker-start:url(#mh)}
+.amap .ln.leaves{stroke:var(--accent)}
+.amap .ln.off{stroke-dasharray:5 4}
+.amap .ln.flow{stroke:var(--accent);stroke-width:2;stroke-dasharray:5 4;marker-end:url(#mhf);animation:arcflow 1.1s linear infinite}
+.amap #mh path{fill:var(--muted)} .amap #mhf path{fill:var(--accent)}
+@keyframes arcflow{to{stroke-dashoffset:-9}}
+@media (prefers-reduced-motion:reduce){.amap .ln.flow{animation:none}}
+.amap .lab{font:11px var(--f-body);fill:var(--muted);paint-order:stroke;stroke:var(--surface);stroke-width:4px;stroke-linejoin:round}
+.arc-frame{width:16px !important;height:11px !important;border-radius:3px !important;border:1.4px solid var(--line-strong);background:var(--surface-2)}
+.arc-frame.leaves{border-color:var(--accent);border-width:1.8px}
+.arc-frame.off{border-style:dashed;background:none}
+.arc-flow{display:none}
+.arc-l{display:grid;grid-template-rows:auto 1fr auto;gap:10px;padding:12px;border:1px solid var(--line);border-top:3px solid var(--accent);border-radius:10px;background:var(--surface-2);min-width:0}
+.arc-l header{display:flex;gap:9px;align-items:flex-start}
+.arc-n{flex:none;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:var(--accent);color:var(--surface);font:700 12.5px var(--f-mono)}
+.arc-l header b{display:block;font:600 16px/1.2 var(--f-disp);font-stretch:85%}
+.arc-l header small{display:block;font-size:12px;color:var(--muted);line-height:1.35}
+.arc-l ul{list-style:none;margin:0;padding:0;display:grid;gap:6px;align-content:start}
+.arc-l li{position:relative;padding:6px 8px 6px 22px;border-radius:7px;background:var(--surface);border:1px solid var(--line);font-size:12.5px;line-height:1.35}
+.arc-l li b{display:block;font-size:13px}
+.arc-l li span{color:var(--muted)}
+.arc-l li::before,.arc-dot{content:"";position:absolute;left:8px;top:11px;width:8px;height:8px;border-radius:50%;background:var(--ok)}
+.arc-l li.rec::before,.arc-dot.rec{background:none;box-shadow:inset 0 0 0 1.5px var(--line-strong)}
+.legend i.arc-dot{position:static;width:9px;height:9px;border-radius:50%}
+.arc-l footer{padding-top:8px;border-top:1px dashed var(--line-strong);font-size:12.5px;font-weight:600}
+.arc-l footer span{display:block;font:600 10px var(--f-body);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.arc-x{justify-self:center;width:2px;height:16px;margin:3px 0;background:var(--line-strong);position:relative}
+.arc-x::after{content:"";position:absolute;right:-4px;bottom:-3px;border:5px solid transparent;border-top-color:var(--line-strong);border-bottom:0}
+.arc-more{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:20px;padding-top:4px}
+.arc-more > div{display:grid;gap:8px;align-content:start}
+.arc-steps{margin:0;padding:0;list-style:none;counter-reset:step;display:grid;gap:7px}
+.arc-steps li{counter-increment:step;position:relative;padding-left:30px;font-size:13px}
+.arc-steps li::before{content:counter(step);position:absolute;left:0;top:1px;width:20px;height:20px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line-strong);font:600 11px var(--f-mono);color:var(--muted)}
+.arc-adr{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.arc-adr li{font-size:13px}
+.arc-adr a,.arc-more .small a{color:var(--accent-ink);font-weight:600;text-decoration:none;border-bottom:1px solid var(--accent)}
+.arc-adr a:hover,.arc-more .small a:hover{border-bottom-width:2px}
+.arc-adr span{display:block;color:var(--muted);font-size:12.5px}
+@media (max-width:1000px){
+  .arc-d,.arc-wide{display:none !important}
+  .arc-flow{display:grid;grid-template-columns:minmax(0,1fr)}
+  .arc-more{grid-template-columns:minmax(0,1fr)}
+}
 
 @media (max-width:1280px){.kpis{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:1100px){.q3,.grid2,.s-grid,.q-grid{grid-template-columns:1fr}.s-how{grid-template-columns:repeat(2,minmax(0,1fr))}.kpis.k4{grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -321,6 +375,18 @@ table.t{border-collapse:collapse;width:100%;font-size:13px}
 .help-word:hover:not(:disabled){background:var(--surface-2);color:var(--ink)}
 .send{width:34px;height:34px;flex:none;display:grid;place-items:center;border:0;border-radius:50%;background:var(--cta);color:var(--cta-ink)}
 .send:disabled{background:var(--sunk);color:var(--muted);cursor:not-allowed}
+.mic{width:34px;height:34px;flex:none;display:grid;place-items:center;border:0;border-radius:50%;background:transparent;color:var(--muted)}
+.mic[hidden]{display:none}
+.mic:hover:not(:disabled){background:var(--surface-2);color:var(--ink)}
+.mic:disabled{opacity:.45;cursor:not-allowed}
+.mic svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.mic[aria-pressed="true"]{background:var(--crit-soft);color:var(--crit);animation:hearing 1.4s ease-in-out infinite}
+.composer.hearing{border-color:var(--crit)}
+@keyframes hearing{50%{box-shadow:0 0 0 6px color-mix(in srgb,var(--crit) 16%,transparent)}}
+@media (prefers-reduced-motion:reduce){.mic[aria-pressed="true"]{animation:none}}
+.voice-note{margin:0;font-size:12px;line-height:1.4;color:var(--muted)}
+.voice-note[hidden]{display:none}
+.voice-note.err{color:var(--crit)}
 .send svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 .cmd.float{z-index:45;right:auto;bottom:auto;border:1px solid var(--line-strong);border-radius:14px;overflow:hidden;resize:both;min-width:340px;min-height:320px;box-shadow:0 24px 60px rgba(0,0,0,.28),0 2px 8px rgba(0,0,0,.12)}
 .cmd.float .cmd-h{cursor:move;user-select:none;touch-action:none}
@@ -338,8 +404,6 @@ table.t{border-collapse:collapse;width:100%;font-size:13px}
 
 /* ---- what is kept on this computer (System) */
 .kept td.k{white-space:nowrap}
-.arch .lamp{stroke:none}
-.arch .lamp.on{fill:var(--ok)} .arch .lamp.off{fill:var(--line-strong)}
 
 /* ---- Quality: what the bugs say. One meaning per colour: red is what came in or was found in production, green
    is what went out, the amber ramp is severity (darkest: highest), the teal ramp is the phase a bug was found in
@@ -435,8 +499,8 @@ button.pill{cursor:pointer}
   .bar-row{grid-template-columns:auto minmax(0,1fr) auto;gap:4px 10px}
   .bar-row .share{grid-column:1/-1;grid-row:2}
   .cmd,.cmd.float,.cmd.bottom{z-index:45}
-  .cmd-tools [data-ask-mode],.composer-bar .small{display:none}
-  .composer-bar .send{margin-left:auto}
+  .cmd-tools [data-ask-mode]{display:none}
+  .composer-bar .small{font-size:0}
   .pop{min-width:0;max-width:calc(100vw - 24px)}
   /* a table that would be crushed scrolls inside its panel, and its edge shows that there is more */
   .w > table.t:not(.stack){display:block;overflow-x:auto}

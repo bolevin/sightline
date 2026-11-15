@@ -5,6 +5,14 @@
 - The page fits a phone. The header is two short rows, with the tabs as a strip that scrolls sideways. The charts
   are drawn for a narrow screen. Long tables fold into blocks or scroll inside their panel. A tap on a mark of a
   chart shows what a resting pointer would.
+- System: the architecture is a map of who talks to whom. You and your browser, the app, the agents with the
+  model behind them and the systems of the team are blocks with their parts; every link says what goes over it,
+  a teal frame marks what sends data off the computer, and the numbers are those of the page. A narrow screen
+  shows the same parts as layers below each other. Below stand the steps of one morning and the decisions
+  behind the design, with links to their records. The sources that were only planned are gone: the map shows
+  what exists.
+- Ask: a microphone. The browser turns speech into text, and a question that was spoken is matched to the
+  recorded one without its question mark. The page says, while it listens, that the audio leaves the computer.
 - README: the link to the live demo is a button.
 
 ## 1.0.0 (2026-11-15)

@@ -71,8 +71,8 @@
     try {
       if (path === "api/today") return reply(base);
       if (path === "api/ask"){
-        const asked = String(body.text || "").trim().replace(/\s+/g, " ").toLowerCase();
-        const hit = base.ask.find(row => row.q.trim().replace(/\s+/g, " ").toLowerCase() === asked);
+        const plain = text => String(text || "").toLowerCase().replace(/[^\p{L}\p{N}]/gu, "");       // letters and digits only: a spoken question has no question mark
+        const asked = plain(body.text), hit = asked && base.ask.find(row => plain(row.q) === asked);
         return reply(hit ? {answer: hit.a, tool_calls: hit.tools || 0, recorded: true} : {answer: NO_ANSWER, tool_calls: 0, recorded: false});
       }
       if (path === "api/risks"){ risk(body); return reply({ok: true}); }

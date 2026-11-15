@@ -140,7 +140,8 @@ agent gets no files, no shell and no way to change an issue.
 
 <img src="docs/img/ask.png" alt="The Ask window next to the Today page: the question about the options is answered with the three moves and the chance each one gives" width="100%">
 
-The Ask window answers questions about the sprint from the same facts. In the demo its answers are recordings.
+The Ask window answers questions about the sprint from the same facts. You can type a question or say it: the
+microphone uses the speech recognition of your browser. In the demo its answers are recordings.
 The page also comes in a dark palette, [like this](docs/img/dusk.png).
 
 And three things Sightline never does. It doesn't write to Jira or to any other system. It doesn't count, rank or
@@ -163,7 +164,7 @@ Python 3.10 or newer, no packages to install. The page opens at `http://127.0.0.
 python -m unittest discover -s tests
 ```
 
-runs the 89 tests. To let an agent of your own read the sprint, point an MCP client at
+runs the 98 tests. To let an agent of your own read the sprint, point an MCP client at
 `http://127.0.0.1:8780/mcp` while the page runs.
 
 ## How it is built
@@ -189,6 +190,11 @@ Four decisions carry the design.
 
 The full description follows the arc42 template: [docs/architecture.md](docs/architecture.md). The decisions and
 what each one costs are in [docs/adr](docs/adr).
+
+The demo draws its own architecture on the System tab: who talks to whom, what goes over each link, what leaves
+the computer, and which parts run in the demo. The numbers on the map are those of the page at that moment.
+
+<img src="docs/img/system.png" alt="The System tab: a map of the architecture with you and your browser on the left, Sightline in the middle, the agents and their model provider on the right and the systems of the team below, with a label on every link" width="100%">
 
 ## What is in this demo, and what is not
 

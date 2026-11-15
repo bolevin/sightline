@@ -88,7 +88,9 @@
     <div class="composer"><textarea id="ask-text" rows="1" maxlength="2000" placeholder="Ask about the sprint" aria-label="Your question"></textarea>
       <div class="composer-bar"><button type="button" class="help-word" id="ask-what" title="What can I ask?" aria-label="What can I ask?">?</button>
         <span class="small dim grow">Enter sends · Shift+Enter starts a new line · the agent reads, it cannot change or send anything</span>
+        <button type="button" class="mic" id="ask-mic" title="Dictate" aria-label="Dictate" aria-pressed="false" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button>
         <button type="button" class="send" id="ask-send" title="Send" aria-label="Send"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button></div></div>
+    <p class="voice-note" id="ask-voice" role="status" hidden></p>
   </div>
 </aside>
 <div class="snap-ghost" id="ask-ghost" hidden></div>
