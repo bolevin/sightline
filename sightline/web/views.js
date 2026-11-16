@@ -329,7 +329,7 @@ function sizeDots(sizes){
 }
 function renderCode(){
   const c = state.views.code;
-  if (!c){ $("#v-code").innerHTML = `<div class="pulse">No pull requests in this data.</div>`; return; }
+  if (!c){ $("#v-code").innerHTML = `<div class="pulse">No pull requests in this data.</div>` + deliveryPanels(); return; }
   const slow = c.open.filter(r => r.waiting_h >= 24).length, tone_ = {"waiting for a first review": "warning", "in review": "agent", "approved, not merged": "ok"};
   const prRow = r => `<tr><td class="k"><span class="mono small">${esc(r.repo.split("/").pop())} #${esc(r.id)}</span></td><td>${chips(r.keys)}</td><td><span class="pill ${tone_[r.phase] || ""}">${esc(r.phase)}</span></td>
     <td><b class="${r.waiting_h >= 24 ? "late" : ""}">${esc(r.waiting_h)} h</b></td><td>${esc(r.age_days)} d</td><td>${esc(r.approvals)} of ${esc(r.reviewers)}</td><td>${esc(r.rounds)}</td><td>${esc(r.comments)}</td><td>${esc(r.files)}</td></tr>`;
@@ -352,7 +352,7 @@ function renderCode(){
       panel("Hotspots: where code changes and bugs meet", `<span class="small dim">files changed by two pull requests or more</span>`, c.hotspots.length ? `<table class="t"><thead><tr><th>File</th><th>Pull requests</th><th>Of them for a bug</th></tr></thead><tbody>
         ${c.hotspots.map(f => `<tr><td class="mono small">${esc(f.path)}</td><td>${esc(f.prs)}</td><td>${f.bug_prs ? `<b class="late">${esc(f.bug_prs)}</b>` : "0"}</td></tr>`).join("")}</tbody></table>` : `<div class="dim">No file was changed twice.</div>`, "hotspots") + `</div>` +
     panel("Did the work really start?", `<span class="pill ${c.no_pr.length ? "warning" : "ok"}">${c.no_pr.length}</span>`, `<div class="small dim">Items of the sprint that Jira shows in progress for three days or more and that no pull request names. A branch without a pull request is not seen.</div>${chips(c.no_pr)}`, "nopr") +
-    `<div class="small dim">Pull requests of ${c.repos.map(esc).join(", ")} · as of ${esc(when(c.fetched))}</div>`;
+    `<div class="small dim">Pull requests of ${c.repos.map(esc).join(", ")} · as of ${esc(when(c.fetched))}</div>` + deliveryPanels();
 }
 
 // The tabs are drawn anew with every new state. What the user had opened (a report, a list) stays open: a block is

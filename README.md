@@ -86,6 +86,21 @@ The scope of the sprint as Jira's own sprint report counts it. Flow and cycle ti
 a review and how long. The files where code changes and bugs keep meeting. This is where a Scrum Master starts
 talking about engineering practice with numbers instead of impressions.
 
+### How the team ships
+
+<img src="docs/img/delivery.png" alt="Builds and deploys on the Code tab: the four DORA measures next to the twelve weeks before, where the lead time of a change goes, every deploy on a time line with the ones that had to be repaired, how often main was red and why" width="100%">
+
+Under the pull requests the Code tab reads the build server: every build of main and every deploy to production.
+From these it computes the four DORA measures. How often the team deploys, how long a change takes from the merge
+to production, how many deploys had to be repaired, and how long the repair took. Each one stands next to the
+twelve weeks before.
+
+In the demo data the picture is clear. Half of the changes need 16.1 days to reach production, and 83 % of that
+time they wait for the next release cut. 4 of 6 releases had to be repaired within two days. Of 10 hotfixes with
+one or two changes each, 1 had to be. I would take that into a retrospective about smaller releases. The page also
+shows how often main was red and why: 9 of 19 failed builds passed when they ran again, so the tests that fail now
+and then are the first thing to look at.
+
 ### What the bugs are telling you
 
 <img src="docs/img/quality.png" alt="The Quality tab: six numbers about the bugs of the increment, the findings an agent worded and code checked, bugs created and resolved over twenty sprints, where bugs are found and in which service they sit" width="100%">
@@ -164,7 +179,7 @@ Python 3.10 or newer, no packages to install. The page opens at `http://127.0.0.
 python -m unittest discover -s tests
 ```
 
-runs the 98 tests. To let an agent of your own read the sprint, point an MCP client at
+runs the 120 tests. To let an agent of your own read the sprint, point an MCP client at
 `http://127.0.0.1:8780/mcp` while the page runs.
 
 ## How it is built
@@ -207,6 +222,7 @@ the computer, and which parts run in the demo. The numbers on the map are those 
 | Read-only tools for agents | Real, at `/mcp` | The same |
 | Issue titles on the cards | Invented, in the data folder | Read from Jira when a card opens, shown and not kept |
 | Bugs of the Quality tab | Invented, 178 bugs over 20 sprints, with their own generator | Read from Jira |
+| Builds and deploys | Invented, 169 builds of main and 17 deploys over half a year, with their own generator | A read-only client for the build server, still to come |
 | Pull requests, incident reports, services | Prepared views of invented inputs | Read from the systems |
 | Search in plain language, more sources | Not included | Included |
 

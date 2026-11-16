@@ -48,6 +48,7 @@ flowchart LR
     SM([Scrum Master]) -->|opens the page, keeps notes| S[Sightline]
     S -->|reads issues, sprints, history| J[(Jira)]
     S -.->|reads pull requests| G[(Git hosting)]
+    S -->|reads builds and deploys| B[(Build server)]
     S -.->|reads incident reports| I[(Incident reports)]
     S -.->|reads the service list| C[(Service catalogue)]
     A[[Agent runtime]] -->|calls four read-only tools| S
@@ -55,7 +56,7 @@ flowchart LR
     SM -->|sends them personally| O([Product Owner, team])
 ```
 
-Solid lines run in the demo, on invented data in Jira's own format. Dashed lines are prepared views in the demo
+Solid lines run in the demo, on invented data in the source's own format. Dashed lines are prepared views in the demo
 and live reads in the full version. Sightline never writes to any of the systems on the right, and it sends
 nothing: the Scrum Master copies a draft and sends it.
 
@@ -104,6 +105,7 @@ flowchart TB
 | `today`, `forecast`, `journal` | Turn the sprint into facts: small records with an id, a value and the issue keys behind it. Forecast the rest of the sprint from the team's own history by simulation. Compare past forecasts with how the sprints ended. |
 | `risks`, `premortem` | Find signals in the data that look like risks. Compare the running sprint with the team's own missed and kept sprints. Keep the user's risk register. |
 | `quality` | Compute what the bugs of the last increments say: flow, escape rate, time to fix against a target, survival, debt by age, causes, and how sprint measures move with the bugs of the sprint after. It makes facts of it, and an agent's findings are checked against them. |
+| `delivery` | Compute how the team ships from the records of the build server: deploys, lead time for changes and where it goes, failed deploys and time to restore, the hours main was red and why, releases against hotfixes. The last twelve weeks stand next to the twelve before. It makes facts of it. |
 | `drafts` | Compose texts from facts: sprint status, a note to the Product Owner, points for the Daily, a sprint review, questions for the retrospective. |
 | `page` | Lay the facts out by fixed rules, or check an agent's reply against them and keep what passes. |
 | `tools` | Offer the same facts to an agent as four read-only tools over the Model Context Protocol. |

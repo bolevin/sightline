@@ -19,7 +19,7 @@ SITE = ROOT / "docs" / "demo"
 class Help(unittest.TestCase):
     def test_every_question_mark_has_a_text_and_every_text_a_place(self):
         texts = dict(re.findall(r'^  (\w+): "(.+)",$', read("help.js"), re.M))
-        views = re.sub(r"plural\([^)]*\)", "", read("views.js") + read("quality.js"))
+        views = re.sub(r"plural\([^)]*\)", "", read("views.js") + read("quality.js") + read("delivery.js"))
         asked = (set(re.findall(r'helpTip\("(\w+)"', read("app.js") + views)) | set(re.findall(r', "([a-z]+)"\)', views))
                  | set(re.findall(r'[`)], "([a-z]+)"\);', read("app.js"))))
         self.assertGreater(len(texts), 50)
@@ -103,9 +103,9 @@ class Architecture(unittest.TestCase):
     def test_it_names_no_source_the_demo_does_not_have(self):
         sources = re.findall(r'\["([^"]+)", "[^"]+", (?:true|false)\]', self.JS.split('["Collect and keep"')[0])
         state = build_site.state()
-        has = {"Jira": bool(state["facts"]), "Git hosting": bool(state["views"]["code"]), "Incident reports": bool(state["views"]["incidents"]),
-               "Service catalogue": state["services"]["status"] == "ok"}
-        self.assertEqual(sources, list(has))             # these four and no other: nothing that is only planned
+        has = {"Jira": bool(state["facts"]), "Git hosting": bool(state["views"]["code"]), "Build server": bool(state["views"]["delivery"]),
+               "Incident reports": bool(state["views"]["incidents"]), "Service catalogue": state["services"]["status"] == "ok"}
+        self.assertEqual(sources, list(has))             # these five and no other: nothing that is only planned
         self.assertEqual([name for name, there in has.items() if not there], [])
         self.assertEqual(re.findall(r'^  \["([^"]+)", "', self.JS, re.M), ["Sources", "Collect and keep", "Compute", "Agents", "Check and present"])
 
@@ -122,8 +122,8 @@ class Architecture(unittest.TestCase):
 
     def test_the_computing_layer_names_what_computes(self):
         parts = re.findall(r'\["([^"]+)", "[^"]+", true\]', self.JS.split('["Compute"')[1].split('["Agents"')[0])
-        self.assertEqual(parts, ["Sprint and scope", "Forecast and calibration", "Signals and pre-mortem", "Quality analytics", "Drafts", "Read-only tools"])
-        for module in ("sprint_scope", "forecast", "journal", "premortem", "risks", "quality", "drafts", "tools"):
+        self.assertEqual(parts, ["Sprint and scope", "Forecast and calibration", "Signals and pre-mortem", "Quality analytics", "Delivery measures", "Drafts", "Read-only tools"])
+        for module in ("sprint_scope", "forecast", "journal", "premortem", "risks", "quality", "delivery", "drafts", "tools"):
             self.assertTrue(ROOT.joinpath("sightline", f"{module}.py").exists(), module)
 
 
@@ -138,7 +138,7 @@ class Diagram(unittest.TestCase):
         for taken in ("LAYERS[0][3].map(([name, note, live], n) =>",         # the systems of the team
                       "LAYERS[2][3].slice(0, -1).map(p => p[0])",            # what the code computes
                       "LAYERS[3][3].map(([name, note, live]) =>",            # the agents
-                      "part(1, 0)[0]", "part(1, 1)[0]", "part(1, 2)[0]", "part(2, 5)[0]", "part(4, 0)[0]", "part(4, 1)[0]", "part(4, 2)[0]"):
+                      "part(1, 0)[0]", "part(1, 1)[0]", "part(1, 2)[0]", "part(2, 6)[0]", "part(4, 0)[0]", "part(4, 1)[0]", "part(4, 2)[0]"):
             self.assertIn(taken, drawn, taken)
         for name in re.findall(r'\["([^"]+)", "[^"]+", (?:true|false)\]', js.split("const LAYERS = [")[1].split("const STEPS = [")[0]):
             self.assertNotIn(f'"{name}', drawn, name)                        # no part is named a second time in the map
@@ -147,7 +147,8 @@ class Diagram(unittest.TestCase):
     def test_the_numbers_of_the_map_are_those_of_the_page(self):
         drawn = read("app.js").split("function diagram(){")[1].split("\nfunction architecture(){")[0]
         for live in ("Object.keys(s.cards).length", "${s.facts.length} facts", "s.composed.problems.length", "${esc(s.tool_calls ?? 0)} calls since the start",
-                     "s.register.risks.length", "s.inbox.sent.length", "esc(s.settings.port)", "esc(v.code.merged)", "esc(v.incidents.total)", "s.services.apps.length",
+                     "s.register.risks.length", "s.inbox.sent.length", "esc(s.settings.port)", "esc(v.code.merged)", "esc(v.delivery.deploys.length)", "esc(v.incidents.total)",
+                     "s.services.apps.length",
                      "Speech ? LIVE : OFF"):
             self.assertIn(live, drawn, live)
         self.assertNotRegex(drawn, r"\b(?:85|87|273|118) (?:facts|issues)")  # no number of the demo written into the drawing
@@ -206,9 +207,9 @@ class Phone(unittest.TestCase):
         self.assertIn('PHONE.addEventListener("change", () => { if (state){ renderToday(); renderViews(); } });', js)       # a phone turned on its side is drawn anew
 
     def test_every_chart_takes_its_width_from_the_screen(self):
-        charts = read("views.js") + read("quality.js")
+        charts = read("views.js") + read("quality.js") + read("delivery.js")
         self.assertEqual(re.findall(r"\bw = (?:7|8|9)\d\d,", charts), [])    # no chart with the width of a desk of its own
-        self.assertGreaterEqual(charts.count("w = chartW(),"), 11)
+        self.assertGreaterEqual(charts.count("w = chartW(),"), 13)
         self.assertIn("const chartW = () => PHONE.matches ? 350 : 760;", read("app.js"))
 
     def test_the_header_of_a_phone(self):

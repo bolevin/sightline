@@ -1,0 +1,3003 @@
+{
+ "note": "Invented by tools/make_build_data.py. No real team, product, build or person.",
+ "now": "2026-11-17T10:40:00+01:00",
+ "from": "2026-05-04T12:00:00+02:00",
+ "repos": [
+  "SHOP/checkout-api",
+  "SHOP/checkout-web"
+ ],
+ "services": {
+  "checkout-api": "SHOP/checkout-api",
+  "payment-gateway": "SHOP/checkout-api",
+  "cart-service": "SHOP/checkout-api",
+  "pricing-engine": "SHOP/checkout-api",
+  "checkout-web": "SHOP/checkout-web",
+  "order-mail": "SHOP/checkout-api"
+ },
+ "changes": [
+  {
+   "id": "e6b9197",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-05-06T11:46:16+02:00"
+  },
+  {
+   "id": "50eb350",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-05-07T11:51:11+02:00"
+  },
+  {
+   "id": "53766fd",
+   "repo": "SHOP/checkout-web",
+   "merged": "2026-05-07T15:06:08+02:00"
+  },
+  {
+   "id": "ad5d25a",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-05-08T12:55:58+02:00"
+  },
+  {
+   "id": "662898d",
+   "repo": "SHOP/checkout-web",
+   "merged": "2026-05-11T13:33:02+02:00"
+  },
+  {
+   "id": "5b066d6",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-05-12T16:58:49+02:00"
+  },
+  {
+   "id": "355ab40",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-05-12T17:00:37+02:00"
+  },
+  {
+   "id": "5c6f67f",
+   "repo": "SHOP/checkout-web",
+   "merged": "2026-05-13T14:56:18+02:00"
+  },
+  {
+   "id": "db8f1be",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-05-14T09:45:33+02:00"
+  },
+  {
+   "id": "8f6473b",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-05-21T15:11:14+02:00"
+  },
+  {
+   "id": "6a81f5a",
+   "repo": "SHOP/checkout-web",
+   "merged": "2026-05-25T09:16:12+02:00"
+  },
+  {
+   "id": "5b9bc2a",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-05-26T10:55:19+02:00"
+  },
+  {
+   "id": "98b5f13",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-05-26T11:49:13+02:00"
+  },
+  {
+   "id": "adfab23",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-05-27T12:13:16+02:00"
+  },
+  {
+   "id": "1c5d1dc",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-05-28T13:05:22+02:00"
+  },
+  {
+   "id": "f363b9b",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-05-29T17:29:31+02:00"
+  },
+  {
+   "id": "bd46748",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-06-01T10:19:46+02:00"
+  },
+  {
+   "id": "82f74ee",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-06-01T13:33:37+02:00"
+  },
+  {
+   "id": "7314de4",
+   "repo": "SHOP/checkout-web",
+   "merged": "2026-06-02T12:29:52+02:00"
+  },
+  {
+   "id": "4f03bd3",
+   "repo": "SHOP/checkout-web",
+   "merged": "2026-06-03T11:11:31+02:00"
+  },
+  {
+   "id": "187acfc",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-06-05T08:08:48+02:00"
+  },
+  {
+   "id": "54e79c9",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-06-05T13:58:43+02:00"
+  },
+  {
+   "id": "d1110c1",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-06-05T14:57:27+02:00"
+  },
+  {
+   "id": "dcfde07",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-06-08T10:15:01+02:00"
+  },
+  {
+   "id": "77312cd",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-06-09T15:13:37+02:00"
+  },
+  {
+   "id": "b731929",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-06-10T11:13:00+02:00"
+  },
+  {
+   "id": "6bb88d2",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-06-11T12:02:45+02:00"
+  },
+  {
+   "id": "28748c8",
+   "repo": "SHOP/checkout-web",
+   "merged": "2026-06-11T14:58:48+02:00"
+  },
+  {
+   "id": "e7ef302",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-06-12T15:56:33+02:00"
+  },
+  {
+   "id": "2b8a17a",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-06-15T09:23:52+02:00"
+  },
+  {
+   "id": "c0b7102",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-06-15T09:55:19+02:00"
+  },
+  {
+   "id": "a959118",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-06-17T16:25:22+02:00"
+  },
+  {
+   "id": "2896edf",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-06-18T16:22:20+02:00"
+  },
+  {
+   "id": "e2dbef2",
+   "repo": "SHOP/checkout-web",
+   "merged": "2026-06-19T12:12:20+02:00"
+  },
+  {
+   "id": "49e5918",
+   "repo": "SHOP/checkout-web",
+   "merged": "2026-06-22T10:25:28+02:00"
+  },
+  {
+   "id": "9c41042",
+   "repo": "SHOP/checkout-web",
+   "merged": "2026-06-25T11:27:35+02:00"
+  },
+  {
+   "id": "8656f1f",
+   "repo": "SHOP/checkout-web",
+   "merged": "2026-06-26T16:12:43+02:00"
+  },
+  {
+   "id": "8706481",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-06-29T12:28:16+02:00"
+  },
+  {
+   "id": "7558f84",
+   "repo": "SHOP/checkout-web",
+   "merged": "2026-06-30T12:03:57+02:00"
+  },
+  {
+   "id": "3ec2699",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-06-30T12:45:57+02:00"
+  },
+  {
+   "id": "7ba90a4",
+   "repo": "SHOP/checkout-web",
+   "merged": "2026-07-01T16:24:03+02:00"
+  },
+  {
+   "id": "7bb63ca",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-07-02T13:21:20+02:00"
+  },
+  {
+   "id": "5010b4f",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-07-03T13:50:35+02:00"
+  },
+  {
+   "id": "1d5b050",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-07-06T13:51:29+02:00"
+  },
+  {
+   "id": "2c62326",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-07-07T08:48:19+02:00"
+  },
+  {
+   "id": "c9664aa",
+   "repo": "SHOP/checkout-web",
+   "merged": "2026-07-08T09:30:37+02:00"
+  },
+  {
+   "id": "61c6e98",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-07-09T11:23:53+02:00"
+  },
+  {
+   "id": "7ec3ce8",
+   "repo": "SHOP/checkout-web",
+   "merged": "2026-07-09T13:59:00+02:00"
+  },
+  {
+   "id": "122d058",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-07-13T17:34:10+02:00"
+  },
+  {
+   "id": "2a7304e",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-07-14T11:18:48+02:00"
+  },
+  {
+   "id": "e1aa3f3",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-07-14T13:39:14+02:00"
+  },
+  {
+   "id": "c74c6f1",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-07-14T15:44:57+02:00"
+  },
+  {
+   "id": "38d761c",
+   "repo": "SHOP/checkout-web",
+   "merged": "2026-07-14T16:52:57+02:00"
+  },
+  {
+   "id": "71aac08",
+   "repo": "SHOP/checkout-web",
+   "merged": "2026-07-14T17:27:37+02:00"
+  },
+  {
+   "id": "610e516",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-07-15T13:28:46+02:00"
+  },
+  {
+   "id": "21ef72d",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-07-16T13:50:20+02:00"
+  },
+  {
+   "id": "a32bf93",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-07-21T14:16:46+02:00"
+  },
+  {
+   "id": "560e004",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-07-21T17:34:03+02:00"
+  },
+  {
+   "id": "2ba75e0",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-07-22T16:58:22+02:00"
+  },
+  {
+   "id": "2535b52",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-07-23T17:20:23+02:00"
+  },
+  {
+   "id": "375c5f4",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-07-24T11:21:05+02:00"
+  },
+  {
+   "id": "ae8cc2f",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-07-27T10:58:43+02:00"
+  },
+  {
+   "id": "ab55260",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-07-28T11:31:06+02:00"
+  },
+  {
+   "id": "8cd2054",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-07-29T10:46:00+02:00"
+  },
+  {
+   "id": "4e4aa93",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-07-30T14:44:07+02:00"
+  },
+  {
+   "id": "6035acb",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-07-31T06:28:55+02:00"
+  },
+  {
+   "id": "7a658b1",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-07-31T09:01:39+02:00"
+  },
+  {
+   "id": "d7dde14",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-08-03T15:10:43+02:00"
+  },
+  {
+   "id": "9f3720a",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-08-04T14:00:37+02:00"
+  },
+  {
+   "id": "7519861",
+   "repo": "SHOP/checkout-web",
+   "merged": "2026-08-05T12:30:25+02:00"
+  },
+  {
+   "id": "bce3cf1",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-08-06T09:31:46+02:00"
+  },
+  {
+   "id": "6c4c606",
+   "repo": "SHOP/checkout-web",
+   "merged": "2026-08-07T15:36:33+02:00"
+  },
+  {
+   "id": "7245c11",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-08-10T17:03:57+02:00"
+  },
+  {
+   "id": "141cf20",
+   "repo": "SHOP/checkout-web",
+   "merged": "2026-08-11T08:40:03+02:00"
+  },
+  {
+   "id": "eff359d",
+   "repo": "SHOP/checkout-web",
+   "merged": "2026-08-12T16:03:40+02:00"
+  },
+  {
+   "id": "51645b9",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-08-13T13:31:07+02:00"
+  },
+  {
+   "id": "5e8afb8",
+   "repo": "SHOP/checkout-web",
+   "merged": "2026-08-14T11:08:27+02:00"
+  },
+  {
+   "id": "e92e491",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-08-14T15:18:22+02:00"
+  },
+  {
+   "id": "122c93f",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-08-18T11:03:14+02:00"
+  },
+  {
+   "id": "f643113",
+   "repo": "SHOP/checkout-web",
+   "merged": "2026-08-19T10:04:35+02:00"
+  },
+  {
+   "id": "2fbb7a5",
+   "repo": "SHOP/checkout-web",
+   "merged": "2026-08-19T10:56:58+02:00"
+  },
+  {
+   "id": "059a304",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-08-24T10:34:17+02:00"
+  },
+  {
+   "id": "de7a74a",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-08-25T12:41:01+02:00"
+  },
+  {
+   "id": "675715e",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-08-26T09:19:49+02:00"
+  },
+  {
+   "id": "41410a4",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-08-26T11:07:48+02:00"
+  },
+  {
+   "id": "6763171",
+   "repo": "SHOP/checkout-web",
+   "merged": "2026-08-28T09:43:22+02:00"
+  },
+  {
+   "id": "8075679",
+   "repo": "SHOP/checkout-web",
+   "merged": "2026-08-28T12:31:21+02:00"
+  },
+  {
+   "id": "ccbfa0a",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-08-28T16:52:59+02:00"
+  },
+  {
+   "id": "4b4b4b4",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-08-31T15:26:56+02:00"
+  },
+  {
+   "id": "02832fe",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-09-01T16:06:24+02:00"
+  },
+  {
+   "id": "60cb056",
+   "repo": "SHOP/checkout-web",
+   "merged": "2026-09-02T14:32:29+02:00"
+  },
+  {
+   "id": "85a2d51",
+   "repo": "SHOP/checkout-web",
+   "merged": "2026-09-03T10:45:25+02:00"
+  },
+  {
+   "id": "2c6772a",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-09-04T13:09:04+02:00"
+  },
+  {
+   "id": "b54c0f5",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-09-04T15:43:07+02:00"
+  },
+  {
+   "id": "e205b99",
+   "repo": "SHOP/checkout-web",
+   "merged": "2026-09-07T11:03:06+02:00"
+  },
+  {
+   "id": "6ce7fdf",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-09-08T13:05:19+02:00"
+  },
+  {
+   "id": "2dfb25b",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-09-09T08:40:40+02:00"
+  },
+  {
+   "id": "ea837a5",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-09-09T12:02:59+02:00"
+  },
+  {
+   "id": "b07e66d",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-09-09T13:29:10+02:00"
+  },
+  {
+   "id": "c371404",
+   "repo": "SHOP/checkout-web",
+   "merged": "2026-09-10T14:39:15+02:00"
+  },
+  {
+   "id": "f1b3b65",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-09-14T16:07:19+02:00"
+  },
+  {
+   "id": "2db3a51",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-09-15T10:12:10+02:00"
+  },
+  {
+   "id": "b9cbe4c",
+   "repo": "SHOP/checkout-web",
+   "merged": "2026-09-16T14:15:05+02:00"
+  },
+  {
+   "id": "6c596e8",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-09-17T09:32:56+02:00"
+  },
+  {
+   "id": "530907f",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-09-18T16:18:27+02:00"
+  },
+  {
+   "id": "834185f",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-09-21T12:05:17+02:00"
+  },
+  {
+   "id": "09b9f47",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-09-22T17:18:47+02:00"
+  },
+  {
+   "id": "9de5c0a",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-09-23T15:47:34+02:00"
+  },
+  {
+   "id": "b387811",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-09-23T16:10:29+02:00"
+  },
+  {
+   "id": "c830c88",
+   "repo": "SHOP/checkout-web",
+   "merged": "2026-09-25T15:19:34+02:00"
+  },
+  {
+   "id": "6a381a2",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-09-28T14:20:25+02:00"
+  },
+  {
+   "id": "153b283",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-09-29T07:50:54+02:00"
+  },
+  {
+   "id": "b964f86",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-09-29T10:13:20+02:00"
+  },
+  {
+   "id": "e4d5735",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-10-01T15:09:07+02:00"
+  },
+  {
+   "id": "162d948",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-10-02T11:20:15+02:00"
+  },
+  {
+   "id": "c8efa0f",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-10-02T13:51:13+02:00"
+  },
+  {
+   "id": "8466159",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-10-05T16:30:03+02:00"
+  },
+  {
+   "id": "b154927",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-10-07T10:57:29+02:00"
+  },
+  {
+   "id": "4fb5577",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-10-08T08:00:19+02:00"
+  },
+  {
+   "id": "4c8e5e9",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-10-08T09:49:30+02:00"
+  },
+  {
+   "id": "b7a6692",
+   "repo": "SHOP/checkout-web",
+   "merged": "2026-10-09T11:04:42+02:00"
+  },
+  {
+   "id": "fc6110a",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-10-09T12:23:49+02:00"
+  },
+  {
+   "id": "d2a3091",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-10-09T13:16:26+02:00"
+  },
+  {
+   "id": "089a532",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-10-12T11:24:50+02:00"
+  },
+  {
+   "id": "4b144ba",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-10-13T12:23:29+02:00"
+  },
+  {
+   "id": "763ac70",
+   "repo": "SHOP/checkout-web",
+   "merged": "2026-10-14T13:15:57+02:00"
+  },
+  {
+   "id": "5dadaa9",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-10-15T14:34:03+02:00"
+  },
+  {
+   "id": "57289da",
+   "repo": "SHOP/checkout-web",
+   "merged": "2026-10-16T09:17:18+02:00"
+  },
+  {
+   "id": "ac4bfbb",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-10-19T09:55:29+02:00"
+  },
+  {
+   "id": "a96112a",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-10-19T14:04:47+02:00"
+  },
+  {
+   "id": "a73ccc8",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-10-20T17:19:33+02:00"
+  },
+  {
+   "id": "32024fb",
+   "repo": "SHOP/checkout-web",
+   "merged": "2026-10-21T17:21:42+02:00"
+  },
+  {
+   "id": "578a143",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-10-22T15:03:24+02:00"
+  },
+  {
+   "id": "5bbb22f",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-10-22T17:06:26+02:00"
+  },
+  {
+   "id": "f42f6bb",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-10-23T08:37:13+02:00"
+  },
+  {
+   "id": "1cc432a",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-10-23T10:33:41+02:00"
+  },
+  {
+   "id": "d7d4e32",
+   "repo": "SHOP/checkout-web",
+   "merged": "2026-10-23T12:32:50+02:00"
+  },
+  {
+   "id": "41b93ea",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-10-23T15:29:20+02:00"
+  },
+  {
+   "id": "5a13ace",
+   "repo": "SHOP/checkout-web",
+   "merged": "2026-10-26T15:39:32+01:00"
+  },
+  {
+   "id": "6817ba8",
+   "repo": "SHOP/checkout-web",
+   "merged": "2026-10-27T16:08:27+01:00"
+  },
+  {
+   "id": "f800d71",
+   "repo": "SHOP/checkout-web",
+   "merged": "2026-10-28T15:25:37+01:00"
+  },
+  {
+   "id": "b01b440",
+   "repo": "SHOP/checkout-web",
+   "merged": "2026-10-29T08:56:11+01:00"
+  },
+  {
+   "id": "6bfed4f",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-10-30T11:28:45+01:00"
+  },
+  {
+   "id": "25fb1a6",
+   "repo": "SHOP/checkout-web",
+   "merged": "2026-11-02T11:53:35+01:00"
+  },
+  {
+   "id": "0cb3d31",
+   "repo": "SHOP/checkout-web",
+   "merged": "2026-11-03T11:03:48+01:00"
+  },
+  {
+   "id": "40c4189",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-11-04T06:09:31+01:00"
+  },
+  {
+   "id": "439deef",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-11-04T11:14:29+01:00"
+  },
+  {
+   "id": "8c39235",
+   "repo": "SHOP/checkout-web",
+   "merged": "2026-11-05T13:32:31+01:00"
+  },
+  {
+   "id": "2d3fc2e",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-11-06T12:02:30+01:00"
+  },
+  {
+   "id": "7f490d0",
+   "repo": "SHOP/checkout-web",
+   "merged": "2026-11-10T10:31:58+01:00"
+  },
+  {
+   "id": "3bd995c",
+   "repo": "SHOP/checkout-web",
+   "merged": "2026-11-10T12:26:36+01:00"
+  },
+  {
+   "id": "a12520a",
+   "repo": "SHOP/checkout-api",
+   "merged": "2026-11-11T15:29:53+01:00"
+  }
+ ],
+ "builds": [
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1408,
+   "started": "2026-05-06T11:48:24+02:00",
+   "finished": "2026-05-06T12:03:37+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "e6b9197"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1409,
+   "started": "2026-05-07T11:52:55+02:00",
+   "finished": "2026-05-07T12:08:40+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "50eb350"
+  },
+  {
+   "repo": "SHOP/checkout-web",
+   "number": 812,
+   "started": "2026-05-07T15:08:16+02:00",
+   "finished": "2026-05-07T15:15:24+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "53766fd"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1410,
+   "started": "2026-05-08T12:58:38+02:00",
+   "finished": "2026-05-08T13:13:58+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "ad5d25a"
+  },
+  {
+   "repo": "SHOP/checkout-web",
+   "number": 813,
+   "started": "2026-05-11T13:34:47+02:00",
+   "finished": "2026-05-11T13:42:03+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "662898d"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1411,
+   "started": "2026-05-12T17:01:10+02:00",
+   "finished": "2026-05-12T17:18:39+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "5b066d6"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1412,
+   "started": "2026-05-12T17:18:39+02:00",
+   "finished": "2026-05-12T17:33:58+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "355ab40"
+  },
+  {
+   "repo": "SHOP/checkout-web",
+   "number": 814,
+   "started": "2026-05-13T14:59:15+02:00",
+   "finished": "2026-05-13T15:08:07+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "5c6f67f"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1413,
+   "started": "2026-05-14T09:48:17+02:00",
+   "finished": "2026-05-14T10:04:42+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "db8f1be"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1414,
+   "started": "2026-05-21T15:12:22+02:00",
+   "finished": "2026-05-21T15:24:36+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "8f6473b"
+  },
+  {
+   "repo": "SHOP/checkout-web",
+   "number": 815,
+   "started": "2026-05-25T09:17:50+02:00",
+   "finished": "2026-05-25T09:24:00+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "6a81f5a"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1415,
+   "started": "2026-05-26T10:55:57+02:00",
+   "finished": "2026-05-26T11:08:19+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "5b9bc2a"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1416,
+   "started": "2026-05-26T11:51:55+02:00",
+   "finished": "2026-05-26T12:04:33+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "98b5f13"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1417,
+   "started": "2026-05-27T12:15:31+02:00",
+   "finished": "2026-05-27T12:28:52+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "adfab23"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1418,
+   "started": "2026-05-28T13:07:42+02:00",
+   "finished": "2026-05-28T13:23:15+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "1c5d1dc"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1419,
+   "started": "2026-05-29T17:31:34+02:00",
+   "finished": "2026-05-29T17:45:04+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "f363b9b"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1420,
+   "started": "2026-06-01T10:21:47+02:00",
+   "finished": "2026-06-01T10:35:18+02:00",
+   "result": "FAILURE",
+   "stage": "Integration tests",
+   "trigger": "merge",
+   "change": "bd46748"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1421,
+   "started": "2026-06-01T13:34:35+02:00",
+   "finished": "2026-06-01T13:51:01+02:00",
+   "result": "FAILURE",
+   "stage": "Integration tests",
+   "trigger": "merge",
+   "change": "82f74ee"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1422,
+   "started": "2026-06-01T14:55:15+02:00",
+   "finished": "2026-06-01T15:07:58+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "re-run",
+   "change": null
+  },
+  {
+   "repo": "SHOP/checkout-web",
+   "number": 816,
+   "started": "2026-06-02T12:30:34+02:00",
+   "finished": "2026-06-02T12:37:18+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "7314de4"
+  },
+  {
+   "repo": "SHOP/checkout-web",
+   "number": 817,
+   "started": "2026-06-03T11:14:15+02:00",
+   "finished": "2026-06-03T11:19:29+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "4f03bd3"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1423,
+   "started": "2026-06-05T08:11:19+02:00",
+   "finished": "2026-06-05T08:28:23+02:00",
+   "result": "FAILURE",
+   "stage": "Integration tests",
+   "trigger": "merge",
+   "change": "187acfc"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1424,
+   "started": "2026-06-05T11:20:16+02:00",
+   "finished": "2026-06-05T11:35:56+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "re-run",
+   "change": null
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1425,
+   "started": "2026-06-05T14:01:41+02:00",
+   "finished": "2026-06-05T14:17:45+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "54e79c9"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1426,
+   "started": "2026-06-05T14:59:40+02:00",
+   "finished": "2026-06-05T15:15:56+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "d1110c1"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1427,
+   "started": "2026-06-08T10:16:21+02:00",
+   "finished": "2026-06-08T10:34:09+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "dcfde07"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1428,
+   "started": "2026-06-09T15:16:23+02:00",
+   "finished": "2026-06-09T15:31:05+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "77312cd"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1429,
+   "started": "2026-06-10T11:15:02+02:00",
+   "finished": "2026-06-10T11:28:56+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "b731929"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1430,
+   "started": "2026-06-11T12:05:17+02:00",
+   "finished": "2026-06-11T12:20:14+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "6bb88d2"
+  },
+  {
+   "repo": "SHOP/checkout-web",
+   "number": 818,
+   "started": "2026-06-11T14:59:53+02:00",
+   "finished": "2026-06-11T15:06:48+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "28748c8"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1431,
+   "started": "2026-06-12T15:59:15+02:00",
+   "finished": "2026-06-12T16:14:12+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "e7ef302"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1432,
+   "started": "2026-06-15T09:26:35+02:00",
+   "finished": "2026-06-15T09:41:11+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "2b8a17a"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1433,
+   "started": "2026-06-15T09:57:09+02:00",
+   "finished": "2026-06-15T10:15:24+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "c0b7102"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1434,
+   "started": "2026-06-17T16:28:00+02:00",
+   "finished": "2026-06-17T16:46:27+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "a959118"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1435,
+   "started": "2026-06-18T16:25:05+02:00",
+   "finished": "2026-06-18T16:40:36+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "2896edf"
+  },
+  {
+   "repo": "SHOP/checkout-web",
+   "number": 819,
+   "started": "2026-06-19T12:12:52+02:00",
+   "finished": "2026-06-19T12:20:48+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "e2dbef2"
+  },
+  {
+   "repo": "SHOP/checkout-web",
+   "number": 820,
+   "started": "2026-06-22T10:27:49+02:00",
+   "finished": "2026-06-22T10:34:47+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "49e5918"
+  },
+  {
+   "repo": "SHOP/checkout-web",
+   "number": 821,
+   "started": "2026-06-25T11:29:19+02:00",
+   "finished": "2026-06-25T11:36:51+02:00",
+   "result": "FAILURE",
+   "stage": "Build machine",
+   "trigger": "merge",
+   "change": "9c41042"
+  },
+  {
+   "repo": "SHOP/checkout-web",
+   "number": 822,
+   "started": "2026-06-25T14:31:18+02:00",
+   "finished": "2026-06-25T14:38:10+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "re-run",
+   "change": null
+  },
+  {
+   "repo": "SHOP/checkout-web",
+   "number": 823,
+   "started": "2026-06-26T16:14:30+02:00",
+   "finished": "2026-06-26T16:20:50+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "8656f1f"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1436,
+   "started": "2026-06-29T12:29:19+02:00",
+   "finished": "2026-06-29T12:44:08+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "8706481"
+  },
+  {
+   "repo": "SHOP/checkout-web",
+   "number": 824,
+   "started": "2026-06-30T12:06:32+02:00",
+   "finished": "2026-06-30T12:12:58+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "7558f84"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1437,
+   "started": "2026-06-30T12:48:09+02:00",
+   "finished": "2026-06-30T12:58:31+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "3ec2699"
+  },
+  {
+   "repo": "SHOP/checkout-web",
+   "number": 825,
+   "started": "2026-07-01T16:25:56+02:00",
+   "finished": "2026-07-01T16:32:04+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "7ba90a4"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1438,
+   "started": "2026-07-02T13:22:32+02:00",
+   "finished": "2026-07-02T13:37:50+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "7bb63ca"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1439,
+   "started": "2026-07-03T13:52:38+02:00",
+   "finished": "2026-07-03T14:09:17+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "5010b4f"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1440,
+   "started": "2026-07-06T13:52:47+02:00",
+   "finished": "2026-07-06T14:07:16+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "1d5b050"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1441,
+   "started": "2026-07-07T08:50:23+02:00",
+   "finished": "2026-07-07T09:06:29+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "2c62326"
+  },
+  {
+   "repo": "SHOP/checkout-web",
+   "number": 826,
+   "started": "2026-07-08T09:33:32+02:00",
+   "finished": "2026-07-08T09:39:04+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "c9664aa"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1442,
+   "started": "2026-07-09T11:24:33+02:00",
+   "finished": "2026-07-09T11:39:45+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "61c6e98"
+  },
+  {
+   "repo": "SHOP/checkout-web",
+   "number": 827,
+   "started": "2026-07-09T14:00:57+02:00",
+   "finished": "2026-07-09T14:06:37+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "7ec3ce8"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1443,
+   "started": "2026-07-13T17:34:40+02:00",
+   "finished": "2026-07-13T17:52:25+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "122d058"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1444,
+   "started": "2026-07-14T11:19:26+02:00",
+   "finished": "2026-07-14T11:37:31+02:00",
+   "result": "FAILURE",
+   "stage": "Compile",
+   "trigger": "merge",
+   "change": "2a7304e"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1445,
+   "started": "2026-07-14T13:39:46+02:00",
+   "finished": "2026-07-14T13:52:28+02:00",
+   "result": "FAILURE",
+   "stage": "Compile",
+   "trigger": "merge",
+   "change": "e1aa3f3"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1446,
+   "started": "2026-07-14T15:47:50+02:00",
+   "finished": "2026-07-14T16:01:19+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "c74c6f1"
+  },
+  {
+   "repo": "SHOP/checkout-web",
+   "number": 828,
+   "started": "2026-07-14T16:54:29+02:00",
+   "finished": "2026-07-14T17:01:31+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "38d761c"
+  },
+  {
+   "repo": "SHOP/checkout-web",
+   "number": 829,
+   "started": "2026-07-14T17:28:26+02:00",
+   "finished": "2026-07-14T17:35:52+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "71aac08"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1447,
+   "started": "2026-07-15T13:31:44+02:00",
+   "finished": "2026-07-15T13:47:26+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "610e516"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1448,
+   "started": "2026-07-16T13:51:43+02:00",
+   "finished": "2026-07-16T14:05:35+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "21ef72d"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1449,
+   "started": "2026-07-21T14:17:26+02:00",
+   "finished": "2026-07-21T14:28:04+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "a32bf93"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1450,
+   "started": "2026-07-21T17:36:18+02:00",
+   "finished": "2026-07-21T17:52:50+02:00",
+   "result": "FAILURE",
+   "stage": "Build machine",
+   "trigger": "merge",
+   "change": "560e004"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1451,
+   "started": "2026-07-22T08:48:15+02:00",
+   "finished": "2026-07-22T09:04:53+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "re-run",
+   "change": null
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1452,
+   "started": "2026-07-22T16:59:50+02:00",
+   "finished": "2026-07-22T17:16:44+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "2ba75e0"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1453,
+   "started": "2026-07-23T17:21:56+02:00",
+   "finished": "2026-07-23T17:38:07+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "2535b52"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1454,
+   "started": "2026-07-24T11:22:20+02:00",
+   "finished": "2026-07-24T11:37:38+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "375c5f4"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1455,
+   "started": "2026-07-27T11:00:29+02:00",
+   "finished": "2026-07-27T11:15:59+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "ae8cc2f"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1456,
+   "started": "2026-07-28T11:33:51+02:00",
+   "finished": "2026-07-28T11:48:16+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "ab55260"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1457,
+   "started": "2026-07-29T10:47:06+02:00",
+   "finished": "2026-07-29T10:57:56+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "8cd2054"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1458,
+   "started": "2026-07-30T14:47:00+02:00",
+   "finished": "2026-07-30T15:01:12+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "4e4aa93"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1459,
+   "started": "2026-07-31T06:30:07+02:00",
+   "finished": "2026-07-31T06:41:09+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "6035acb"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1460,
+   "started": "2026-07-31T09:02:28+02:00",
+   "finished": "2026-07-31T09:16:16+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "7a658b1"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1461,
+   "started": "2026-08-03T15:13:37+02:00",
+   "finished": "2026-08-03T15:28:44+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "d7dde14"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1462,
+   "started": "2026-08-04T14:03:27+02:00",
+   "finished": "2026-08-04T14:15:53+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "9f3720a"
+  },
+  {
+   "repo": "SHOP/checkout-web",
+   "number": 830,
+   "started": "2026-08-05T12:32:27+02:00",
+   "finished": "2026-08-05T12:39:34+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "7519861"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1463,
+   "started": "2026-08-06T09:34:40+02:00",
+   "finished": "2026-08-06T09:49:28+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "bce3cf1"
+  },
+  {
+   "repo": "SHOP/checkout-web",
+   "number": 831,
+   "started": "2026-08-07T15:38:06+02:00",
+   "finished": "2026-08-07T15:43:39+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "6c4c606"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1464,
+   "started": "2026-08-10T17:06:47+02:00",
+   "finished": "2026-08-10T17:23:23+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "7245c11"
+  },
+  {
+   "repo": "SHOP/checkout-web",
+   "number": 832,
+   "started": "2026-08-11T08:42:15+02:00",
+   "finished": "2026-08-11T08:47:02+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "141cf20"
+  },
+  {
+   "repo": "SHOP/checkout-web",
+   "number": 833,
+   "started": "2026-08-12T16:06:15+02:00",
+   "finished": "2026-08-12T16:13:02+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "eff359d"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1465,
+   "started": "2026-08-13T13:31:50+02:00",
+   "finished": "2026-08-13T13:44:46+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "51645b9"
+  },
+  {
+   "repo": "SHOP/checkout-web",
+   "number": 834,
+   "started": "2026-08-14T11:08:59+02:00",
+   "finished": "2026-08-14T11:15:52+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "5e8afb8"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1466,
+   "started": "2026-08-14T15:19:44+02:00",
+   "finished": "2026-08-14T15:35:53+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "e92e491"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1467,
+   "started": "2026-08-18T11:05:52+02:00",
+   "finished": "2026-08-18T11:18:13+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "122c93f"
+  },
+  {
+   "repo": "SHOP/checkout-web",
+   "number": 835,
+   "started": "2026-08-19T10:07:24+02:00",
+   "finished": "2026-08-19T10:14:00+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "f643113"
+  },
+  {
+   "repo": "SHOP/checkout-web",
+   "number": 836,
+   "started": "2026-08-19T10:59:25+02:00",
+   "finished": "2026-08-19T11:05:33+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "2fbb7a5"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1468,
+   "started": "2026-08-24T10:36:59+02:00",
+   "finished": "2026-08-24T10:52:11+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "059a304"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1469,
+   "started": "2026-08-25T12:43:59+02:00",
+   "finished": "2026-08-25T12:58:08+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "de7a74a"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1470,
+   "started": "2026-08-26T09:20:20+02:00",
+   "finished": "2026-08-26T09:34:18+02:00",
+   "result": "FAILURE",
+   "stage": "Integration tests",
+   "trigger": "merge",
+   "change": "675715e"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1471,
+   "started": "2026-08-26T10:07:39+02:00",
+   "finished": "2026-08-26T10:24:38+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "re-run",
+   "change": null
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1472,
+   "started": "2026-08-26T11:08:24+02:00",
+   "finished": "2026-08-26T11:20:43+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "41410a4"
+  },
+  {
+   "repo": "SHOP/checkout-web",
+   "number": 837,
+   "started": "2026-08-28T09:46:13+02:00",
+   "finished": "2026-08-28T09:52:32+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "6763171"
+  },
+  {
+   "repo": "SHOP/checkout-web",
+   "number": 838,
+   "started": "2026-08-28T12:32:43+02:00",
+   "finished": "2026-08-28T12:40:07+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "8075679"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1473,
+   "started": "2026-08-28T16:55:40+02:00",
+   "finished": "2026-08-28T17:10:11+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "ccbfa0a"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1474,
+   "started": "2026-08-31T15:27:42+02:00",
+   "finished": "2026-08-31T15:44:38+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "4b4b4b4"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1475,
+   "started": "2026-09-01T16:08:35+02:00",
+   "finished": "2026-09-01T16:25:44+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "02832fe"
+  },
+  {
+   "repo": "SHOP/checkout-web",
+   "number": 839,
+   "started": "2026-09-02T14:33:27+02:00",
+   "finished": "2026-09-02T14:39:59+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "60cb056"
+  },
+  {
+   "repo": "SHOP/checkout-web",
+   "number": 840,
+   "started": "2026-09-03T10:48:06+02:00",
+   "finished": "2026-09-03T10:55:56+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "85a2d51"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1476,
+   "started": "2026-09-04T13:11:16+02:00",
+   "finished": "2026-09-04T13:26:56+02:00",
+   "result": "FAILURE",
+   "stage": "Integration tests",
+   "trigger": "merge",
+   "change": "2c6772a"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1477,
+   "started": "2026-09-04T15:45:22+02:00",
+   "finished": "2026-09-04T15:59:32+02:00",
+   "result": "FAILURE",
+   "stage": "Integration tests",
+   "trigger": "merge",
+   "change": "b54c0f5"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1478,
+   "started": "2026-09-04T17:53:10+02:00",
+   "finished": "2026-09-04T18:06:10+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "re-run",
+   "change": null
+  },
+  {
+   "repo": "SHOP/checkout-web",
+   "number": 841,
+   "started": "2026-09-07T11:05:39+02:00",
+   "finished": "2026-09-07T11:13:04+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "e205b99"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1479,
+   "started": "2026-09-08T13:08:05+02:00",
+   "finished": "2026-09-08T13:26:07+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "6ce7fdf"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1480,
+   "started": "2026-09-09T08:42:28+02:00",
+   "finished": "2026-09-09T08:53:10+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "2dfb25b"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1481,
+   "started": "2026-09-09T12:05:30+02:00",
+   "finished": "2026-09-09T12:20:07+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "ea837a5"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1482,
+   "started": "2026-09-09T13:30:34+02:00",
+   "finished": "2026-09-09T13:46:14+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "b07e66d"
+  },
+  {
+   "repo": "SHOP/checkout-web",
+   "number": 842,
+   "started": "2026-09-10T14:40:24+02:00",
+   "finished": "2026-09-10T14:49:04+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "c371404"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1483,
+   "started": "2026-09-14T16:09:07+02:00",
+   "finished": "2026-09-14T16:22:40+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "f1b3b65"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1484,
+   "started": "2026-09-15T10:14:12+02:00",
+   "finished": "2026-09-15T10:30:54+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "2db3a51"
+  },
+  {
+   "repo": "SHOP/checkout-web",
+   "number": 843,
+   "started": "2026-09-16T14:17:19+02:00",
+   "finished": "2026-09-16T14:26:00+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "b9cbe4c"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1485,
+   "started": "2026-09-17T09:35:16+02:00",
+   "finished": "2026-09-17T09:50:08+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "6c596e8"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1486,
+   "started": "2026-09-18T16:19:28+02:00",
+   "finished": "2026-09-18T16:35:53+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "530907f"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1487,
+   "started": "2026-09-21T12:08:08+02:00",
+   "finished": "2026-09-21T12:23:40+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "834185f"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1488,
+   "started": "2026-09-22T17:21:11+02:00",
+   "finished": "2026-09-22T17:36:47+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "09b9f47"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1489,
+   "started": "2026-09-23T15:50:14+02:00",
+   "finished": "2026-09-23T16:00:45+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "9de5c0a"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1490,
+   "started": "2026-09-23T16:13:05+02:00",
+   "finished": "2026-09-23T16:29:35+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "b387811"
+  },
+  {
+   "repo": "SHOP/checkout-web",
+   "number": 844,
+   "started": "2026-09-25T15:20:23+02:00",
+   "finished": "2026-09-25T15:28:22+02:00",
+   "result": "FAILURE",
+   "stage": "Build machine",
+   "trigger": "merge",
+   "change": "c830c88"
+  },
+  {
+   "repo": "SHOP/checkout-web",
+   "number": 845,
+   "started": "2026-09-25T15:58:04+02:00",
+   "finished": "2026-09-25T16:05:30+02:00",
+   "result": "FAILURE",
+   "stage": "Integration tests",
+   "trigger": "re-run",
+   "change": null
+  },
+  {
+   "repo": "SHOP/checkout-web",
+   "number": 846,
+   "started": "2026-09-28T08:36:51+02:00",
+   "finished": "2026-09-28T08:43:46+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "re-run",
+   "change": null
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1491,
+   "started": "2026-09-28T14:22:25+02:00",
+   "finished": "2026-09-28T14:38:16+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "6a381a2"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1492,
+   "started": "2026-09-29T07:53:39+02:00",
+   "finished": "2026-09-29T08:09:33+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "153b283"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1493,
+   "started": "2026-09-29T10:15:16+02:00",
+   "finished": "2026-09-29T10:28:57+02:00",
+   "result": "FAILURE",
+   "stage": "Integration tests",
+   "trigger": "merge",
+   "change": "b964f86"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1494,
+   "started": "2026-09-29T12:29:32+02:00",
+   "finished": "2026-09-29T12:46:56+02:00",
+   "result": "FAILURE",
+   "stage": "Build machine",
+   "trigger": "re-run",
+   "change": null
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1495,
+   "started": "2026-09-29T14:35:29+02:00",
+   "finished": "2026-09-29T14:52:00+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "re-run",
+   "change": null
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1496,
+   "started": "2026-10-01T15:10:08+02:00",
+   "finished": "2026-10-01T15:22:45+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "e4d5735"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1497,
+   "started": "2026-10-02T11:21:07+02:00",
+   "finished": "2026-10-02T11:35:04+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "162d948"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1498,
+   "started": "2026-10-02T13:53:45+02:00",
+   "finished": "2026-10-02T14:11:27+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "c8efa0f"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1499,
+   "started": "2026-10-05T16:31:38+02:00",
+   "finished": "2026-10-05T16:47:04+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "8466159"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1500,
+   "started": "2026-10-07T10:59:40+02:00",
+   "finished": "2026-10-07T11:12:09+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "b154927"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1501,
+   "started": "2026-10-08T08:02:53+02:00",
+   "finished": "2026-10-08T08:13:43+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "4fb5577"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1502,
+   "started": "2026-10-08T09:50:09+02:00",
+   "finished": "2026-10-08T10:02:03+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "4c8e5e9"
+  },
+  {
+   "repo": "SHOP/checkout-web",
+   "number": 847,
+   "started": "2026-10-09T11:07:35+02:00",
+   "finished": "2026-10-09T11:14:55+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "b7a6692"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1503,
+   "started": "2026-10-09T12:26:41+02:00",
+   "finished": "2026-10-09T12:41:51+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "fc6110a"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1504,
+   "started": "2026-10-09T13:18:00+02:00",
+   "finished": "2026-10-09T13:30:56+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "d2a3091"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1505,
+   "started": "2026-10-12T11:25:40+02:00",
+   "finished": "2026-10-12T11:40:26+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "089a532"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1506,
+   "started": "2026-10-13T12:24:25+02:00",
+   "finished": "2026-10-13T12:37:46+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "4b144ba"
+  },
+  {
+   "repo": "SHOP/checkout-web",
+   "number": 848,
+   "started": "2026-10-14T13:18:45+02:00",
+   "finished": "2026-10-14T13:26:24+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "763ac70"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1507,
+   "started": "2026-10-15T14:35:47+02:00",
+   "finished": "2026-10-15T14:48:26+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "5dadaa9"
+  },
+  {
+   "repo": "SHOP/checkout-web",
+   "number": 849,
+   "started": "2026-10-16T09:19:59+02:00",
+   "finished": "2026-10-16T09:26:04+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "57289da"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1508,
+   "started": "2026-10-19T09:57:27+02:00",
+   "finished": "2026-10-19T10:10:01+02:00",
+   "result": "FAILURE",
+   "stage": "Unit tests",
+   "trigger": "merge",
+   "change": "ac4bfbb"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1509,
+   "started": "2026-10-19T14:07:16+02:00",
+   "finished": "2026-10-19T14:21:32+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "a96112a"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1510,
+   "started": "2026-10-20T17:21:19+02:00",
+   "finished": "2026-10-20T17:37:33+02:00",
+   "result": "FAILURE",
+   "stage": "Integration tests",
+   "trigger": "merge",
+   "change": "a73ccc8"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1511,
+   "started": "2026-10-21T08:27:10+02:00",
+   "finished": "2026-10-21T08:42:22+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "re-run",
+   "change": null
+  },
+  {
+   "repo": "SHOP/checkout-web",
+   "number": 850,
+   "started": "2026-10-21T17:24:02+02:00",
+   "finished": "2026-10-21T17:32:41+02:00",
+   "result": "FAILURE",
+   "stage": "Integration tests",
+   "trigger": "merge",
+   "change": "32024fb"
+  },
+  {
+   "repo": "SHOP/checkout-web",
+   "number": 851,
+   "started": "2026-10-22T08:34:02+02:00",
+   "finished": "2026-10-22T08:41:10+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "re-run",
+   "change": null
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1512,
+   "started": "2026-10-22T15:05:11+02:00",
+   "finished": "2026-10-22T15:22:35+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "578a143"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1513,
+   "started": "2026-10-22T17:08:03+02:00",
+   "finished": "2026-10-22T17:28:24+02:00",
+   "result": "FAILURE",
+   "stage": "Unit tests",
+   "trigger": "merge",
+   "change": "5bbb22f"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1514,
+   "started": "2026-10-23T08:40:03+02:00",
+   "finished": "2026-10-23T08:57:23+02:00",
+   "result": "FAILURE",
+   "stage": "Integration tests",
+   "trigger": "merge",
+   "change": "f42f6bb"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1515,
+   "started": "2026-10-23T10:36:32+02:00",
+   "finished": "2026-10-23T10:54:05+02:00",
+   "result": "FAILURE",
+   "stage": "Compile",
+   "trigger": "merge",
+   "change": "1cc432a"
+  },
+  {
+   "repo": "SHOP/checkout-web",
+   "number": 852,
+   "started": "2026-10-23T12:33:38+02:00",
+   "finished": "2026-10-23T12:42:00+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "d7d4e32"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1516,
+   "started": "2026-10-23T15:31:01+02:00",
+   "finished": "2026-10-23T15:43:28+02:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "41b93ea"
+  },
+  {
+   "repo": "SHOP/checkout-web",
+   "number": 853,
+   "started": "2026-10-26T15:40:34+01:00",
+   "finished": "2026-10-26T15:48:47+01:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "5a13ace"
+  },
+  {
+   "repo": "SHOP/checkout-web",
+   "number": 854,
+   "started": "2026-10-27T16:11:17+01:00",
+   "finished": "2026-10-27T16:16:34+01:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "6817ba8"
+  },
+  {
+   "repo": "SHOP/checkout-web",
+   "number": 855,
+   "started": "2026-10-28T15:27:41+01:00",
+   "finished": "2026-10-28T15:34:36+01:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "f800d71"
+  },
+  {
+   "repo": "SHOP/checkout-web",
+   "number": 856,
+   "started": "2026-10-29T08:57:06+01:00",
+   "finished": "2026-10-29T09:05:00+01:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "b01b440"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1517,
+   "started": "2026-10-30T11:30:16+01:00",
+   "finished": "2026-10-30T11:46:37+01:00",
+   "result": "FAILURE",
+   "stage": "Integration tests",
+   "trigger": "merge",
+   "change": "6bfed4f"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1518,
+   "started": "2026-10-30T13:05:37+01:00",
+   "finished": "2026-10-30T13:26:08+01:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "re-run",
+   "change": null
+  },
+  {
+   "repo": "SHOP/checkout-web",
+   "number": 857,
+   "started": "2026-11-02T11:55:14+01:00",
+   "finished": "2026-11-02T12:01:07+01:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "25fb1a6"
+  },
+  {
+   "repo": "SHOP/checkout-web",
+   "number": 858,
+   "started": "2026-11-03T11:05:05+01:00",
+   "finished": "2026-11-03T11:11:40+01:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "0cb3d31"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1519,
+   "started": "2026-11-04T06:10:03+01:00",
+   "finished": "2026-11-04T06:27:16+01:00",
+   "result": "FAILURE",
+   "stage": "Integration tests",
+   "trigger": "merge",
+   "change": "40c4189"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1520,
+   "started": "2026-11-04T08:11:25+01:00",
+   "finished": "2026-11-04T08:28:17+01:00",
+   "result": "FAILURE",
+   "stage": "Integration tests",
+   "trigger": "re-run",
+   "change": null
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1521,
+   "started": "2026-11-04T08:54:13+01:00",
+   "finished": "2026-11-04T09:10:26+01:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "re-run",
+   "change": null
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1522,
+   "started": "2026-11-04T11:15:14+01:00",
+   "finished": "2026-11-04T11:30:13+01:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "439deef"
+  },
+  {
+   "repo": "SHOP/checkout-web",
+   "number": 859,
+   "started": "2026-11-05T13:33:31+01:00",
+   "finished": "2026-11-05T13:40:21+01:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "8c39235"
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1523,
+   "started": "2026-11-06T12:05:04+01:00",
+   "finished": "2026-11-06T12:21:42+01:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "2d3fc2e"
+  },
+  {
+   "repo": "SHOP/checkout-web",
+   "number": 860,
+   "started": "2026-11-10T10:33:47+01:00",
+   "finished": "2026-11-10T10:40:58+01:00",
+   "result": "FAILURE",
+   "stage": "Compile",
+   "trigger": "merge",
+   "change": "7f490d0"
+  },
+  {
+   "repo": "SHOP/checkout-web",
+   "number": 861,
+   "started": "2026-11-10T12:27:49+01:00",
+   "finished": "2026-11-10T12:35:28+01:00",
+   "result": "FAILURE",
+   "stage": "Build machine",
+   "trigger": "merge",
+   "change": "3bd995c"
+  },
+  {
+   "repo": "SHOP/checkout-web",
+   "number": 862,
+   "started": "2026-11-10T14:38:46+01:00",
+   "finished": "2026-11-10T14:45:57+01:00",
+   "result": "FAILURE",
+   "stage": "Integration tests",
+   "trigger": "re-run",
+   "change": null
+  },
+  {
+   "repo": "SHOP/checkout-web",
+   "number": 863,
+   "started": "2026-11-10T16:03:37+01:00",
+   "finished": "2026-11-10T16:10:44+01:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "re-run",
+   "change": null
+  },
+  {
+   "repo": "SHOP/checkout-api",
+   "number": 1524,
+   "started": "2026-11-11T15:32:40+01:00",
+   "finished": "2026-11-11T15:44:19+01:00",
+   "result": "SUCCESS",
+   "stage": null,
+   "trigger": "merge",
+   "change": "a12520a"
+  }
+ ],
+ "cuts": [
+  {
+   "version": "4.14.0",
+   "at": "2026-06-01T12:00:00+02:00",
+   "changes": [
+    "e6b9197",
+    "50eb350",
+    "53766fd",
+    "ad5d25a",
+    "662898d",
+    "5b066d6",
+    "355ab40",
+    "5c6f67f",
+    "db8f1be",
+    "8f6473b",
+    "6a81f5a",
+    "5b9bc2a",
+    "98b5f13",
+    "adfab23",
+    "1c5d1dc",
+    "f363b9b",
+    "bd46748"
+   ]
+  },
+  {
+   "version": "4.15.0",
+   "at": "2026-06-29T12:00:00+02:00",
+   "changes": [
+    "82f74ee",
+    "7314de4",
+    "4f03bd3",
+    "54e79c9",
+    "d1110c1",
+    "dcfde07",
+    "77312cd",
+    "b731929",
+    "6bb88d2",
+    "28748c8",
+    "e7ef302",
+    "2b8a17a",
+    "c0b7102",
+    "a959118",
+    "2896edf",
+    "e2dbef2",
+    "49e5918",
+    "9c41042",
+    "8656f1f"
+   ]
+  },
+  {
+   "version": "4.16.0",
+   "at": "2026-07-27T12:00:00+02:00",
+   "changes": [
+    "8706481",
+    "7558f84",
+    "3ec2699",
+    "7ba90a4",
+    "7bb63ca",
+    "5010b4f",
+    "1d5b050",
+    "2c62326",
+    "c9664aa",
+    "61c6e98",
+    "7ec3ce8",
+    "122d058",
+    "c74c6f1",
+    "38d761c",
+    "71aac08",
+    "610e516",
+    "21ef72d",
+    "a32bf93",
+    "560e004",
+    "2ba75e0",
+    "2535b52",
+    "375c5f4",
+    "ae8cc2f"
+   ]
+  },
+  {
+   "version": "4.17.0",
+   "at": "2026-08-24T12:00:00+02:00",
+   "changes": [
+    "ab55260",
+    "8cd2054",
+    "4e4aa93",
+    "7a658b1",
+    "d7dde14",
+    "9f3720a",
+    "7519861",
+    "bce3cf1",
+    "6c4c606",
+    "7245c11",
+    "141cf20",
+    "eff359d",
+    "51645b9",
+    "5e8afb8",
+    "e92e491",
+    "122c93f",
+    "f643113",
+    "2fbb7a5",
+    "059a304"
+   ]
+  },
+  {
+   "version": "4.18.0",
+   "at": "2026-09-21T12:00:00+02:00",
+   "changes": [
+    "de7a74a",
+    "675715e",
+    "41410a4",
+    "8075679",
+    "ccbfa0a",
+    "4b4b4b4",
+    "02832fe",
+    "60cb056",
+    "85a2d51",
+    "2c6772a",
+    "b54c0f5",
+    "e205b99",
+    "6ce7fdf",
+    "2dfb25b",
+    "c371404",
+    "f1b3b65",
+    "2db3a51",
+    "b9cbe4c",
+    "6c596e8",
+    "530907f"
+   ]
+  },
+  {
+   "version": "4.19.0",
+   "at": "2026-10-19T12:00:00+02:00",
+   "changes": [
+    "834185f",
+    "09b9f47",
+    "9de5c0a",
+    "b387811",
+    "c830c88",
+    "6a381a2",
+    "b964f86",
+    "e4d5735",
+    "162d948",
+    "c8efa0f",
+    "8466159",
+    "b154927",
+    "4c8e5e9",
+    "b7a6692",
+    "089a532",
+    "4b144ba",
+    "763ac70",
+    "5dadaa9",
+    "57289da",
+    "ac4bfbb"
+   ]
+  },
+  {
+   "version": "4.20.0",
+   "at": "2026-11-16T12:00:00+01:00",
+   "changes": [
+    "a96112a",
+    "a73ccc8",
+    "32024fb",
+    "5bbb22f",
+    "f42f6bb",
+    "1cc432a",
+    "d7d4e32",
+    "41b93ea",
+    "5a13ace",
+    "6817ba8",
+    "f800d71",
+    "b01b440",
+    "6bfed4f",
+    "25fb1a6",
+    "0cb3d31",
+    "439deef",
+    "8c39235",
+    "2d3fc2e",
+    "7f490d0",
+    "3bd995c",
+    "a12520a"
+   ]
+  }
+ ],
+ "deploys": [
+  {
+   "version": "4.14.0",
+   "kind": "release",
+   "at": "2026-06-04T14:00:00+02:00",
+   "services": [
+    "checkout-api",
+    "payment-gateway",
+    "cart-service",
+    "pricing-engine",
+    "checkout-web",
+    "order-mail"
+   ],
+   "changes": [
+    "e6b9197",
+    "50eb350",
+    "53766fd",
+    "ad5d25a",
+    "662898d",
+    "5b066d6",
+    "355ab40",
+    "5c6f67f",
+    "db8f1be",
+    "8f6473b",
+    "6a81f5a",
+    "5b9bc2a",
+    "98b5f13",
+    "adfab23",
+    "1c5d1dc",
+    "f363b9b",
+    "bd46748"
+   ],
+   "number": 301
+  },
+  {
+   "version": "4.14.1",
+   "kind": "hotfix",
+   "at": "2026-06-05T10:05:00+02:00",
+   "services": [
+    "payment-gateway"
+   ],
+   "changes": [
+    "187acfc"
+   ],
+   "number": 302
+  },
+  {
+   "version": "4.15.0",
+   "kind": "release",
+   "at": "2026-07-02T14:00:00+02:00",
+   "services": [
+    "checkout-api",
+    "payment-gateway",
+    "cart-service",
+    "pricing-engine",
+    "checkout-web",
+    "order-mail"
+   ],
+   "changes": [
+    "82f74ee",
+    "7314de4",
+    "4f03bd3",
+    "54e79c9",
+    "d1110c1",
+    "dcfde07",
+    "77312cd",
+    "b731929",
+    "6bb88d2",
+    "28748c8",
+    "e7ef302",
+    "2b8a17a",
+    "c0b7102",
+    "a959118",
+    "2896edf",
+    "e2dbef2",
+    "49e5918",
+    "9c41042",
+    "8656f1f"
+   ],
+   "number": 303
+  },
+  {
+   "version": "4.15.1",
+   "kind": "hotfix",
+   "at": "2026-07-14T15:30:00+02:00",
+   "services": [
+    "pricing-engine"
+   ],
+   "changes": [
+    "2a7304e",
+    "e1aa3f3"
+   ],
+   "number": 304
+  },
+  {
+   "version": "4.16.0",
+   "kind": "release",
+   "at": "2026-07-30T14:00:00+02:00",
+   "services": [
+    "checkout-api",
+    "payment-gateway",
+    "cart-service",
+    "pricing-engine",
+    "checkout-web",
+    "order-mail"
+   ],
+   "changes": [
+    "8706481",
+    "7558f84",
+    "3ec2699",
+    "7ba90a4",
+    "7bb63ca",
+    "5010b4f",
+    "1d5b050",
+    "2c62326",
+    "c9664aa",
+    "61c6e98",
+    "7ec3ce8",
+    "122d058",
+    "c74c6f1",
+    "38d761c",
+    "71aac08",
+    "610e516",
+    "21ef72d",
+    "a32bf93",
+    "560e004",
+    "2ba75e0",
+    "2535b52",
+    "375c5f4",
+    "ae8cc2f"
+   ],
+   "number": 305
+  },
+  {
+   "version": "4.16.1",
+   "kind": "hotfix",
+   "at": "2026-07-31T09:40:00+02:00",
+   "services": [
+    "cart-service"
+   ],
+   "changes": [
+    "6035acb"
+   ],
+   "number": 306
+  },
+  {
+   "version": "4.17.0",
+   "kind": "release",
+   "at": "2026-08-27T14:00:00+02:00",
+   "services": [
+    "checkout-api",
+    "payment-gateway",
+    "cart-service",
+    "pricing-engine",
+    "checkout-web",
+    "order-mail"
+   ],
+   "changes": [
+    "ab55260",
+    "8cd2054",
+    "4e4aa93",
+    "7a658b1",
+    "d7dde14",
+    "9f3720a",
+    "7519861",
+    "bce3cf1",
+    "6c4c606",
+    "7245c11",
+    "141cf20",
+    "eff359d",
+    "51645b9",
+    "5e8afb8",
+    "e92e491",
+    "122c93f",
+    "f643113",
+    "2fbb7a5",
+    "059a304"
+   ],
+   "number": 307
+  },
+  {
+   "version": "4.17.1",
+   "kind": "hotfix",
+   "at": "2026-08-28T11:30:00+02:00",
+   "services": [
+    "checkout-web"
+   ],
+   "changes": [
+    "6763171"
+   ],
+   "number": 308
+  },
+  {
+   "version": "4.17.2",
+   "kind": "hotfix",
+   "at": "2026-09-09T16:00:00+02:00",
+   "services": [
+    "payment-gateway"
+   ],
+   "changes": [
+    "ea837a5",
+    "b07e66d"
+   ],
+   "number": 309
+  },
+  {
+   "version": "4.18.0",
+   "kind": "release",
+   "at": "2026-09-24T14:00:00+02:00",
+   "services": [
+    "checkout-api",
+    "payment-gateway",
+    "cart-service",
+    "pricing-engine",
+    "checkout-web",
+    "order-mail"
+   ],
+   "changes": [
+    "de7a74a",
+    "675715e",
+    "41410a4",
+    "8075679",
+    "ccbfa0a",
+    "4b4b4b4",
+    "02832fe",
+    "60cb056",
+    "85a2d51",
+    "2c6772a",
+    "b54c0f5",
+    "e205b99",
+    "6ce7fdf",
+    "2dfb25b",
+    "c371404",
+    "f1b3b65",
+    "2db3a51",
+    "b9cbe4c",
+    "6c596e8",
+    "530907f"
+   ],
+   "number": 310
+  },
+  {
+   "version": "4.18.1",
+   "kind": "hotfix",
+   "at": "2026-09-29T10:24:00+02:00",
+   "services": [
+    "cart-service"
+   ],
+   "changes": [
+    "153b283"
+   ],
+   "number": 311
+  },
+  {
+   "version": "4.18.2",
+   "kind": "hotfix",
+   "at": "2026-10-08T09:30:00+02:00",
+   "services": [
+    "checkout-api"
+   ],
+   "changes": [
+    "4fb5577"
+   ],
+   "number": 312
+  },
+  {
+   "version": "4.18.0",
+   "kind": "rollback",
+   "at": "2026-10-08T13:48:00+02:00",
+   "services": [
+    "checkout-api"
+   ],
+   "changes": [],
+   "number": 313
+  },
+  {
+   "version": "4.18.3",
+   "kind": "hotfix",
+   "at": "2026-10-09T15:10:00+02:00",
+   "services": [
+    "checkout-api"
+   ],
+   "changes": [
+    "fc6110a",
+    "d2a3091"
+   ],
+   "number": 314
+  },
+  {
+   "version": "4.19.0",
+   "kind": "release",
+   "at": "2026-10-22T14:00:00+02:00",
+   "services": [
+    "checkout-api",
+    "payment-gateway",
+    "cart-service",
+    "pricing-engine",
+    "checkout-web",
+    "order-mail"
+   ],
+   "changes": [
+    "834185f",
+    "09b9f47",
+    "9de5c0a",
+    "b387811",
+    "c830c88",
+    "6a381a2",
+    "b964f86",
+    "e4d5735",
+    "162d948",
+    "c8efa0f",
+    "8466159",
+    "b154927",
+    "4c8e5e9",
+    "b7a6692",
+    "089a532",
+    "4b144ba",
+    "763ac70",
+    "5dadaa9",
+    "57289da",
+    "ac4bfbb"
+   ],
+   "number": 315
+  },
+  {
+   "version": "4.19.1",
+   "kind": "hotfix",
+   "at": "2026-10-22T16:52:00+02:00",
+   "services": [
+    "payment-gateway"
+   ],
+   "changes": [
+    "578a143"
+   ],
+   "number": 316
+  },
+  {
+   "version": "4.19.2",
+   "kind": "hotfix",
+   "at": "2026-11-04T09:20:00+01:00",
+   "services": [
+    "cart-service"
+   ],
+   "changes": [
+    "40c4189"
+   ],
+   "number": 317
+  }
+ ]
+}

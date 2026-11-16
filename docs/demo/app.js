@@ -111,6 +111,7 @@ function renderSystem(){
     row("ok", "Tools for agents", `four read-only tools answer at <span class="mono">/mcp</span> on this port (Model Context Protocol) · ${esc(s.tool_calls ?? 0)} calls since the start
       <div class="small dim">Point an agent runtime of your own at it: facts, sprint, issue, forecast.</div>`) +
     row(v.code ? "ok" : "", "Pull requests", v.code ? "a prepared view, made from invented pull requests" : "none in this data") +
+    row(v.delivery ? "ok" : "", "Build server", v.delivery ? `invented builds of main and ${esc(v.delivery.deploys.length)} production deploys, read as the build server gives them` : "none in this data") +
     row(v.incidents ? "ok" : "", "Incident reports", v.incidents ? `a prepared view of ${esc(v.incidents.total)} invented reports` : "none in this data") +
     row(s.services.status === "ok" ? "ok" : "", "Service catalogue", s.services.status === "ok" ? "a prepared list of invented services" : "none in this data") +
     `</tbody></table>`, "sources");
@@ -145,6 +146,7 @@ const LAYERS = [
   ["Sources", "systems of record, only read", "GET requests, never a write", [
     ["Jira", "issues with their history, sprints, velocity", true],
     ["Git hosting", "pull requests and their reviews", false],
+    ["Build server", "builds of main and every deploy", true],
     ["Incident reports", "what a triage agent wrote about production", false],
     ["Service catalogue", "the services the team runs", false]]],
   ["Collect and keep", "one snapshot per read, no database", "the source's own records", [
@@ -156,6 +158,7 @@ const LAYERS = [
     ["Forecast and calibration", "simulation from the team's own history, scored afterwards", true],
     ["Signals and pre-mortem", "what looks like a risk, against the team's own past", true],
     ["Quality analytics", "bug flow, escape rate, time to fix, what moves with bugs", true],
+    ["Delivery measures", "deploys, lead time, failed deploys, time to restore", true],
     ["Drafts", "texts composed from facts", true],
     ["Read-only tools", "facts, sprint, issue, forecast over MCP", true]]],
   ["Agents", "choose and word, never compute", "a reply that is not trusted yet", [
@@ -237,7 +240,7 @@ function diagram(){
   [drawn, tall] = box(inner, at, innerW, "Rules without AI", wrap("signals, options, drafts, and the whole page when no agent answers", 44), DARK, NONE); inside += drawn; at += tall + 7;
   [drawn, tall] = box(inner, at, innerW, part(4, 0)[0], [`${kept} lines of an agent shown, ${dropped} dropped`, "a number must equal a fact the line cites"], DARK, NONE); inside += drawn; mark.check = at + tall / 2; at += tall + 7;
   [drawn, tall] = chips(inner + 12, at + 30, innerW - 24, ["facts", "sprint", "issue", "forecast"], DARK);
-  inside += `<rect class="sub c" x="${inner}" y="${at}" width="${innerW}" height="${tall + 60}" rx="7"/><text class="pn c" x="${inner + 12}" y="${at + 20}">${part(2, 5)[0]} · 4, over MCP</text>` + drawn +
+  inside += `<rect class="sub c" x="${inner}" y="${at}" width="${innerW}" height="${tall + 60}" rx="7"/><text class="pn c" x="${inner + 12}" y="${at + 20}">${part(2, 6)[0]} · 4, over MCP</text>` + drawn +
     `<text class="pd c" x="${inner + 12}" y="${at + tall + 48}">${esc(s.tool_calls ?? 0)} calls since the start</text>`;
   mark.tools = at + (tall + 60) / 2; at += tall + 67;
   [drawn, tall] = box(inner, at, innerW, part(1, 2)[0], [`${s.register.risks.length} in the risk register · ${s.inbox.sent.length} sent`, "two files on this computer"], DARK, NONE); inside += drawn; at += tall + 12;
@@ -258,7 +261,8 @@ function diagram(){
 
   /* the systems of the team */
   const teamTop = Math.max(leftEnd, coreEnd, demoTop + 44 + 14 * demo.length) + 46, each = (W - 24 - 28) / LAYERS[0][3].length;
-  const counts = [`${issues} issues in this data`, v.code ? `${esc(v.code.merged)} merged pull requests` : "not in this data", v.incidents ? `${esc(v.incidents.total)} reports` : "not in this data",
+  const counts = [`${issues} issues in this data`, v.code ? `${esc(v.code.merged)} merged pull requests` : "not in this data",
+    v.delivery ? `${esc(v.delivery.deploys.length)} production deploys` : "not in this data", v.incidents ? `${esc(v.incidents.total)} reports` : "not in this data",
     s.services.status === "ok" ? `${s.services.apps.length} services` : "not in this data"];
   inside = LAYERS[0][3].map(([name, note, live], n) => { const x = YOU + 14 + each * n;
     return lamp(x + 5, teamTop + 51, live ? LIVE : KEPT) + `<text class="pn" x="${x + 17}" y="${teamTop + 55}">${name}</text><text class="pd" x="${x + 17}" y="${teamTop + 71}">${note}</text><text class="pd num" x="${x + 17}" y="${teamTop + 87}">${counts[n]}</text>`; }).join("");

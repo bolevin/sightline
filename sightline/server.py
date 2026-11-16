@@ -22,6 +22,7 @@ WEB = (Path(__file__).parent / "web").resolve()
 FILES = {"/": ("index.html", "text/html; charset=utf-8"), "/app.js": ("app.js", "text/javascript; charset=utf-8"),
          "/help.js": ("help.js", "text/javascript; charset=utf-8"), "/views.js": ("views.js", "text/javascript; charset=utf-8"),
          "/quality.js": ("quality.js", "text/javascript; charset=utf-8"),
+         "/delivery.js": ("delivery.js", "text/javascript; charset=utf-8"),
          "/style.css": ("style.css", "text/css; charset=utf-8")}
 CSP = ("default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; "
        "base-uri 'none'; form-action 'none'; frame-ancestors 'none'")

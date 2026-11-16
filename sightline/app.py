@@ -13,7 +13,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 
 from . import __doc__ as _about
-from . import cards, demo, drafts, journal, premortem, quality, risks, storage
+from . import cards, delivery, demo, drafts, journal, premortem, quality, risks, storage
 from .facts import Run, load_run
 from .forecast import forecast_facts
 from .page import check_lines, check_page, rule_page
@@ -123,6 +123,7 @@ class Data:
     extras: dict = field(default_factory=dict)      # prepared views of the demo: pull requests, incident reports, services
     premortem: dict | None = None
     quality: dict | None = None                     # what the bugs of the last increments say (quality.py)
+    delivery: dict | None = None                    # what the build server says about shipping (delivery.py)
 
     @property
     def context(self) -> dict:
@@ -147,7 +148,9 @@ def load_data(root: Path = ROOT, config: dict | None = None) -> Data:
     facts += premortem.facts(pre)
     bugs = quality.build(run.folder)
     facts += quality.facts(bugs)
-    data = Data(config, run, board, sprint, on_board, facts, extras, pre, bugs)
+    ships = delivery.build(run.folder, extras["incidents"])
+    facts += delivery.facts(ships)
+    data = Data(config, run, board, sprint, on_board, facts, extras, pre, bugs, ships)
     facts += journal.facts(run.folder, data)        # the record of past forecasts that comes with the data
     return data
 
@@ -189,7 +192,7 @@ def build_state(root: Path = ROOT, config: dict | None = None, data: Data | None
         "page": page,
         "now": now_row(facts),
         "notices": [dict(n, at=iso(n["at"])) for n in notices(run, board, sprint, None, on_board)],
-        "views": {**build_views(data), "quality": data.quality and {**data.quality, "findings": findings(data, facts)}},
+        "views": {**build_views(data), "quality": data.quality and {**data.quality, "findings": findings(data, facts)}, "delivery": data.delivery},
         "cards": cards.cards(run, on_board),            # titles and priorities: shown on the card of an issue, part of no fact
         "services": data.extras["services"],
         "ask": demo.questions(run.folder),

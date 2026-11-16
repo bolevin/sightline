@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.2.0 (2026-11-17)
+
+- Code: builds and deploys. The records of a build server over half a year, invented, with their own generator.
+  The four DORA measures for the last 12 weeks next to the 12 before: deploys, lead time for changes, failed
+  deploys and time to restore. Where the lead time of a change goes, every deploy on a time line with its repair,
+  how often main was red and why, releases against hotfixes, and every deploy with the incident reports that
+  followed it.
+- Ask: a recorded answer to "How fast do we ship?".
+- System: the build server on the map, and the delivery measures among what code computes.
+
 ## 1.1.0 (2026-11-15)
 
 - The page fits a phone. The header is two short rows, with the tabs as a strip that scrolls sideways. The charts
