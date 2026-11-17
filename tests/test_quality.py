@@ -27,11 +27,12 @@ def bug(key: str, created: float, closed: float | None = None, how: str = "Fixed
             "found_in": found_in, "found_by": "QA", "component": "api", "cause": "Regression" if closed is not None and how == "Fixed" else None, "feature": None, "reopened": 0, **more}
 
 
-def view(bugs: list[dict], now: float = 38) -> dict:
-    """What the tab computes for a handful of bugs: two increments of two sprints, ten days each; the last one is running."""
-    sprints = [{"sprint": n, "name": f"Sprint {n}", "pi": "PI 1" if n < 3 else "PI 2", "start": at(10 * (n - 1)), "end": at(10 * n - 1), "running": n == 4, "committed_sp": 20.0,
-                "completed_sp": 20.0, "added_pct": 5 * n, "unreviewed_pct": 3 * n, "release": "1.0" if n == 2 else None} for n in (1, 2, 3, 4)]
-    raw = {"now": at(now), "targets_days": {"Highest": 2, "High": 5, "Medium": 15, "Low": 30}, "pis": [{"name": "PI 1", "first": 1, "last": 2}, {"name": "PI 2", "first": 3, "last": 4}],
+def view(bugs: list[dict], now: float = 38, count: int = 4) -> dict:
+    """What the tab computes for a handful of bugs: two increments of sprints of ten days each (four sprints unless
+    `count` says otherwise); the last sprint is running."""
+    sprints = [{"sprint": n, "name": f"Sprint {n}", "pi": "PI 1" if n < 3 else "PI 2", "start": at(10 * (n - 1)), "end": at(10 * n - 1), "running": n == count, "committed_sp": 20.0,
+                "completed_sp": 20.0, "added_pct": 5 * n, "unreviewed_pct": 3 * n, "release": "1.0" if n == 2 else None} for n in range(1, count + 1)]
+    raw = {"now": at(now), "targets_days": {"Highest": 2, "High": 5, "Medium": 15, "Low": 30}, "pis": [{"name": "PI 1", "first": 1, "last": 2}, {"name": "PI 2", "first": 3, "last": count}],
            "sprints": sprints, "releases": [{"version": "1.0", "sprint": 2, "at": at(19)}], "bugs": bugs}
     with tempfile.TemporaryDirectory() as home:
         (Path(home) / quality.FILE).write_text(json.dumps(raw), encoding="utf-8")
@@ -67,6 +68,24 @@ class Arithmetic(unittest.TestCase):
         self.assertEqual([r["created"] for r in rows], [1, 0, 1, 1])        # whatever the file says about B-1
         self.assertEqual([r["resolved"] for r in rows], [0, 1, 1, 0])
         self.assertEqual([(r["created_sum"], r["resolved_sum"], r["open"]) for r in rows], [(1, 0, 1), (1, 1, 0), (2, 2, 0), (3, 2, 1)])
+
+    def test_a_sprint_ends_where_the_next_one_starts(self):
+        # sprint 2 starts at day 10: a bug resolved at that moment is resolved in sprint 2, and one written then is written in sprint 2
+        for bugs, opens in (([bug("B-1", 5, 10)], [1, 0, 0, 0]), ([bug("B-2", 10)], [0, 1, 1, 1]), ([bug("B-1", 5, 10), bug("B-2", 10), bug("B-3", 20, 30)], [1, 1, 2, 1])):
+            rows = view(bugs)["sprints"]
+            self.assertEqual([r["open"] for r in rows], opens, [b["key"] for b in bugs])
+            self.assertEqual([r["open"] for r in rows], [r["created_sum"] - r["resolved_sum"] for r in rows], [b["key"] for b in bugs])     # nothing was open before sprint 1
+        self.assertEqual([r["resolved"] for r in view([bug("B-1", 5, 10)])["sprints"]], [0, 1, 0, 0])
+
+    def test_the_usual_range_is_that_of_the_sprints_before_the_last(self):
+        bugs = [bug(f"B-{day}-{i}", day + .1 * i) for day, n in ((1, 2), (11, 5), (21, 3), (31, 7)) for i in range(n)]
+        v = view(bugs, now=48, count=5)
+        self.assertEqual(v["usual"], {"low": 2, "high": 5, "sprints": 3, "last": 7, "last_name": "Sprint 4"})
+        said = {f.id: f for f in quality.facts(v)}["quality.last_sprint_n"]
+        self.assertEqual((said.value, said.unit, said.level), (7, "against 2 to 5 in the 3 full sprints before", "warning"))
+        inside = {f.id: f for f in quality.facts(view(bugs[:-3], now=48, count=5))}["quality.last_sprint_n"]
+        self.assertEqual((inside.value, inside.level), (4, "info"))          # control: 4 is inside 2 to 5
+        self.assertIsNone(view(bugs, now=38)["usual"])                        # two full sprints before the last one are too few for a range
 
     def test_bug_debt_by_age(self):
         aging = view([bug("B-1", 1, priority="Low"), bug("B-2", 22), bug("B-3", 37, priority="Highest"), bug("B-4", 2, 9)])["aging"]

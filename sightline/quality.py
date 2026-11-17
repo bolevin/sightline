@@ -35,6 +35,7 @@ SURVIVAL_DAYS = 45          # how far the survival curves go
 AFTER_RELEASE = 14          # days after a release in which a production bug counts as brought by it
 OLD = 30                    # days from which an open bug is old
 MIN_SAMPLE = 5              # below so many bugs no median and no share is given for a severity: the count is shown instead
+USUAL, MIN_USUAL = 6, 3     # the usual range of new bugs: the full sprints before the last one, and how many it needs at least
 CARD = "quality"
 STRENGTH = ((.7, "strong"), (.5, "moderate"), (.3, "weak"), (0, "no clear link"))
 
@@ -117,7 +118,7 @@ def build(folder: Path) -> dict | None:
     iso = lambda t: t.isoformat(timespec="minutes") if t else None
     fixed = lambda found: [b for b in found if b["resolution"] == "Fixed"]
     took = lambda found: [_days(b["created"], b["resolved"]) for b in fixed(found)]
-    open_at = lambda t: [b for b in bugs if b["created"] <= t and (b["resolved"] is None or b["resolved"] > t)]
+    open_at = lambda t: [b for b in bugs if b["created"] < t and (b["resolved"] is None or b["resolved"] >= t)]      # sprints are [start, end): what happens at t belongs to the next one
     by_sprint = {s["sprint"]: s for s in sprints}
     order = [s["sprint"] for s in sprints]
     ends = {n: (sprints[i + 1]["start"] if i + 1 < len(sprints) else now) for i, n in enumerate(order)}      # a sprint's bugs: until the next one starts
@@ -236,7 +237,7 @@ def build(folder: Path) -> dict | None:
         lagged("load_pct", "escaped", "committed, % of what the three sprints before completed", "bugs found in production in the sprint after"),
         lagged("completed_sp", "created", "story points completed", "bugs created in the sprint after")) if x]
 
-    usual = [r["created"] for r in full[-6:]]
+    usual = [r["created"] for r in full[-1 - USUAL:-1]]                 # the full sprints before the last one: the last is what is judged
     net = [r["created"] - r["resolved"] for r in full[-3:]]
     worst = max((r for r in releases if r["complete"]), key=lambda r: (r["bugs"], r["at"]), default=None)
     top_component = max(this["components_escaped"].items(), key=lambda x: (x[1], x[0]), default=None)
@@ -244,7 +245,7 @@ def build(folder: Path) -> dict | None:
         "now": iso(now), "targets": targets, "phases": list(PHASES), "priorities": list(PRIORITIES), "sprints": rows, "pis": pis, "pi": this["name"],
         "severity": severity, "survival": {"days": SURVIVAL_DAYS, "curves": curves}, "aging": aging, "components": heat, "pareto": pareto, "features": features,
         "releases": releases, "links": links, "after_release": AFTER_RELEASE,
-        "usual": {"low": min(usual), "high": max(usual), "sprints": len(usual), "last": full[-1]["created"], "last_name": full[-1]["name"]} if usual else None,
+        "usual": {"low": min(usual), "high": max(usual), "sprints": len(usual), "last": full[-1]["created"], "last_name": full[-1]["name"]} if len(usual) >= MIN_USUAL else None,
         "net_per_sprint": round(sum(net) / len(net), 1) if net else None, "worst_release": worst and {"version": worst["version"], "bugs": worst["bugs"], "keys": worst["keys"]},
         "top_component": top_component and {"component": top_component[0], "n": top_component[1], "pct": _pct(top_component[1], this["escaped"]),
                                             "keys": sorted(b["key"] for b in current if b["found_in"] == "Production" and b["component"] == top_component[0])},
@@ -287,7 +288,8 @@ def facts(view: dict | None) -> list[Fact]:
         add("net_per_sprint", "bugs created minus bugs resolved per sprint, over the last three full sprints", view["net_per_sprint"], "", (), "warning" if view["net_per_sprint"] > 0 else "info")
     if view["usual"]:
         u = view["usual"]
-        add("last_sprint_n", f"bugs created in {u['last_name']}", u["last"], f"against {u['low']} to {u['high']} in the last {u['sprints']} full sprints")
+        add("last_sprint_n", f"bugs created in {u['last_name']}", u["last"], f"against {u['low']} to {u['high']} in the {u['sprints']} full sprints before",
+            level="warning" if u["last"] > u["high"] else "info")
     if view["worst_release"]:
         w = view["worst_release"]
         add("worst_release_n", f"production bugs in the {AFTER_RELEASE} days after release {w['version']}, the most of any release", w["bugs"], "", w["keys"])

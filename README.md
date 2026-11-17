@@ -179,7 +179,7 @@ Python 3.10 or newer, no packages to install. The page opens at `http://127.0.0.
 python -m unittest discover -s tests
 ```
 
-runs the 120 tests. To let an agent of your own read the sprint, point an MCP client at
+runs the 122 tests. To let an agent of your own read the sprint, point an MCP client at
 `http://127.0.0.1:8780/mcp` while the page runs.
 
 ## How it is built

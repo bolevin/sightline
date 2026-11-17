@@ -231,7 +231,7 @@ function renderQuality(){
         `<div class="legend"><span><i style="background:var(--crit)"></i>created, added up</span><span><i style="background:var(--ok)"></i>resolved, added up</span><span><i style="background:var(--warn-soft)"></i>the gap: bugs open</span></div>`, "qflow") +
       panel("Sprint by sprint", q.usual ? `<span class="small dim">${esc(q.usual.last_name)}: ${esc(q.usual.last)} new · usual ${esc(q.usual.low)} to ${esc(q.usual.high)}</span>` : "", qSprints(q) +
         `<div class="legend"><span><i style="background:var(--made-soft)"></i>created, found before production</span><span><i style="background:var(--crit)"></i>created, found in production</span><span><i style="background:var(--ok)"></i>resolved</span>
-          <span><i style="background:var(--sunk)"></i>usual range of the last ${q.usual ? q.usual.sprints : 0} full sprints</span></div>`, "qsprints") + `</div>` +
+          ${q.usual ? `<span><i style="background:var(--sunk)"></i>usual range: the ${esc(q.usual.sprints)} full sprints before ${esc(q.usual.last_name)}</span>` : ""}</div>`, "qsprints") + `</div>` +
     `<div class="grid2">` + panel("Where bugs are found", `<span class="pill ${now.escape_pct > (was.escape_pct ?? now.escape_pct) ? "critical" : "ok"}">${esc(num(now.caught_pct))} % caught before production</span>`, qFound(q), "qfound") +
       panel("Where bugs concentrate", q.top_component ? `<span class="small dim">${esc(q.top_component.component)}: ${esc(q.top_component.pct)} % of the production bugs of ${esc(now.name)}</span>` : "", qHeat(q) +
         `<div class="small dim">Bugs created per service and increment; the red dot counts those found in production.</div>`, "qheat") + `</div>` +

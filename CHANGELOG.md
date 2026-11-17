@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.2.1 (2026-11-17)
+
+- Quality: a bug resolved or written at the moment one sprint ends and the next starts counts in the new sprint.
+  Open, created and resolved now add up for every sprint.
+- Quality: the usual range of new bugs comes from the six full sprints before the last one, and needs three of
+  them at least. A last sprint above the range is marked for a look.
+
 ## 1.2.0 (2026-11-17)
 
 - Code: builds and deploys. The records of a build server over half a year, invented, with their own generator.
