@@ -1,0 +1,45 @@
+/* What used to be inline: spacing and small text settings, one class each. A new inline style fails tools/check_layout.py. */
+.d-flex{display:flex !important}
+.fs-11{font-size:var(--t-micro) !important}
+.fs-12{font-size:var(--t-small) !important}
+.fs-15{font-size:15px !important}
+.fw-400{font-weight:400 !important}
+.jc-sb{justify-content:space-between !important}
+.lh-15{line-height:1.5 !important}
+.lh-155{line-height:1.55 !important}
+.lh-18{line-height:1.8 !important}
+.mb-4{margin-bottom:4px !important}
+.mb-6{margin-bottom:6px !important}
+.mg-0-0-2{margin:0 0 2px !important}
+.mg-10-0-2{margin:10px 0 2px !important}
+.mg-4-0-2{margin:4px 0 2px !important}
+.mg-6-0-2{margin:6px 0 2px !important}
+.mg-8-14-0{margin:8px 14px 0 !important}
+.minh-230{min-height:230px !important}
+.ml-8{margin-left:8px !important}
+.mt-10{margin-top:10px !important}
+.mt-12{margin-top:12px !important}
+.mt-14{margin-top:14px !important}
+.mt-4{margin-top:4px !important}
+.mt-6{margin-top:6px !important}
+.mt-8{margin-top:8px !important}
+.mt-9{margin-top:9px !important}
+.nobg{background:none !important}
+.nosh{box-shadow:none !important}
+.op-45{opacity:.45 !important}
+.pd-0{padding:0 !important}
+.pd-0-14-10{padding:0 14px 10px !important}
+.pd-0-14-8{padding:0 14px 8px !important}
+.pd-10-14-0{padding:10px 14px 0 !important}
+.pd-4-0{padding:4px 0 !important}
+.pd-4-14-0{padding:4px 14px 0 !important}
+.pd-6-0{padding:6px 0 !important}
+.pd-6-2{padding:6px 2px !important}
+.pd-8-14-0{padding:8px 14px 0 !important}
+.pd-8-14-12{padding:8px 14px 12px !important}
+.pd-9-12{padding:9px 12px !important}
+.sw-bg{background:var(--bg) !important}
+.sw-ok{background:var(--ok) !important}
+.sw-plane-3{background:var(--plane-3) !important}
+.sw-s1{background:var(--s1) !important}
+.ta-l{text-align:left !important}

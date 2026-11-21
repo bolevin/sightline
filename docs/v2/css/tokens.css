@@ -1,0 +1,145 @@
+/* Sightline v2 demo: design tokens.
+   Names follow the DTCG grouping (color / font / size / radius), written as CSS custom properties.
+   One hue, one meaning:
+     --ok / --watch / --bad   state only (on track, needs a look, off track)
+     --s1..--s3, --r1..--r5   data series only (identity, ordered stages)
+     --link                   something you can open
+   Selection ("you are here") is never a colour: it is a lighter plane and first-tier text.
+
+   A palette is one block of base colours below. Everything that is a tint of a base colour
+   (soft state fills, hairlines, hovers) is derived once in :root, so a palette cannot forget one.
+   No colour is written outside this file. Every palette was checked by tools/palettes.py:
+   text contrast on its planes, state colours as text, and the series colours for colour-blind separation. */
+
+:root{
+  color-scheme:dark;
+  /* ── graphite (default): violet-tinted graphite ── */
+  --bg:#17171c; --plane:#1e1e23; --plane-2:#232327; --plane-3:#2a2a30; --inset:#111114; --edge:#494950;
+  --over:#ffffff;
+  --ink:#fafafa; --dim:#cacace; --faint:#888891;
+  --ok:#1affb9; --watch:#ffcc66; --bad:#ff5c5c; --off:#6d6d76;
+  --s1:#3987e5; --s2:#d55181; --s3:#9085e9;
+  --r1:#184f95; --r2:#256abf; --r3:#3987e5; --r4:#6da7ec; --r5:#9ec5f4;
+  --link:#9ec5f4;
+  --pop:#2c2c33; --shadow:rgba(0,0,0,.5); --scrim:rgba(8,8,12,.62);
+  /* what AI made or does: the one gradient, never a state and never a series */
+  --ai-a:#8b6dff; --ai-b:#19b4f0;
+
+  /* derived: tints of the base colours */
+  --line:color-mix(in srgb,var(--over) 8%,transparent);
+  --div:color-mix(in srgb,var(--over) 5%,transparent);
+  --hover:color-mix(in srgb,var(--over) 3.5%,transparent);
+  --flat:color-mix(in srgb,var(--over) 6%,transparent);
+  --thumb:color-mix(in srgb,var(--over) 12%,transparent);
+  --mute-fill:color-mix(in srgb,var(--over) 20%,transparent);
+  --grid:color-mix(in srgb,var(--over) 7%,transparent);
+  --ok-a:color-mix(in srgb,var(--ok) 11%,transparent);
+  --ok-b:color-mix(in srgb,var(--ok) 36%,transparent);
+  --watch-a:color-mix(in srgb,var(--watch) 12%,transparent);
+  --watch-b:color-mix(in srgb,var(--watch) 38%,transparent);
+  --bad-a:color-mix(in srgb,var(--bad) 12%,transparent);
+  --bad-b:color-mix(in srgb,var(--bad) 38%,transparent);
+  --s1-a:color-mix(in srgb,var(--s1) 16%,transparent);
+  --sel:color-mix(in srgb,var(--s1) 35%,transparent);
+
+  /* type */
+  --f-disp:Bahnschrift,"DIN Alternate","Arial Narrow",sans-serif;
+  --f-body:"Inter Variable",Inter,"Segoe UI Variable Text","Segoe UI",system-ui,sans-serif;
+  --f-mono:"Cascadia Mono",Consolas,ui-monospace,monospace;
+  --t-micro:11px;
+  --t-small:12px;
+  --t-body:13px;
+  --t-num:22px;
+  --t-title:19px;
+
+  /* shape and rhythm */
+  --r6:6px;
+  --r12:10px;
+  --gap:12px;--move:120ms;
+  --rail:232px;
+  --top:48px;
+  --strip:56px;
+  --ask:430px;
+}
+
+/* ── dark palettes ───────────────────────────────────────────────────────── */
+[data-palette="midnight"]{
+  --bg:#0e1018; --plane:#151824; --plane-2:#1b1f2e; --plane-3:#242a3d; --inset:#090b11; --edge:#3b4360;
+  --ink:#f3f5fa; --dim:#c2c8d8; --faint:#818aa3;
+  --ok:#3ddc97; --watch:#f5c451; --bad:#ff6b7a; --off:#5f6880;
+  --r1:#2f4bb5; --r2:#3f5fd6; --r3:#5b7cf5; --r4:#8ba0ff; --r5:#bcc8ff;
+  --link:#a9baff; --pop:#262c40; --scrim:rgba(4,6,12,.66);
+}
+[data-palette="carbon"]{
+  --bg:#0a0a0a; --plane:#121212; --plane-2:#1a1a1a; --plane-3:#242424; --inset:#050505; --edge:#404040;
+  --ink:#ededed; --dim:#b4b4b4; --faint:#7d7d7d;
+  --ok:#3fcf8e; --watch:#f5a623; --bad:#ff5d5d; --off:#5c5c5c;
+  --link:#70b8ff; --pop:#2a2a2a; --scrim:rgba(0,0,0,.7);
+}
+[data-palette="slate"]{
+  --bg:#1c2128; --plane:#22272e; --plane-2:#2a3038; --plane-3:#343b45; --inset:#161a20; --edge:#545d68;
+  --ink:#e9eff5; --dim:#b3bfcc; --faint:#84909e;
+  --ok:#57d39b; --watch:#e3b341; --bad:#f47067; --off:#636e7b;
+  --r1:#2a5fb0; --r2:#3b7ad6; --r3:#5a97ee; --r4:#86b6ef; --r5:#b7d3f6;
+  --link:#79b8ff; --pop:#343b45; --scrim:rgba(10,13,18,.62);
+}
+[data-palette="aubergine"]{
+  --bg:#19131f; --plane:#201929; --plane-2:#281f33; --plane-3:#33273f; --inset:#110c16; --edge:#514263;
+  --ink:#f6f1fb; --dim:#d0c6dc; --faint:#9889a8;
+  --ok:#5ee0b0; --watch:#ffc857; --bad:#ff6f91; --off:#6c5f7a;
+  --r1:#4048b5; --r2:#515ed6; --r3:#6c80f5; --r4:#97a6ff; --r5:#c4ccff;
+  --link:#b9b2ff; --pop:#33273f; --scrim:rgba(10,6,14,.66);
+}
+[data-palette="forest"]{
+  --bg:#0f1513; --plane:#151d1a; --plane-2:#1b2521; --plane-3:#24312c; --inset:#0a0f0d; --edge:#3f5249;
+  --ink:#eef5f1; --dim:#bdccc4; --faint:#7e9188;
+  --ok:#5fe3a1; --watch:#f2c14e; --bad:#ff7a66; --off:#5a6b63;
+  --link:#9fd0ff; --pop:#24312c; --scrim:rgba(5,9,8,.66);
+}
+[data-palette="mocha"]{
+  --bg:#1a1715; --plane:#211d1a; --plane-2:#292421; --plane-3:#342d29; --inset:#120f0e; --edge:#54493f;
+  --ink:#f6f1ea; --dim:#d2c8bc; --faint:#9a8e81;
+  --ok:#7bd88f; --watch:#f6c177; --bad:#f2777a; --off:#6e6257;
+  --link:#a8cdf5; --pop:#342d29; --scrim:rgba(10,8,7,.64);
+}
+[data-palette="contrast"]{
+  --bg:#000000; --plane:#0b0b0b; --plane-2:#151515; --plane-3:#252525; --inset:#000000; --edge:#8c8c8c;
+  --ink:#ffffff; --dim:#e4e4e4; --faint:#b3b3b3;
+  --ok:#00ff9d; --watch:#ffd60a; --bad:#ff5c5c; --off:#8c8c8c;
+  --r1:#2a5fb0; --r2:#3b7ad6; --r3:#5a97ee; --r4:#86b6ef; --r5:#b7d3f6;
+  --link:#9cc9ff; --pop:#1f1f1f; --scrim:rgba(0,0,0,.78);
+  --line:color-mix(in srgb,var(--over) 22%,transparent);
+  --div:color-mix(in srgb,var(--over) 14%,transparent);
+}
+
+/* ── light palettes ──────────────────────────────────────────────────────── */
+[data-palette="paper"]{
+  color-scheme:light; --ai-a:#6a45e6; --ai-b:#0786c4;
+  --bg:#f3f5f8; --plane:#ffffff; --plane-2:#f3f5f8; --plane-3:#e6eaf0; --inset:#eef1f5; --edge:#a7b1bf;
+  --over:#0f172a;
+  --ink:#0f1729; --dim:#364152; --faint:#5d6b80;
+  --ok:#067a4d; --watch:#8f5400; --bad:#c5303c; --off:#98a2b3;
+  --s1:#2a6fdb; --s2:#c0397a; --s3:#6d4fd6;
+  --r1:#0d366b; --r2:#184f95; --r3:#256abf; --r4:#3987e5; --r5:#86b6ef;
+  --link:#1d4ed8; --pop:#ffffff; --shadow:rgba(15,23,42,.18); --scrim:rgba(15,23,42,.38);
+}
+[data-palette="sand"]{
+  color-scheme:light; --ai-a:#6a45e6; --ai-b:#0786c4;
+  --bg:#f1eee6; --plane:#fbf9f4; --plane-2:#f1ede4; --plane-3:#e5dfd2; --inset:#ebe7dd; --edge:#b3a892;
+  --over:#2a2115;
+  --ink:#1f1a14; --dim:#4a4237; --faint:#6f6556;
+  --ok:#1c7449; --watch:#875000; --bad:#b83a2e; --off:#a59a88;
+  --s1:#2a6fdb; --s2:#b8437a; --s3:#6b55c9;
+  --r1:#0d366b; --r2:#184f95; --r3:#256abf; --r4:#3987e5; --r5:#86b6ef;
+  --link:#1f56b3; --pop:#fffdf8; --shadow:rgba(42,33,21,.2); --scrim:rgba(42,33,21,.36);
+}
+[data-palette="mist"]{
+  color-scheme:light; --ai-a:#6a45e6; --ai-b:#0786c4;
+  --bg:#e8eef4; --plane:#f7fafc; --plane-2:#ecf1f6; --plane-3:#dde6ee; --inset:#e3eaf1; --edge:#9fafc0;
+  --over:#0b2239;
+  --ink:#0c1b2a; --dim:#33475b; --faint:#566a7f;
+  --ok:#0b7a5a; --watch:#885600; --bad:#c23b4a; --off:#93a3b3;
+  --s1:#2a6fdb; --s2:#bd3f80; --s3:#6a55cf;
+  --r1:#0d366b; --r2:#184f95; --r3:#256abf; --r4:#3987e5; --r5:#86b6ef;
+  --link:#185abc; --pop:#ffffff; --shadow:rgba(11,34,57,.18); --scrim:rgba(11,34,57,.36);
+}

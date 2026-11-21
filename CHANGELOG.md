@@ -1,5 +1,15 @@
 # Changelog
 
+## 2.0.0 (2026-11-21)
+
+- The live demo is now the design of version 2: 52 pages on an invented team. A home screen with what the team
+  promised, what puts it at risk, what waits for a decision and what changed. Briefings for seven events of the
+  team. Seven domains: Delivery, Product, Engineering, Quality, Operations, Release and Knowledge. Compare two days,
+  an event log, AI Command and eleven palettes.
+- Its numbers are invented and prepared by hand, and the page says so. The first version, where code computes
+  every number, stays at `/demo/`, and `python run.py` still starts it.
+- The design demo fits a phone: the side rail is a menu, and panels stand below each other.
+
 ## 1.2.1 (2026-11-17)
 
 - Quality: a bug resolved or written at the moment one sprint ends and the next starts counts in the new sprint.

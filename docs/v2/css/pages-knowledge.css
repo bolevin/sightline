@@ -1,0 +1,34 @@
+/* Domain Knowledge: the few parts app.css lacks. Colours from tokens.css only. */
+.tb tr.kn-click{cursor:pointer}
+.kn-one{display:block;max-width:340px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--dim)}
+
+/* exposure matrix: likelihood (rows, high on top) against impact (columns, high on the right) */
+.kn-mx{display:grid;grid-template-columns:16px 52px repeat(3,minmax(0,1fr));grid-auto-rows:auto;gap:4px;font-size:var(--t-micro)}
+.kn-yl{grid-row:1/4;grid-column:1;writing-mode:vertical-rl;transform:rotate(180deg);text-align:center;color:var(--faint)}
+.kn-rl{color:var(--faint);align-self:center;text-align:right;padding-right:4px}
+.kn-c{min-height:58px;border-radius:var(--r6);background:var(--inset);box-shadow:inset 0 0 0 1px var(--line);
+  display:flex;flex-wrap:wrap;align-content:center;justify-content:center;gap:4px;padding:6px}
+.kn-c.watch{background:var(--watch-a)} .kn-c.bad{background:var(--bad-a)}
+.kn-cl{color:var(--faint);text-align:center}
+.kn-sp{grid-column:1/3}
+.kn-xl{grid-column:3/6;text-align:center;color:var(--faint)}
+.kn-rk{font:500 12px/1.5 var(--f-mono);letter-spacing:0;padding:1px 6px;border-radius:4px;background:var(--plane-3);color:var(--ink);
+  box-shadow:inset 0 0 0 1px var(--edge)}
+.kn-rk:hover{color:var(--link)}
+
+/* a signal with its two buttons */
+.kn-cand{display:grid;grid-template-columns:8px minmax(0,1fr);gap:4px 9px;align-items:baseline;padding:7px 0;font-size:var(--t-small)}
+.kn-cand + .kn-cand{box-shadow:inset 0 1px 0 var(--div)}
+.kn-cand .dot{align-self:center}
+.kn-cand .tx{color:var(--dim);min-width:0}
+.kn-cand .rowf{grid-column:2}
+
+/* waiting decision cards side by side */
+.kn-decs{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:10px}
+
+/* a one-row bar inside a table cell */
+.kn-bar{width:170px}
+.kn-bar .hb{gap:6px}
+
+/* a source chip inside a table */
+.tb .src{display:inline-flex;align-items:center;gap:5px;color:var(--dim);white-space:nowrap}

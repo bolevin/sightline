@@ -1,0 +1,46 @@
+/* What came back from the first version: the PI statistics, the card of a key, Refresh, new notices, search settings, long lists on the Map */
+.pi-vote{display:flex;align-items:center;gap:10px;padding:10px 14px 2px;font-size:var(--t-small);color:var(--dim);flex-wrap:wrap}
+.pi-vote .inp{width:76px;flex:none}
+.pi-vote .inp[aria-invalid="true"]{border-color:var(--bad)}
+.pi-charts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--gap) 20px}
+@container main (min-width:1600px){.pi-charts{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.pi-cap{font-size:var(--t-small);font-weight:600;color:var(--dim);margin-bottom:2px}
+
+.kcard{position:fixed;z-index:88;width:320px;padding:10px 12px;border-radius:var(--r6);background:var(--pop);box-shadow:0 0 0 1px var(--edge),0 10px 28px var(--shadow);font-size:var(--t-small);color:var(--dim);pointer-events:none}
+.kcard.pinned{pointer-events:auto}
+.kc-h{display:flex;justify-content:space-between;gap:8px;color:var(--ink);font-weight:600}
+.kc-t{color:var(--ink);line-height:1.4;margin:4px 0 8px}
+.kc-d{display:grid;grid-template-columns:auto minmax(0,1fr);gap:3px 12px;margin:0}
+.kc-d dt{color:var(--faint)}
+.kc-d dd{margin:0;color:var(--dim);min-width:0;overflow-wrap:anywhere}
+.kc-f{margin-top:8px;padding-top:7px;box-shadow:inset 0 1px 0 var(--div);font-size:var(--t-micro);color:var(--faint)}
+.kc-do{display:none;gap:6px}
+.kcard.pinned .kc-hint{display:none}
+.kcard.pinned .kc-do{display:flex}
+
+.rf-i{margin-right:5px}
+#refresh{white-space:nowrap}
+#refresh.is-reading{color:var(--ink)}
+#refresh.is-reading .rf-i{display:inline-block;animation:rf-turn 1s linear infinite}
+@keyframes rf-turn{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){#refresh.is-reading .rf-i{animation:none}}
+
+.nt-new{display:inline-block;margin-left:5px;padding:0 5px;border-radius:3px;font-size:var(--t-micro);color:var(--ink);background:var(--s1-a)}
+.ss-c{display:flex;align-items:center;gap:7px;padding:3px 0;font-size:var(--t-small);color:var(--dim)}
+.ss-p{font-size:var(--t-small);line-height:1.5;margin:0 0 4px}
+.tall{max-height:560px;overflow-y:auto}
+.tall .tb th{position:sticky;top:0;z-index:1;background:var(--plane)}
+
+/* the sources behind the button of the top bar */
+.src-menu{position:fixed;z-index:75;width:260px;padding:6px;border-radius:var(--r12);background:var(--plane-2);box-shadow:0 0 0 1px var(--edge),0 10px 28px var(--shadow)}
+.src-menu .vt{padding:4px 8px}
+.src-f{padding:6px 2px 2px}
+
+/* the user's own pins and views */
+.pins a{cursor:pointer}
+.pins a.here{color:var(--ink);box-shadow:inset 2px 0 0 var(--s1)}
+.pins a.drag-to{box-shadow:inset 0 2px 0 var(--s1)}
+.pin-none{padding:2px 8px;font-size:var(--t-micro);color:var(--faint)}
+.pin-btn.on{color:var(--ink)}
+.pin-pop label{display:flex;align-items:center;gap:8px;margin:8px 0 6px;font-size:var(--t-small);color:var(--dim)}
+.pin-pop p{margin:0 0 8px;font-size:var(--t-micro);line-height:1.45;color:var(--faint)}

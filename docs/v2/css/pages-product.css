@@ -1,0 +1,2 @@
+/* Domain Product: a table row that opens a drawer is clickable like a row that opens a page */
+.tb tr[data-dr]{cursor:pointer}

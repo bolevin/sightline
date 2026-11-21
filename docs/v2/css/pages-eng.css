@@ -1,0 +1,33 @@
+/* Domain Engineering: the few parts app.css lacks. Colours from tokens.css only. */
+.tb tr[data-dr]{cursor:pointer}
+.eng-banner{margin-bottom:var(--gap);display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px}
+.eng-banner .dot{align-self:center}
+.eng-banner-a{margin-left:auto}
+.eng-pad{padding:8px 14px 0}
+
+/* a small inline bar inside a table cell */
+.eng-rate{display:inline-flex;align-items:center;gap:8px;white-space:nowrap}
+.eng-mini{display:inline-flex;gap:2px;width:72px;height:8px;border-radius:3px;background:var(--inset);overflow:hidden;vertical-align:middle}
+.eng-mini.wide{width:110px}
+.eng-mini i{display:block;height:100%;border-radius:2px;background:var(--s1)}
+.eng-mini i.ok{background:var(--ok-b)} .eng-mini i.watch{background:var(--watch-b)} .eng-mini i.bad{background:var(--bad-b)}
+
+/* stage view in the manner of the build server: one row per run, one cell per stage */
+.eng-stg{border-collapse:separate;border-spacing:3px}
+.eng-stg td,.eng-stg th{border-bottom:0}
+.eng-stg td.cell{text-align:center;font:500 11px/1.4 var(--f-mono);letter-spacing:0;border-radius:4px;white-space:nowrap;min-width:72px}
+.eng-stg td.cell.ok{background:var(--ok-a);color:var(--ok)}
+.eng-stg td.cell.bad{background:var(--bad-b);color:var(--ink)}
+.eng-stg td.cell.skip{background:var(--inset);color:var(--off);font-family:var(--f-body)}
+.eng-stg.compact td.cell{min-width:0;padding:4px 5px}
+.eng-stg.compact th,.eng-stg.compact td{padding-left:4px;padding-right:4px}
+.eng-stg tbody tr:hover td{background:none}
+.eng-stg tbody tr:hover td.cell.ok{background:var(--ok-a)}
+.eng-stg tbody tr:hover td.cell.bad{background:var(--bad-b)}
+.eng-stg tbody tr:hover td.cell.skip{background:var(--inset)}
+
+/* changed files in the pull request drawer */
+.eng-files{display:flex;flex-direction:column;font-size:var(--t-small)}
+.eng-files div{display:grid;grid-template-columns:minmax(0,1fr) 40px 40px;gap:8px;padding:3px 0;box-shadow:inset 0 -1px 0 var(--div)}
+.eng-files .mono{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--dim)}
+.eng-files span:not(.mono){text-align:right;font:400 11px var(--f-mono)}

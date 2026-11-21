@@ -13,9 +13,21 @@
 
 It runs in your browser, on a phone too, on invented data. Nothing to install.
 
-<a href="https://bolevin.github.io/sightline/"><img src="docs/img/today.png" alt="Sightline, the Today page: three cards answer what the team promised, what can hurt it and what production says; below them six numbers of the sprint and the options when the sprint does not fit. A click opens the live demo" width="100%"></a>
+<a href="https://bolevin.github.io/sightline/"><img src="docs/img/v2-overview.png" alt="Sightline v2, the Overview: what the team promised, what puts it at risk, what waits for a decision and what changed, with the domains in a menu on the left. A click opens the live demo" width="100%"></a>
 
 </div>
+
+## Two demos
+
+The live demo shows the design of version 2. It has 52 pages: a home screen with promises, risks, decisions and
+changes, briefings for the events of the team, and seven domains from delivery to operations. The team and every
+number there are invented and prepared by hand. Nothing on those pages is computed yet.
+
+The [working version](https://bolevin.github.io/sightline/demo/) is the first version. There, code computes every
+number from the data, and an AI line is shown only after code has checked it. The rest of this page describes that
+version, and `python run.py` starts it.
+
+<img src="docs/img/today.png" alt="The working version, the Today page: three cards answer what the team promised, what can hurt it and what production says; below them six numbers of the sprint and the options when the sprint does not fit" width="100%">
 
 A Scrum Master who only runs the ceremonies reports what already happened. The one a business trusts can say on
 Tuesday whether Friday's promise will hold, what stands in its way and what to do about it. I built Sightline to
@@ -165,7 +177,7 @@ nowhere else, and descriptions and comments are not read at all.
 
 ## Try it
 
-The [live demo](https://bolevin.github.io/sightline/) needs nothing. To run it yourself:
+The [working version](https://bolevin.github.io/sightline/demo/) needs nothing. To run it yourself:
 
 ```
 git clone https://github.com/bolevin/sightline
@@ -179,7 +191,7 @@ Python 3.10 or newer, no packages to install. The page opens at `http://127.0.0.
 python -m unittest discover -s tests
 ```
 
-runs the 122 tests. To let an agent of your own read the sprint, point an MCP client at
+runs the 128 tests. To let an agent of your own read the sprint, point an MCP client at
 `http://127.0.0.1:8780/mcp` while the page runs.
 
 ## How it is built
@@ -211,7 +223,7 @@ the computer, and which parts run in the demo. The numbers on the map are those 
 
 <img src="docs/img/system.png" alt="The System tab: a map of the architecture with you and your browser on the left, Sightline in the middle, the agents and their model provider on the right and the systems of the team below, with a label on every link" width="100%">
 
-## What is in this demo, and what is not
+## What is in the working version, and what is not
 
 | | In this demo | In the full version |
 |---|---|---|

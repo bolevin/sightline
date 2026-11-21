@@ -146,6 +146,7 @@ under a lock, and builds the state again. Nothing else in the application can be
 |---|---|
 | Local | `python run.py` starts one process that serves `http://127.0.0.1:8780`. The user's notes go to `var/` next to the application. |
 | Hosted demo | GitHub Pages serves static files from `docs/demo`. A small script answers in the browser what the server would answer, from one prebuilt `state.json`. Changes live in the browser tab. |
+| Design demo of v2 | GitHub Pages serves `docs/v2`, and the root of the site opens it: plain HTML, CSS and JS with invented numbers prepared by hand. It uses none of the computing code described here. |
 
 There is no database, no queue and no background worker.
 
