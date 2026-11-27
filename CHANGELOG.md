@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.0.1 (2026-11-27)
+
+- README: written anew for version 2, with pictures of the design demo. The pages about the first version are
+  gone; a short part says what runs today and how to start it.
+
 ## 2.0.0 (2026-11-21)
 
 - The live demo is now the design of version 2: 52 pages on an invented team. A home screen with what the team
